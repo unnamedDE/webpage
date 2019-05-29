@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AC-Lib Recipe Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sweetalert/style.css">
+    <script src="sweetalert/script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_form">
+        <div class="paths_input">
+          <span>Main Path (Only MCScript): <input type="text" id="main_path" name="main_path" value=""></span>
+          <span>Function Path: <input type="text" id="function_path" name="function_path" value=""></span>
+          <span>Recipe ID: <input type="text" id="receipe_id" name="receipe_id" value=""></span>
+        </div>
+        <div class="container_items">
+          <div class="container_row">
+            <p class="header"> </p>
+            <div class="container_item" id="item_0">
+              <span>ID: <input type="text" name="item_0_id" id="item_0_id"></span>
+              <span>NBT: <input type="text" name="item_0_nbt" id="item_0_nbt"></span>
+              <span class="hidden">T<input type="text"></span>
+            </div>
+            <div class="container_item" id="item_3">
+              <span>ID: <input type="text" name="item_3_id" id="item_3_id"></span>
+              <span>NBT: <input type="text" name="item_3_nbt" id="item_3_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_6">
+              <span>ID: <input type="text" name="item_6_id" id="item_6_id"></span>
+              <span>NBT: <input type="text" name="item_6_nbt" id="item_6_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+          </div>
+          <div class="container_row">
+            <p class="header">Primary Input</p>
+            <div class="container_item" id="item_1">
+              <span>ID: <input type="text" name="item_1_id" id="item_1_id"></span>
+              <span>NBT: <input type="text" name="item_1_nbt" id="item_1_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_4">
+              <span>ID: <input type="text" name="item_4_id" id="item_4_id"></span>
+              <span>NBT: <input type="text" name="item_4_nbt" id="item_4_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_7">
+              <span>ID: <input type="text" name="item_7_id" id="item_7_id"></span>
+              <span>NBT: <input type="text" name="item_7_nbt" id="item_7_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+          </div>
+          <div class="container_row">
+            <p class="header"> </p>
+            <div class="container_item" id="item_2">
+              <span>ID: <input type="text" name="item_2_id" id="item_2_id"></span>
+              <span>NBT: <input type="text" name="item_2_nbt" id="item_2_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_5">
+              <span>ID: <input type="text" name="item_5_id" id="item_5_id"></span>
+              <span>NBT: <input type="text" name="item_5_nbt" id="item_5_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_8">
+              <span>ID: <input type="text" name="item_8_id" id="item_8_id"></span>
+              <span>NBT: <input type="text" name="item_8_nbt" id="item_8_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+          </div>
+
+          <div class="container_row" id="input_second">
+            <p class="header">Secondary Input</p>
+            <div class="container_item" id="item_9">
+              <span>ID: <input type="text" name="item_9_id" id="item_9_id"></span>
+              <span>NBT: <input type="text" name="item_9_nbt" id="item_9_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_10">
+              <span>ID: <input type="text" name="item_10_id" id="item_10_id"></span>
+              <span>NBT: <input type="text" name="item_10_nbt" id="item_10_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+            <div class="container_item" id="item_11">
+              <span>ID: <input type="text" name="item_11_id" id="item_11_id"></span>
+              <span>NBT: <input type="text" name="item_11_nbt" id="item_11_nbt"></span>
+              <span class="hidden">T: <input type="text"></span>
+            </div>
+          </div>
+
+          <div class="container_row" id="output_item">
+            <p class="header">Output</p>
+            <div class="container_item" id="output_item_0">
+              <span>ID: <input type="text" name="output_item_0_id" id="output_item_0_id"></span>
+              <span>NBT: <input type="text" name="output_item_0_nbt" id="output_item_0_nbt"></span>
+              <span>Count: <input type="number" min="1" max="64" name="output_item_0_count" id="output_item_0_count" value="1"></span>
+            </div>
+            <div class="container_item" id="output_item_1">
+              <span>ID: <input type="text" name="output_item_1_id" id="output_item_1_id"></span>
+              <span>NBT: <input type="text" name="output_item_1_nbt" id="output_item_1_nbt"></span>
+              <span>Count: <input type="number" min="1" max="64" name="output_item_1_count" id="output_item_1_count" value="1"></span>
+            </div>
+            <div class="container_item" id="output_item_2">
+              <span>ID: <input type="text" name="output_item_2_id" id="output_item_2_id"></span>
+              <span>NBT: <input type="text" name="output_item_2_nbt" id="output_item_2_nbt"></span>
+              <span>Count: <input type="number" min="1" max="64" name="output_item_2_count" id="output_item_2_count" value="1"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="buttoncontainer">
+        <input type="button" name="generate_mcscript" value="Generate Code (MCScript)" onclick="generateMcscript()" id="button_generate_mcscript" class="big_button">
+        <input type="button" name="help_mcscript" value="?" onclick="helpMcscript()" id="button_help_mcscript" class="help_button">
+        <input type="button" name="generate_mcfunction" value="Generate Code" onclick="generateMcfunction()" id="button_generate_mcfunction" class="big_button">
+        <input type="button" name="help_mcfunction" value="?" onclick="helpMcfunction()" id="button_help_mcfunction" class="help_button">
+        <input type="button" name="reset" value="Reset" onclick="alertReset()" id="button_reset" class="big_button">
+      </div>
+      <p id="output_mcscript"></p>
+      <div id="output_mcfunction">
+        <p id="output_mcfunction_0"></p>
+        <p id="output_mcfunction_1"></p>
+        <p id="output_mcfunction_2"></p>
+        <p id="output_mcfunction_3"></p>
+      </div>
+    </div>
+  </body>
+</html>
