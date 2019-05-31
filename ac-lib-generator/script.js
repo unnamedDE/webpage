@@ -3,7 +3,7 @@ function alertReset(){
     text: "Are you sure to proceed?",
     type: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
+    confirmButtonColor: "#E12F2F",
     confirmButtonText: "Reset!",
     cancelButtonText: "Cancel",
     closeOnConfirm: true,
@@ -214,8 +214,22 @@ function generateInit() {
 
 function generateMcscript() {
   generateInit();
-  document.getElementById("output_mcscript").style.visibility = "visible";
-  document.getElementById("output_mcfunction").style.visibility = "hidden";
+  // document.getElementById("output_mcscript").style.visibility = "visible";
+  // document.getElementById("output_mcscript").style.height = "225px";
+  // document.getElementById("output_mcscript").style.marginTop = "20px";
+  // document.getElementById("output_mcscript").style.border = "black 2px solid";
+  // document.getElementById("output_mcfunction").style.visibility = "hidden";
+  // document.getElementById("output_mcfunction").style.height = "0px";
+  // document.getElementById("output_mcfunction").style.marginTop = "0px";
+  // document.getElementById("output_mcfunction").style.border = "none";
+
+  document.getElementById("output_mcscript").hidden = false;
+  document.getElementById("output_mcfunction").hidden = true;
+  document.getElementById("output_mcfunction").style.border = "none";
+  document.getElementById("output_mcfunction_0").hidden = true;
+  document.getElementById("output_mcfunction_1").hidden = true;
+  document.getElementById("output_mcfunction_2").hidden = true;
+  document.getElementById("output_mcfunction_3").hidden = true;
 
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
@@ -456,8 +470,23 @@ function generateMcscript() {
 
 function generateMcfunction() {
   generateInit();
-  document.getElementById("output_mcfunction").style.visibility = "visible";
-  document.getElementById("output_mcscript").style.visibility = "hidden";
+  // document.getElementById("output_mcfunction").style.visibility = "visible";
+  // document.getElementById("output_mcfunction").style.height = "225px";
+  // document.getElementById("output_mcfunction").style.marginTop = "20px";
+  // document.getElementById("output_mcfunction").style.border = "black 2px solid";
+  // document.getElementById("output_mcscript").style.visibility = "hidden";
+  // document.getElementById("output_mcscript").style.height = "0px";
+  // document.getElementById("output_mcscript").style.marginTop = "0px";
+  // document.getElementById("output_mcscript").style.border = "none";
+
+  document.getElementById("output_mcfunction").hidden = false;
+  document.getElementById("output_mcfunction").style.border = "black 2px solid";
+  document.getElementById("output_mcfunction_0").hidden = false;
+  document.getElementById("output_mcfunction_1").hidden = false;
+  document.getElementById("output_mcfunction_2").hidden = false;
+  document.getElementById("output_mcfunction_3").hidden = false;
+  document.getElementById("output_mcscript").hidden = true;
+
 
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
