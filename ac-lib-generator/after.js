@@ -40,7 +40,19 @@ function dropFiles(ev) {
 
   let droppedFiles = ev.dataTransfer.files;
   let fileInput= droppedFiles[0];
-  if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {return}
+  if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {
+    // document.querySelector('button.confirm').click();
+    swal({
+      title: "Error!",
+      text: "Can't import that file\nFiles have to end with '-recipe_export.txt'",
+      type: "error",
+      showCancelButton: true,
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "Try another file...",
+      closeOnConfirm: true,
+      closeOnCancel: true});
+    return;
+  }
   // console.log(ev.dataTransfer.files[0]);
   var reader = new FileReader();
   reader.onload = function() {
