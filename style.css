@@ -23,7 +23,7 @@ body {
   color: #ddd;
 }
 #social_discord {
-  position: absolute;
+  position: fixed;
   border: none;
   color: white;
   padding-top: 5px;

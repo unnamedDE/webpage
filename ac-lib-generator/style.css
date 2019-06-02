@@ -17,7 +17,9 @@ body {
 
 .container {
   /* margin: 100px 20px 0 20px; */
+  margin: 0 auto;
   margin: 20px 20px 0 20px;
+  min-width: 1400px;
 }
 
 .container_form {
@@ -137,6 +139,18 @@ body {
 #button_help_mcfunction:hover {
   background-color: #519D55;
 }
+#button_export {
+  background-color: #42CFCE;
+}
+#button_export:hover {
+  background-color: #44BBBA;
+}
+#button_help_export {
+  background-color: #42CFCE;
+}
+#button_help_export:hover {
+  background-color: #44BBBA;
+}
 
 #button_reset {
   background-color: #E12F2F;
@@ -147,8 +161,10 @@ body {
 
 #header {
   text-align: center;
+  margin: 0 auto;
   font-size: 40px;
   margin-top: 20px;
+  width: 1400px;
   /* position: absolute; */
   /* left: 50%; */
   /* transform: translate(-50%); */
@@ -166,7 +182,7 @@ body {
   width: 230px;
 }
 #button_home, #button_download, #social_discord {
-  position: absolute;
+  position: fixed;
   border: none;
   color: white;
   padding-top: 5px;
@@ -200,6 +216,7 @@ body {
 #social_discord {
   width: 75px;
   height: 75px;
+  position: fixed;
   right: 0;
   bottom: 0;
   background-color: #2C2F33;
@@ -241,7 +258,7 @@ body {
 #output_mcfunction p {
   border-left: 1px gray solid;
   height: 250px;
-  width: 400px;
+  min-width: 400px;
   /* overflow-y: scroll; */
   font-family: monospace;
 }
