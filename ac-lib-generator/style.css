@@ -239,6 +239,7 @@ body {
   font-family: monospace;
   margin: 0 auto;
   margin-top: 20px;
+  font-size: 10pt;
 }
 
 #output_mcfunction {
@@ -258,9 +259,10 @@ body {
 #output_mcfunction p {
   border-left: 1px gray solid;
   height: 250px;
-  min-width: 400px;
+  width: 415px;
   /* overflow-y: scroll; */
   font-family: monospace;
+  font-size: 10pt;
 }
 
 #output_mcfunction p:first-child {

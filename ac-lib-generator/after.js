@@ -1,5 +1,4 @@
 function dropFiles(ev) {
-
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
   var item1_id = document.getElementById('item_1_id');
@@ -87,6 +86,12 @@ function dropFiles(ev) {
     itemout2_count.value = input.output2.count
   }
   reader.readAsText(fileInput)
+  swal({title: "Success",
+    text: "Import successfull",
+    type: "success",
+    confirmButtonColor: "#4CAF50",
+    confirmButtonText: "OK",
+    closeOnConfirm: true});
 }
 
 /*

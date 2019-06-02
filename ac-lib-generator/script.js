@@ -38,7 +38,7 @@ function helpMcfunction(){
 	swal({   title: "Using this generator with vanilla mcfunctions",
     text: "Using this generator with mcfunctions is very simple. First you have to fill in the input/output items. After that you have to give the recipe a unique ID. The function path should look something like this 'packname:folder/subfolder/craft'. Then paste the most left output in a .mcfunction file (This is the file you have to mention in '#ac_lib:advanced_crafter_recipes'). Then create a subfolder named the way you specified it in function path and create 3 mcfunctions named 1, 2 and 3. The second output has to go into 'craft/1', the third in 'craft/2', etc.",
     type: "info",
-    confirmButtonColor: "#4C36EC",
+    confirmButtonColor: "#4CAF50",
     confirmButtonText: "OK",
     closeOnConfirm: true
   });
@@ -229,7 +229,14 @@ function generateInit() {
     itemout2_nbt.value = itemout2_nbt.value.replace(/^{/, "").replace(/}$/, "");
   }
 }
-
+function dragOver() {
+  swal({   title: "Importing...",
+    text: "Import a recipe",
+    type: "info",
+    confirmButtonColor: "#ccc",
+    confirmButtonText: "cancel",
+    closeOnConfirm: true});
+}
 function exportRecipe() {
   generateInit();
 
