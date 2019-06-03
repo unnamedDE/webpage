@@ -1,4 +1,5 @@
 function download(filename,text) {
+  console.log('download(' + filename + ')');
   let element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename)
@@ -8,6 +9,7 @@ function download(filename,text) {
   document.body.removeChild(element);
 }
 function alertReset(){
+  console.log('alertReset()');
 	swal({   title: "Reset can't be undone!",
     text: "Are you sure to proceed?",
     type: "warning",
@@ -26,8 +28,9 @@ function alertReset(){
 }
 
 function helpMcscript(){
+  console.log('helpMcscript()');
 	swal({   title: "Using this generator with MCScript",
-    text: "Using this generator with MCScript is very simple. First you have to fill in the input/output items. After that you have to give the recipe a unique ID. The main path should look something like this './folder/subfolder/craft' and the function path like this 'packname:folder/subfolder/craft'. Then paste the output in a .mcscript file. Don't forget to insert the main crafting function into the function tag '#ac_lib:advanced_crafter_recipes'.",
+    text: "Using this generator with MCScript is very simple. \nFirst you have to fill in the input/output items. After that you have to give the recipe a unique ID. The main path should look something like this './folder/subfolder/craft' and the function path like this 'packname:folder/subfolder/craft'. \nThen paste the output in a .mcscript file. Don't forget to insert the main crafting function into the function tag '#ac_lib:advanced_crafter_recipes'.",
     type: "info",
     confirmButtonColor: "#4C36EC",
     confirmButtonText: "OK",
@@ -35,8 +38,9 @@ function helpMcscript(){
   });
 }
 function helpMcfunction(){
+  console.log('helpMcfunction()');
 	swal({   title: "Using this generator with vanilla mcfunctions",
-    text: "Using this generator with mcfunctions is very simple. First you have to fill in the input/output items. After that you have to give the recipe a unique ID. The function path should look something like this 'packname:folder/subfolder/craft'. Then paste the most left output in a .mcfunction file (This is the file you have to mention in '#ac_lib:advanced_crafter_recipes'). Then create a subfolder named the way you specified it in function path and create 3 mcfunctions named 1, 2 and 3. The second output has to go into 'craft/1', the third in 'craft/2', etc.",
+    text: "Using this generator with mcfunctions is very simple. \nFirst you have to fill in the input/output items. After that you have to give the recipe a unique ID. \nThe function path should look something like this 'packname:folder/subfolder/craft'. Then paste the most left output in a .mcfunction file (This is the file you have to mention in '#ac_lib:advanced_crafter_recipes'). After that create a subfolder named the way you specified it in function path and create 3 mcfunctions named 1, 2 and 3. \nThe second output has to go into 'craft/1', the third in 'craft/2', etc.",
     type: "info",
     confirmButtonColor: "#4CAF50",
     confirmButtonText: "OK",
@@ -44,8 +48,9 @@ function helpMcfunction(){
   });
 }
 function helpExport(){
+  console.log('helpExport()');
 	swal({   title: "Exporting Recipes",
-    text: "When you click export, there will be a file download which contains the recipe. Drag & Drop the file to import.",
+    text: "When you click export, there will be a file download which contains the recipe. \nDrag & Drop the file to import.",
     type: "info",
     confirmButtonColor: "#4C36EC",
     confirmButtonText: "OK",
@@ -54,6 +59,7 @@ function helpExport(){
 }
 
 function reset() {
+  console.log('reset()');
   document.getElementById('item_0_id').value = "";
   document.getElementById('item_0_nbt').value = "";
   document.getElementById('item_1_id').value = "";
@@ -102,6 +108,7 @@ function reset() {
 
 
 function generateInit() {
+  console.log('generateInit()');
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
   var item1_id = document.getElementById('item_1_id');
@@ -238,8 +245,8 @@ function dragOver() {
     closeOnConfirm: true});
 }
 function exportRecipe() {
+  console.log('exportRecipe()');
   generateInit();
-
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
   var item1_id = document.getElementById('item_1_id');
@@ -283,6 +290,7 @@ function exportRecipe() {
 
   var output = {txtMainPath:txtMainPath,txtFunctionPath:txtFunctionPath,txtRecipeId:txtRecipeId,item0:{id:item0_id.value,nbt:item0_nbt.value},item1:{id:item1_id.value,nbt:item1_nbt.value},item2:{id:item2_id.value,nbt:item2_nbt.value},item3:{id:item3_id.value,nbt:item3_nbt.value},item4:{id:item4_id.value,nbt:item4_nbt.value},item5:{id:item5_id.value,nbt:item5_nbt.value},item6:{id:item6_id.value,nbt:item6_nbt.value},item7:{id:item7_id.value,nbt:item7_nbt.value},item8:{id:item8_id.value,nbt:item8_nbt.value},item9:{id:item9_id.value,nbt:item9_nbt.value},item10:{id:item10_id.value,nbt:item10_nbt.value},item11:{id:item11_id.value,nbt:item11_nbt.value},output0:{id:itemout0_id.value,nbt:itemout0_nbt.value,count:itemout0_count.value},output1:{id:itemout1_id.value,nbt:itemout1_nbt.value,count:itemout1_count.value},output2:{id:itemout2_id.value,nbt:itemout2_nbt.value,count:itemout2_count.value}};
 
+  console.log('Export output: ' + JSON.stringify(output));
   download(txtRecipeId + '-recipe_export.txt', JSON.stringify(output))
 }
 
@@ -292,6 +300,7 @@ function overrideDefault(ev) {
 }
 
 function dropFiles(ev) {
+  console.log('dropFiles()');
   let droppedFiles = ev.dataTransfer.files;
   let fileInput= droppedFiles[0];
   if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {return}
@@ -315,6 +324,7 @@ input.addEventListener('change', function(e) {
 */
 
 function generateMcscript() {
+  console.log('generateMcscript()');
   generateInit();
   // document.getElementById("output_mcscript").style.visibility = "visible";
   // document.getElementById("output_mcscript").style.height = "225px";
@@ -571,6 +581,7 @@ function generateMcscript() {
 }
 
 function generateMcfunction() {
+  console.log('generateMcfunction()');
   generateInit();
   // document.getElementById("output_mcfunction").style.visibility = "visible";
   // document.getElementById("output_mcfunction").style.height = "225px";

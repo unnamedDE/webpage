@@ -5,10 +5,21 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', Calibri, sans-serif;
+  color: #ddd;
 }
 
 body {
   /* overflow-y: hidden; */
+  background: #555;
+}
+
+input {
+  background-color: #444;
+  border: #222 1px solid;
+}
+
+input:focus {
+  outline: none;
 }
 
 .hidden {
@@ -40,6 +51,7 @@ body {
   border: 1px black solid;
   border-radius: 20px;
   height: 400px;
+  background-color: #444;
 }
 
 .container_item {
@@ -50,6 +62,7 @@ body {
   margin: 5px 10px;
   border: black 1px solid;
   border-radius: 5px;
+  background-color: #555;
   /* height: 75px; */
 }
 .container_item input {
@@ -88,9 +101,13 @@ body {
   display: flex;
   margin-top: 20px;
 }
+
+.buttoncontainer input {
+  color: #000;
+}
+
 .buttoncontainer .big_button {
   border: none;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -108,7 +125,6 @@ body {
   font-size: 20px;
   text-decoration: none;
   display: inline-block;
-  color: white;
   border-radius: 5px;
   border: none;
 }
@@ -118,6 +134,7 @@ body {
 }
 #button_generate_mcscript:hover {
   background-color: #4735CD;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 #button_help_mcscript {
   background-color: #4C36EC;
@@ -125,6 +142,7 @@ body {
 }
 #button_help_mcscript:hover {
   background-color: #4735CD;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 
 #button_generate_mcfunction {
@@ -132,24 +150,28 @@ body {
 }
 #button_generate_mcfunction:hover {
   background-color: #519D55;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 #button_help_mcfunction {
   background-color: #4CAF50;
 }
 #button_help_mcfunction:hover {
   background-color: #519D55;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 #button_export {
   background-color: #42CFCE;
 }
 #button_export:hover {
   background-color: #44BBBA;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 #button_help_export {
   background-color: #42CFCE;
 }
 #button_help_export:hover {
   background-color: #44BBBA;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 
 #button_reset {
@@ -157,6 +179,7 @@ body {
 }
 #button_reset:hover {
   background-color: #D12E2E;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 
 #header {
@@ -191,6 +214,47 @@ body {
   display: inline-block;
   font-size: 16px;
   margin: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 75px;
+  height: 75px;
+}
+#button_home i, #button_download i {
+  display: inline-block;
+  margin: auto;
+  font-size: 40pt;
+  margin: 5px auto;
+}
+#button_home:hover, #button_download:hover, #social_discord:hover {
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}
+
+#button_home {
+  left: 0;
+  top: 0;
+  background-color: #3036A7;
+}
+#button_home:hover {
+  background-color: #33377B;
+}
+#button_download {
+  right: 0;
+  top: 0;
+  background-color: #3036A7;
+}
+#button_download:hover {
+  background-color: #33377B;
+}
+/* #button_home, #button_download, #social_discord {
+  position: fixed;
+  border: none;
+  color: white;
+  padding-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
   height: 30px;
   width: 150px;
   border-radius: 5px;
@@ -212,14 +276,16 @@ body {
 }
 #button_download:hover {
   background-color: #499385;
-}
+} */
 #social_discord {
   width: 75px;
   height: 75px;
-  position: fixed;
   right: 0;
   bottom: 0;
   background-color: #2C2F33;
+}
+#social_discord:hover {
+  background-color: #292C30;
 }
 #social_discord img {
   object-fit: cover;
@@ -240,6 +306,7 @@ body {
   margin: 0 auto;
   margin-top: 20px;
   font-size: 10pt;
+  background-color: #333;
 }
 
 #output_mcfunction {
@@ -263,6 +330,7 @@ body {
   /* overflow-y: scroll; */
   font-family: monospace;
   font-size: 10pt;
+  background-color: #333;
 }
 
 #output_mcfunction p:first-child {

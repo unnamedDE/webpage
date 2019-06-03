@@ -77,6 +77,6 @@ body {
 	transform: scale(1.05);
 }
 
-#link-container #ac-lib-generator a {
+#link-container #aclib-generator a {
   background-image: url(img/aclib.png);
 }
