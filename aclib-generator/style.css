@@ -204,7 +204,7 @@ input:focus {
 #output_item div {
   width: 230px;
 }
-#button_home, #button_download, #social_discord {
+#button_back, #button_download, #social_discord {
   position: fixed;
   border: none;
   color: white;
@@ -219,22 +219,22 @@ input:focus {
   width: 75px;
   height: 75px;
 }
-#button_home i, #button_download i {
+#button_back i, #button_download i {
   display: inline-block;
   margin: auto;
   font-size: 40pt;
   margin: 5px auto;
 }
-#button_home:hover, #button_download:hover, #social_discord:hover {
+#button_back:hover, #button_download:hover, #social_discord:hover {
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 
-#button_home {
+#button_back {
   left: 0;
   top: 0;
   background-color: #3036A7;
 }
-#button_home:hover {
+#button_back:hover {
   background-color: #33377B;
 }
 #button_download {
@@ -245,7 +245,7 @@ input:focus {
 #button_download:hover {
   background-color: #33377B;
 }
-/* #button_home, #button_download, #social_discord {
+/* #button_back, #button_download, #social_discord {
   position: fixed;
   border: none;
   color: white;
@@ -261,12 +261,12 @@ input:focus {
   box-sizing: border-box;
 }
 
-#button_home {
+#button_back {
   left: 0;
   top: 0;
   background-color: #35A893;
 }
-#button_home:hover {
+#button_back:hover {
   background-color: #499385;
 }
 #button_download {
