@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-*, *::before, *::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -39,6 +39,25 @@ body {
   right: 0;
   bottom: 0;
   background-color: #2C2F33;
+}
+#social_mail {
+  position: fixed;
+  border: none;
+  color: #738ADB;
+  padding-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 75px;
+  height: 75px;
+  left: 0;
+  bottom: 0;
+  background-color: #2C2F33;
+  font-size: 40pt;
 }
 #social_discord img {
   object-fit: cover;

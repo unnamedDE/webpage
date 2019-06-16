@@ -204,7 +204,7 @@ input:focus {
 #output_item div {
   width: 230px;
 }
-#button_back, #button_download, #social_discord {
+#button_back, #button_download, #social_discord, #social_mail {
   position: fixed;
   border: none;
   color: white;
@@ -244,6 +244,16 @@ input:focus {
   background-color: #3036A7;
 }
 #button_download:hover {
+  background-color: #33377B;
+}
+#social_mail {
+  left: 0;
+  bottom: 0;
+  background-color: #3036A7;
+  display: inline;
+  font-size: 40pt;
+}
+#social_mail:hover {
   background-color: #33377B;
 }
 /* #button_back, #button_download, #social_discord {

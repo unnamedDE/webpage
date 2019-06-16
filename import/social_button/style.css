@@ -1,0 +1,153 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+
+ .social-button {
+   transition: all 0.4s;
+	 position: absolute;
+	 right: 25px;
+	 bottom: 25px;
+	 width: 60px;
+	 height: 60px;
+	 text-align: center;
+	 line-height: 60px;
+	 border-radius: 50%;
+	 background-color: #2186EC;
+	 color: #fff;
+	 font-size: 24px;
+	 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.22);
+	 cursor: pointer;
+   transition-delay: 1s;
+}
+ .social-button-open {
+   transition-delay: 0s;
+   bottom: 85px;
+	 background: #d81558;
+	 box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.28), 0 4px 15px 0 rgba(0, 0, 0, 0.25);
+}
+ .social-button .social-point{
+   transition: all 0.4s;
+	 opacity: 0;
+	 width: 0px;
+	 height: 0px;
+	 text-align: center;
+	 line-height: 50px;
+	 border-radius: 50%;
+	 color: #fff;
+	 font-size: 24px;
+	 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.22);
+	 cursor: pointer;
+}
+ .social-button .social-point:hover {
+	 box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.28), 0 4px 15px 0 rgba(0, 0, 0, 0.25);
+}
+ .social-button .social-point:nth-child(2) {
+   transition-delay: 0.3s;
+	 position: absolute;
+	 right: 50px;
+	 bottom: 50px;
+	 color: #7289DA;
+   background-color: #2C2F33;
+}
+ .social-button .social-point:nth-child(3) {
+   transition-delay: 0.4s;
+	 position: absolute;
+	 right: 50px;
+	 bottom: 50px;
+	 background: #DC4E41;
+}
+ .social-button .social-point:nth-child(4) {
+   transition-delay: 0.5s;
+	 position: absolute;
+	 right: 50px;
+	 bottom: 50px;
+	 background: #57B13B;
+   display: flex;
+   flex-direction: column;
+}
+ .social-button .social-point:nth-child(4) div {
+   height: 24px;
+   width: 40px;
+   margin: auto;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-image: url(img/curseforge.png);
+ }
+ .social-button .social-point:nth-child(5) {
+   transition-delay: 0.6s;
+	 position: absolute;
+	 right: 50px;
+	 bottom: 50px;
+	 background-image: url('https://www.planetminecraft.com/images/layout/themes/modern/nav_bg.png');
+   background-repeat: round;
+   background-size: contain;
+   display: flex;
+   flex-direction: column;
+}
+ .social-button .social-point:nth-child(5) div {
+   height: 24px;
+   width: 40px;
+   margin: auto;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-image: url(img/planetminecraft.png);
+ }
+ .social-button .social-point:nth-child(6) {
+   transition-delay: 0.7s;
+	 position: absolute;
+	 right: 50px;
+	 bottom: 50px;
+	 background: #24292e;
+}
+ .social-button-open .social-point-open{
+	 opacity: 1;
+	 width: 50px;
+	 height: 50px;
+}
+ .social-button-open .social-point-open:nth-child(2) {
+	 right: 5px;
+	 bottom: 80px;
+}
+ .social-button-open .social-point-open:nth-child(2):hover {
+   transition-delay: 0s;
+	 background: #1A1C1E;
+}
+ .social-button-open .social-point-open:nth-child(3) {
+	 right: 65px;
+	 bottom: 65px;
+}
+ .social-button-open .social-point-open:nth-child(3):hover {
+   transition-delay: 0s;
+	 background: #B14237;
+}
+ .social-button-open .social-point-open:nth-child(4) {
+	 right: 80px;
+	 bottom: 5px;
+}
+ .social-button-open .social-point-open:nth-child(4):hover {
+   transition-delay: 0s;
+	 background: #43882E;
+}
+ .social-button-open .social-point-open:nth-child(5) {
+	 right: 65px;
+	 bottom: -65px;
+}
+ .social-button-open .social-point-open:nth-child(5):hover {
+   transition-delay: 0s;
+	 /* background: #323232; */
+}
+ .social-button-open .social-point-open:nth-child(6) {
+	 right: 5px;
+	 bottom: -80px;
+}
+ .social-button-open .social-point-open:nth-child(6):hover {
+   transition-delay: 0s;
+	 background: #171A1E;
+}
+/*---FOR MOBILE VIEW---*/
+ @media screen and (max-width: 400px) {
+	 h1 {
+		 padding: 15px;
+		 font-size: 25px;
+	}
+}

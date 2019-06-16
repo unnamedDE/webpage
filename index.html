@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="import/fontawesome/css/all.css">
     <link rel="stylesheet" href="import/sweetalert/dark.css">
-    <link rel="stylesheet" href="import/animate.css">
     <script src="import/sweetalert/script.js"></script>
+    <link rel="stylesheet" href="import/animate.css">
+    <link rel="stylesheet" href="import/social_button/style.css">
+    <script src="import/social_button/script.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <!-- <script src="script.js"></script> -->
@@ -18,10 +20,15 @@
     <div id="container_header">
       <h1 id="header" class="animated fadeInDown">unnamedDE's Webpage</h1>
     </div>
-    <a href="discord" id="social_discord" class="animated flash" target="_blank"><img src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" alt="Discord"></a>
+    <div class="social-button animated flash" onclick="click_social();"><i id="social-icon" class="fas fa-share-alt"></i>
+    	<a hidden class="social-point" href="discord"><i class="fab fa-discord"></i></a>
+    	<a hidden class="social-point" href="mailto:admin&#064;unnamedDE&#046;tk?subject=Contact"><i class="fas fa-envelope"></i></a>
+    	<a hidden class="social-point" href="https://minecraft.curseforge.com/members/unnamedde/projects"><div></div></a>
+    	<a hidden class="social-point" href="https://www.planetminecraft.com/member/unnamedde/submissions/?morder=order_popularity"><div></div></a>
+    	<a hidden class="social-point" href="https://github.com/unnamedDE?tab=repositories"><i class="fab fa-github"></i></a>
+    </div>
     <div id="link-container">
       <div class="link-container-item" id="aclib-generator"><a href="aclib-generator"></a></div>
     </div>
-
   </body>
 </html>
