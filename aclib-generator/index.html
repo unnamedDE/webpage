@@ -17,14 +17,15 @@
     <script src="script.js"></script>
   </head>
   <body ondragover="overrideDefault(event);dragOver()" ondragenter="overrideDefault(event)" ondragleave="overrideDefault(event)" ondrop="overrideDefault(event);dropFiles(event)">
-    <p id="button_back"><i class="fas fa-chevron-left" onclick="window.history.back();"></i></p>
+    <a id="button_back" href=".."><i class="fas fa-chevron-left"></i></a>
+    <!--  onclick="window.history.back();" -->
     <a href="../datapacks/aclib" target="_blank" id="button_download"><i class="fas fa-download"></i><!--  Download  --></a>
     <div class="social-button animated flash" onclick="click_social();"><i id="social-icon" class="fas fa-share-alt"></i>
     	<a hidden class="social-point" href="../discord"><i class="fab fa-discord"></i></a>
-    	<a hidden class="social-point" href="mailto:admin&#064;unnamedDE&#046;tk?subject=Contact"><i class="fas fa-envelope"></i></a>
-    	<a hidden class="social-point" href="https://minecraft.curseforge.com/members/unnamedde/projects"><div></div></a>
-    	<a hidden class="social-point" href="https://www.planetminecraft.com/member/unnamedde/submissions/?morder=order_popularity"><div></div></a>
-    	<a hidden class="social-point" href="https://github.com/unnamedDE?tab=repositories"><i class="fab fa-github"></i></a>
+    	<a hidden class="social-point" href="../mail"><i class="fas fa-envelope"></i></a>
+    	<a hidden class="social-point" href="../curseforge" target="_blank"><div></div></a>
+    	<a hidden class="social-point" href="../planetminecraft" target="_blank"><div></div></a>
+    	<a hidden class="social-point" href="../github" target="_blank"><i class="fab fa-github"></i></a>
     </div>
     <h1 id="header">ACLib recipe generator</h1>
     <div class="container">
