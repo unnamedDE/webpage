@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Markup to HTML</title>
+    <link rel="shortcut icon" href="../img/shortcut.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../import/sweetalert/dark.css">
+    <script src="../import/sweetalert/script.js"></script>
+    <link rel="stylesheet" href="../import/animate.css">
+    <link rel="stylesheet" href="../import/social_button/style.css">
+    <script src="../import/social_button/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <a id="button_back" href=".."><i class="fas fa-chevron-left"></i></a>
+    <div class="social-button animated flash" onclick="click_social();"><i id="social-icon" class="fas fa-share-alt"></i>
+    	<a hidden class="social-point" href="discord"><i class="fab fa-discord"></i></a>
+    	<a hidden class="social-point" href="mail"><i class="fas fa-envelope"></i></a>
+    	<a hidden class="social-point" href="curseforge" target="_blank"><div></div></a>
+    	<a hidden class="social-point" href="planetminecraft" target="_blank"><div></div></a>
+    	<a hidden class="social-point" href="github" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <h1 id="header">Markdown <i class="fab fa-markdown"></i> to HTML Converter <i class="fab fa-html5"></i></h1>
+    <div id="container">
+      <textarea name="txt_input" rows="8" cols="80" id="txt_input"></textarea>
+      <textarea name="txt_output" rows="8" cols="80" id="txt_output" readonly></textarea>
+    </div>
+    <button type="button" onclick="convert();" id="btn_convert">Convert</button>
+    <button onclick="credit()" id="credits">Generator is using remarkable</button>
+  </body>
+</html>

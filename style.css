@@ -22,50 +22,6 @@ body {
   margin-bottom: 20px;
   color: #ddd;
 }
-#social_discord {
-  position: fixed;
-  border: none;
-  color: white;
-  padding-top: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  width: 75px;
-  height: 75px;
-  right: 0;
-  bottom: 0;
-  background-color: #2C2F33;
-}
-#social_mail {
-  position: fixed;
-  border: none;
-  color: #738ADB;
-  padding-top: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  width: 75px;
-  height: 75px;
-  left: 0;
-  bottom: 0;
-  background-color: #2C2F33;
-  font-size: 40pt;
-}
-#social_discord img {
-  object-fit: cover;
-  object-position: center;
-  width: inherit;
-  height: inherit;
-  padding-bottom: 6px;
-}
 
 #link-container {
   display: grid;
@@ -98,4 +54,10 @@ body {
 
 #link-container #aclib-generator a {
   background-image: url(img/aclib.png);
+}
+#link-container #markdown-to-html a {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(img/markdown-to-html.png);
 }

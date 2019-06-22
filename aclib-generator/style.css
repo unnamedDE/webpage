@@ -225,7 +225,7 @@ input:focus {
   font-size: 40pt;
   margin: 5px auto;
 }
-#button_back:hover, #button_download:hover, #social_discord:hover {
+#button_back:hover, #button_download:hover {
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
 

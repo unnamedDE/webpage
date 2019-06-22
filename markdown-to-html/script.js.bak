@@ -1,0 +1,67 @@
+
+var output = "";
+
+function convert() {
+  output = "";
+    var input = document.getElementById('txt_input').value;
+    // console.log(input);
+
+    var lines = input.split('\n');
+    // console.log(lines);
+
+    for(var line_gl = 0; line_gl < lines.length; line_gl++) {
+      var tokens = new Array();
+      tokens[line_gl] = lines[line_gl].split(' ')
+      handleLines(line_gl, lines, tokens);
+    }
+
+    document.getElementById('txt_output').value = output.replace(/{REMSPACE} /g, "");
+}
+
+
+function handleLines(line, lines, tokens) {
+  // let tokens = lines[line].split(' ')
+  // console.log("Tokens:");
+  // console.log(tokens[line]);
+  // Headings
+  for(let i = 0; i < tokens[line].length; i++) {
+    // tokens[line][i].replace("{REMSPACE}", "\\{REMSPACE}")
+  }
+  if(tokens[line][0] == '#') {
+    tokens[line][0] = "<h1>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h1>"
+  } else if(tokens[line][0] == '##') {
+    tokens[line][0] = "<h2>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h2>" + "\n"
+  } else if(tokens[line][0] == '###') {
+    tokens[line][0] = "<h3>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h3>" + "\n"
+  } else if(tokens[line][0] == '####') {
+    tokens[line][0] = "<h4>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h4>" + "\n"
+  } else if(tokens[line][0] == '#####') {
+    tokens[line][0] = "<h5>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h5>" + "\n"
+  } else if(tokens[line][0] == '######') {
+    tokens[line][0] = "<h6>{REMSPACE}"
+    output += tokens[line].join(' ') + "</h6>" + "\n"
+  } else {
+    // output += "<p>" + tokens[line].join(' ') + "</p>" + "\n"
+    // console.log(line);
+    // console.log(lines[line] != "");
+    console.log("\"" + lines[line] + "\"");
+    console.log(!(lines[line] == ""));
+    console.log(line);
+    if((!(lines[line - 1]) || (lines[line - 1][0] == ""))) { // && !(lines[line] == "")
+      output += "<p>"
+    }
+    output += tokens[line].join(' ')
+    if(!(lines[line + 1]) || (lines[line + 1][0] == "") && !(/<\/p>$/.test(output))) {
+      output += "</p>" + "\n"
+    }
+    if(((lines[line + 1]) && !(lines[line + 1][0] == ""))) {
+      output += "<br>"
+    }
+
+  }
+}
