@@ -45,6 +45,9 @@ body {
 	-webkit-transform: scale(1);
 	-webkit-transition: transform .3s ease-in-out;
 	transition: transform .3s ease-in-out;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #link-container .link-container-item a:hover {
@@ -56,8 +59,9 @@ body {
   background-image: url(img/aclib.png);
 }
 #link-container #markdown-to-html a {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   background-image: url(img/markdown-to-html.png);
+}
+#link-container #mcstacker a {
+  background-image: url(https://mcstacker.net/MCStackerPS.png);
+  background-color: #fff;
 }
