@@ -58,6 +58,9 @@ body {
 #link-container #aclib-generator a {
   background-image: url(img/aclib.png);
 }
+#link-container #execute-converter a {
+  background-image: url(img/execute-converter.png);
+}
 #link-container #markdown-to-html a {
   background-image: url(img/markdown-to-html.png);
 }
