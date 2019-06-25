@@ -1,0 +1,57 @@
+function convert() {
+  var input = document.getElementById('txt_input').value;
+  var output = document.getElementById('txt_output');
+
+  if(/^\//.test(input)) {
+    output.value = "/";
+  } else {
+    output.value = "";
+  }
+  if(!(/^\/?execute/.test(input)) && input != "") {
+    swal({   title: "No execute command detected",
+      text: "Please input an execute command",
+      type: "error",
+      confirmButtonColor: "#4C36EC",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return
+  }
+
+  var tokens = input.split(' ');
+  tokens.splice(0, 1)
+
+  var converted = "execute as ";
+
+  converted += tokens[0] + " at @s positioned " + tokens[1] + " " + tokens[2] + " " + tokens[3] + " ";
+
+  var detect_value = 0;
+  if(tokens[4] == "detect") {
+    detect_value = 6
+    converted += "if block " + tokens[5] + " " + tokens[6] + " " + tokens[7] + " " + tokens[8] + " ";
+    if(!(tokens[9] == "0" || tokens[9] == "*" || tokens[9] == "-1")) {
+      converted += tokens[9] + " ";
+    }
+  }
+
+  converted += "run"
+
+  tokens[4+detect_value] = tokens[4+detect_value].replace(/^\//, "")
+
+  for(let i = 4+detect_value; i < tokens.length; i++) {
+    converted += " " + tokens[i]
+  }
+
+  output.value += converted.replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
+  // .replace(/ $/, "")
+
+  if(detect_value == 6 && !(tokens[9] == "0" || tokens[9] == "*" || tokens[9] == "-1")) {
+    swal({   title: "Convert block ID to 1.13 format",
+      text: "Please change \"" + tokens[8] + " " + tokens[9] + "\" to the corresponding 1.13 block ID",
+      type: "info",
+      confirmButtonColor: "#4C36EC",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+  }
+}

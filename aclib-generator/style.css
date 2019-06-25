@@ -204,7 +204,7 @@ input:focus {
 #output_item div {
   width: 230px;
 }
-#button_back, #button_download, #social_discord, #social_mail {
+#button_back, #button_download {
   position: fixed;
   border: none;
   color: white;
@@ -246,16 +246,6 @@ input:focus {
 #button_download:hover {
   background-color: #33377B;
 }
-#social_mail {
-  left: 0;
-  bottom: 0;
-  background-color: #3036A7;
-  display: inline;
-  font-size: 40pt;
-}
-#social_mail:hover {
-  background-color: #33377B;
-}
 /* #button_back, #button_download, #social_discord {
   position: fixed;
   border: none;
@@ -288,23 +278,6 @@ input:focus {
 #button_download:hover {
   background-color: #499385;
 } */
-#social_discord {
-  width: 75px;
-  height: 75px;
-  right: 0;
-  bottom: 0;
-  background-color: #2C2F33;
-}
-#social_discord:hover {
-  background-color: #292C30;
-}
-#social_discord img {
-  object-fit: cover;
-  object-position: center;
-  width: inherit;
-  height: inherit;
-  padding-bottom: 6px;
-}
 
 #output_mcscript {
   /* visibility: hidden; */
