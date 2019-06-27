@@ -1,3 +1,10 @@
+window.onload = function() {
+  if(getParameter('id')) {
+    document.getElementById('txt_input').value = getParameter('id');
+    onChangeIdTxt();
+  }
+}
+
 fetch('./idlist.json')
   .then(function(response) {
     return response.json();
@@ -18,8 +25,10 @@ function convertID(input) {
   var input_data = input.replace(/^minecraft:/,"")
   if(idlist[input_data.replace(/ 0$/,"")] == undefined) {
     if(/.+?:.+/.test(input.replace(/ 0$/,""))) {
+      sendInfo(input + '&value2=' + input.replace(/ 0$/,"").replace(/ $/,""))
       return input.replace(/ 0$/,"").replace(/ $/,"");
     } else if(input != "") {
+      sendInfo(input + '&value2=' + "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,""))
       return "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"");
     } else {
       return ""
@@ -27,5 +36,12 @@ function convertID(input) {
   }
 
   var toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")];
+  sendInfo(input + '&value2=' + toReturn)
   return toReturn
+}
+
+function sendInfo(info) {
+  var sendInfo = new XMLHttpRequest();
+  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedIdConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + info, true)
+  sendInfo.send();
 }

@@ -21,15 +21,19 @@ input:focus {
 }
 
 h1 {
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  padding-top: 5px;
   font-size: 40pt;
 }
 h2 {
   font-size: 30pt;
+  padding-bottom: 5px;
 }
 
 #heading {
-  text-align: center
+  /* margin-top: 10px; */
+  text-align: center;
+  background: #333;
 }
 
 #input_container {
@@ -51,7 +55,7 @@ h2 {
 }
 
 
-#button_back {
+/* #button_back {
   position: fixed;
   border: none;
   color: white;
@@ -82,4 +86,4 @@ h2 {
 #button_back:hover {
   background-color: #33377B;
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
+} */

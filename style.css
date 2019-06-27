@@ -64,6 +64,9 @@ body {
 #link-container #id-converter a {
   background-image: url(img/id-converter.png);
 }
+#link-container #profile-viewer a {
+  background-image: url(https://minotar.net/helm/Steve/256.png);
+}
 #link-container #markdown-to-html a {
   background-image: url(img/markdown-to-html.png);
 }

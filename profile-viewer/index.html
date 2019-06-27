@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MC Profile viewer</title>
+    <link rel="shortcut icon" href="../img/shortcut.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../import/sweetalert/dark.css">
+    <link rel="stylesheet" href="../import/animate.css">
+    <script src="../import/sweetalert/script.js"></script>
+    <link rel="stylesheet" href="../import/social_button/style.css">
+    <script src="../import/social_button/script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
+    <div class="social-button animated flash" onclick="click_social();" title="expand contact options"><i id="social-icon" class="fas fa-share-alt"></i>
+    	<a hidden class="social-point" href="../discord" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+    	<a hidden class="social-point" href="../mail" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+    	<a hidden class="social-point" href="../curseforge" target="_blank" title="Curseforge"><div></div></a>
+    	<a hidden class="social-point" href="../planetminecraft" target="_blank" title="Planetminecraft"><div></div></a>
+    	<a hidden class="social-point" href="../github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div id="header">
+      <h1 class="animated fadeInDown">Minecraft Profile Viewer</h1>
+    </div>
+    <div id="container">
+      <div id="column">
+        <div id="input">
+          <input type="text" name="txt_input" id="txt_input" placeholder="Playername/UUID">
+          <button type="button" name="update" id="update" onclick="update();">Update</button>
+        </div>
+        <div id="output_text">
+          <span id="name" class="output_field"><p>Player Name:</p><input type="text" name="name" id="name_txt" readonly></span>
+          <span id="full-uuid" class="output_field"><p>Full UUID:</p><input type="text" name="name" id="uuid_full_txt" readonly></span>
+          <span id="uuid" class="output_field"><p>Short UUID:</p><input type="text" name="uuid" id="uuid_txt" readonly></span>
+        </div>
+      </div>
+      <div id="output_img">
+        <div id="skin">
+          <img id="skin_img" src="http://textures.minecraft.net/texture/dc1c77ce8e54925ab58125446ec53b0cdd3d0ca3db273eb908d5482787ef4016" alt="Skin">
+        </div>
+        <div id="face">
+          <img id="face_img" src="https://minotar.net/helm/Steve/256.png" alt="Head">
+        </div>
+        <div id="front">
+          <img id="front_img" src="https://minotar.net/armor/body/Steve/128.png" alt="Head">
+        </div>
+      </div>
+    </div>
+    <span id="credits">This website uses <a href="https://api.minetools.eu" target="_blank" class="fancy-link" style="color: #bbb;">MineTools API</a> and <a href="https://minotar.net" target="_blank" class="fancy-link" style="color: #bbb;">Minotar</a></span>
+  </body>
+</html>

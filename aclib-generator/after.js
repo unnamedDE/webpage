@@ -98,6 +98,7 @@ function dropFiles(ev) {
     itemout2_count.value = input.output2.count
   }
   reader.readAsText(fileInput)
+  sendInfo('Import')
   swal({title: "Success",
     text: "Import successfull",
     type: "success",

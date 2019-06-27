@@ -27,7 +27,7 @@ textarea {
   font-size: 70px;
 }
 
-#credits {
+/* #credits {
   height: 50px;
   background-color: #4CAF50;
   color: #000;
@@ -47,6 +47,14 @@ textarea {
 #credits:hover {
   background-color: #519D55;
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+} */
+#credits {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  background: #333;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 #container {
@@ -74,7 +82,7 @@ textarea {
   background-color: #4735CD;
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
-
+/*
 #button_back {
   position: fixed;
   border: none;
@@ -105,4 +113,4 @@ textarea {
 #button_back:hover {
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
   background-color: #33377B;
-}
+} */

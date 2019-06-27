@@ -8,7 +8,10 @@
   </head>
   <body>
     <script type="text/javascript">
-        window.location.replace('https://github.com/unnamedDE?tab=repositories');
+      var sendInfo = new XMLHttpRequest();
+      sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Github', true)
+      sendInfo.send();
+      window.location.replace('https://github.com/unnamedDE?tab=repositories');
     </script>
   </body>
 </html>

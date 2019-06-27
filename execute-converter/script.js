@@ -47,8 +47,13 @@ function convert(pos, tokens) {
       closeOnConfirm: true
     });*/
   }
+  if(detect_value > 1) {
+    return converted.replace(/run execute /, "").replace(tokens[pos + 8], convertID(tokens[pos + 8]));
+  } else {
+    return converted.replace(/run execute /, "");
+  }
 
-  return converted.replace(/run execute /, "").replace(tokens[pos + 8], convertID(tokens[pos + 8]));
+
 
 }
 
@@ -80,6 +85,9 @@ function onChangeTxt() {
 
 
   output.value += convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
+  var sendInfo = new XMLHttpRequest();
+  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, ""), true)
+  sendInfo.send();
 }
 
 function convertID(input) {
