@@ -853,7 +853,9 @@ function generateMcfunction() {
 }
 
 function sendInfo(method) {
-  var sendInfo = new XMLHttpRequest();
-  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedAclibGenerator/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + method, true)
-  sendInfo.send();
+  if(!getParameter('notracking')) {
+    var sendInfo = new XMLHttpRequest();
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedAclibGenerator/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + method, true)
+    sendInfo.send();
+  }
 }

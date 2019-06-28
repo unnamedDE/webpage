@@ -85,18 +85,20 @@ function onChangeTxt() {
 
 
   output.value += convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
-  var sendInfo = new XMLHttpRequest();
-  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, ""), true)
-  sendInfo.send();
+  if(!getParameter('notracking')) {
+    var sendInfo = new XMLHttpRequest();
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase, true)
+    sendInfo.send();
+  }
 }
 
 function convertID(input) {
-  var input_data = input.replace(/^minecraft:/,"")
+  var input_data = input.replace(/^minecraft:/,"").toLowerCase();
   if(idlist[input_data.replace(/ 0$/,"")] == undefined) {
     if(/.+?:.+/.test(input.replace(/ 0$/,""))) {
-      return input.replace(/ 0$/,"").replace(/ $/,"");
+      return input.replace(/ 0$/,"").replace(/ $/,"").toLowerCase();
     } else if(input != "") {
-      return "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"");
+      return "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"").toLowerCase();
     } else {
       return ""
     }

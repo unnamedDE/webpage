@@ -43,9 +43,13 @@ function getInfo(data) {
   document.getElementById('uuid_full_txt').value = fullUUID;
   document.getElementById('uuid_txt').value = data.decoded.profileId;
   document.getElementById('skin_img').src = data.decoded.textures.SKIN.url ;
-  document.getElementById('face_img').src = "https://minotar.net/helm/" + data.decoded.profileId + "/256.png"
+  // document.getElementById('face_img').src = "https://minotar.net/helm/" + data.decoded.profileId + "/256.png"
+  // document.getElementById('front_img').src = "https://minotar.net/armor/body/" + data.decoded.profileId + "/128.png";
+  document.getElementById('face_img').src = "https://crafatar.com/avatars/" + data.decoded.profileId + "?size=256&overlay&default=MHF_Steve"
   document.getElementById('front_img').src = "https://minotar.net/armor/body/" + data.decoded.profileId + "/128.png";
-  var sendInfo = new XMLHttpRequest();
-  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedProfileViewer/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + data.decoded.profileName + '&value2=' + data.decoded.profileId, true)
-  sendInfo.send();
+  if(!getParameter('notracking')) {
+    var sendInfo = new XMLHttpRequest();
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedProfileViewer/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + data.decoded.profileName + '&value2=' + data.decoded.profileId, true)
+    sendInfo.send();
+  }
 }

@@ -22,7 +22,7 @@ function onChangeIdTxt() {
 }
 
 function convertID(input) {
-  var input_data = input.replace(/^minecraft:/,"")
+  var input_data = input.replace(/^minecraft:/,"").toLowerCase()
   if(idlist[input_data.replace(/ 0$/,"")] == undefined) {
     if(/.+?:.+/.test(input.replace(/ 0$/,""))) {
       sendInfo(input + '&value2=' + input.replace(/ 0$/,"").replace(/ $/,""))
@@ -35,13 +35,15 @@ function convertID(input) {
     }
   }
 
-  var toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")];
+  var toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")].toLowerCase();
   sendInfo(input + '&value2=' + toReturn)
   return toReturn
 }
 
 function sendInfo(info) {
-  var sendInfo = new XMLHttpRequest();
-  sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedIdConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + info, true)
-  sendInfo.send();
+  if(!getParameter('notracking')) {
+    var sendInfo = new XMLHttpRequest();
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedIdConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + info, true)
+    sendInfo.send();
+  }
 }

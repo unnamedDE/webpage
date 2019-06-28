@@ -43,8 +43,13 @@ function getParameter(key) {
   for (var i = 0; i < pairs.length; i++) {
     var pair = pairs[i].split('=');
     if(pair[0] == key) {
-      if(pair[1].length > 0)
-        return decodeURI(pair[1]);
+      if(pair[1]) {
+        if(pair[1].length > 0) {
+          return decodeURI(pair[1]);
+        }
+      } else {
+        return true
+      }
     }
   }
 

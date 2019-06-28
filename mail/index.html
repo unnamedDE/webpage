@@ -8,9 +8,11 @@
   </head>
   <body>
     <script type="text/javascript">
-      var sendInfo = new XMLHttpRequest();
-      sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Mail', true)
-      sendInfo.send();
+      if(!getParameter('notracking')) {
+        var sendInfo = new XMLHttpRequest();
+        sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Mail', true)
+        sendInfo.send();
+      }
       window.location.replace('mailto:admin&#064;unnamedDE&#046;tk?subject=Contact');
     </script>
   </body>

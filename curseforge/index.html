@@ -8,9 +8,11 @@
   </head>
   <body>
     <script type="text/javascript">
-      var sendInfo = new XMLHttpRequest();
-      sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Curseforge', true)
-      sendInfo.send();
+      if(!getParameter('notracking')) {
+        var sendInfo = new XMLHttpRequest();
+        sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Curseforge', true)
+        sendInfo.send();
+      }
       window.location.replace('https://www.curseforge.com/members/unnamedde/projects');
     </script>
   </body>

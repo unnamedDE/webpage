@@ -186,7 +186,15 @@
   color: #333;
   font-size: 30pt;
   z-index: 1000;
+  transition: all .2s;
 }
 #button_back i {
   color: #333;
+}
+#button_back:hover {
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+  background-color: #ddd;
+}
+#button_back:hover i {
+  color: #444;
 }
