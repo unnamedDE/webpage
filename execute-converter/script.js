@@ -24,12 +24,12 @@ function convert(pos, tokens) {
   }
   converted += "run"
 
-  tokens[pos + 4+detect_value] = tokens[pos + 4+detect_value].replace(/^\//, "")
+  tokens[pos + 4 +detect_value] = tokens[pos + 4+detect_value].replace(/^\//, "")
 
   if(tokens[pos+ 4 + detect_value] == "execute") {
     converted += " " + convert(pos + 5 + detect_value, tokens)
   } else {
-    for(let i = pos + 4+detect_value; i < tokens.length; i++) {
+    for(let i = pos + 4 +detect_value; i < tokens.length; i++) {
       converted += " " + tokens[i]
     }
   }
@@ -87,7 +87,7 @@ function onChangeTxt() {
   output.value += convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
   if(!getParameter('notracking')) {
     var sendInfo = new XMLHttpRequest();
-    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase, true)
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase(), true)
     sendInfo.send();
   }
 }
