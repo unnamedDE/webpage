@@ -3,7 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>MC Profile viewer</title>
-    <link rel="shortcut icon" href="../img/shortcut.png">
+    <meta name="description" content="lookup minecraft profiles.">
+    <meta property="og:title" content="MC Profile Viewer - unnamedDE's Webpage">
+    <meta property="og:description" content="lookup minecraft profiles.">
+    <meta property="og:url" content="unnamedDE.tk/profile-viewer">
+    <meta property="og:image" content="../img/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../img/shortcut.png" type=”image/x-icon”>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../import/fontawesome/css/all.css">
@@ -31,7 +37,7 @@
     <div id="container">
       <div id="column">
         <div id="input">
-          <input type="text" name="txt_input" id="txt_input" placeholder="Playername/UUID">
+          <input type="text" name="txt_input" id="txt_input" placeholder="Playername/UUID" spellcheck="false" autocomplete="off" onchange="update();">
           <button type="button" name="update" id="update" onclick="update();">Update</button>
         </div>
         <div id="output_text">

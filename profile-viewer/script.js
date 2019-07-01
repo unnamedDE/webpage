@@ -6,12 +6,16 @@ window.onload = function() {
 }
 
 function update() {
-  document.getElementById('txt_input').value = document.getElementById('txt_input').value.replace(/ /,"_")
+  document.getElementById('txt_input').value = document.getElementById('txt_input').value.replace(/ /,"_");
   var input = document.getElementById('txt_input').value.replace(/-/g,"");
 
   var request = new XMLHttpRequest();
+  if(input != "") {
+    request.open('GET', 'https://api.minetools.eu/uuid/' + input, true)
+  } else {
+    request.open('GET', 'https://api.minetools.eu/uuid/Steve', true)
+  }
 
-  request.open('GET', 'https://api.minetools.eu/uuid/' + input, true)
 
   request.onload = function() {
     var data = JSON.parse(this.response)
@@ -33,7 +37,26 @@ function update() {
     }
   }
   request.send();
-
+  setTimeout(function() {
+    if(input == "") {
+      document.getElementById('name_txt').value = "";
+      document.getElementById('uuid_full_txt').value = "";
+      document.getElementById('uuid_txt').value = "";
+      document.getElementById('skin_img').src = "http://textures.minecraft.net/texture/dc1c77ce8e54925ab58125446ec53b0cdd3d0ca3db273eb908d5482787ef4016" ;
+      document.getElementById('face_img').src = "https://minotar.net/helm/Steve/256.png"
+      document.getElementById('front_img').src = "https://minotar.net/armor/body/Steve/128.png";
+    }
+  },10)
+  setTimeout(function() {
+    if(input == "") {
+      document.getElementById('name_txt').value = "";
+      document.getElementById('uuid_full_txt').value = "";
+      document.getElementById('uuid_txt').value = "";
+      document.getElementById('skin_img').src = "http://textures.minecraft.net/texture/dc1c77ce8e54925ab58125446ec53b0cdd3d0ca3db273eb908d5482787ef4016" ;
+      document.getElementById('face_img').src = "https://minotar.net/helm/Steve/256.png"
+      document.getElementById('front_img').src = "https://minotar.net/armor/body/Steve/128.png";
+    }
+  },20)
 }
 
 function getInfo(data) {
