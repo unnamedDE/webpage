@@ -87,7 +87,7 @@ function onChangeTxt() {
   output.value += convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
   if(!getParameter('notracking')) {
     var sendInfo = new XMLHttpRequest();
-    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + input + '&value2=' + convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase(), true)
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + encodeURIComponent(input) + '&value2=' + encodeURIComponent(convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase()), true)
     sendInfo.send();
   }
 }

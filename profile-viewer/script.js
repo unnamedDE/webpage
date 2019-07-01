@@ -11,7 +11,7 @@ function update() {
 
   var request = new XMLHttpRequest();
   if(input != "") {
-    request.open('GET', 'https://api.minetools.eu/uuid/' + input, true)
+    request.open('GET', 'https://api.minetools.eu/uuid/' + encodeURIComponent(input), true)
   } else {
     request.open('GET', 'https://api.minetools.eu/uuid/Steve', true)
   }
@@ -21,7 +21,7 @@ function update() {
     var data = JSON.parse(this.response)
     if(data.id) {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://api.minetools.eu/profile/' + data.id, true)
+      xhr.open('GET', 'https://api.minetools.eu/profile/' + encodeURIComponent(data.id), true)
       xhr.onload = function() {
         var data_profile = JSON.parse(this.response)
         getInfo(data_profile)
@@ -72,7 +72,7 @@ function getInfo(data) {
   document.getElementById('front_img').src = "https://minotar.net/armor/body/" + data.decoded.profileId + "/128.png";
   if(!getParameter('notracking')) {
     var sendInfo = new XMLHttpRequest();
-    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedProfileViewer/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + data.decoded.profileName + '&value2=' + data.decoded.profileId, true)
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedProfileViewer/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + encodeURIComponent(data.decoded.profileName) + '&value2=' + encodeURIComponent(data.decoded.profileId), true)
     sendInfo.send();
   }
 }
