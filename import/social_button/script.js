@@ -61,6 +61,8 @@ window.addEventListener('load', () => {
   if(whatsapp_button) {
     if(/\W?mobile/i.test(navigator.userAgent) || /\W?android/i.test(navigator.userAgent) || isMobile()) {
       whatsapp_button.classList.add('whatsapp_button_active')
+        whatsapp_button.classList.add('animated')
+          whatsapp_button.classList.add('flash')
       let whatsapp_link = document.createElement('a')
       whatsapp_link.href = "https://wa.me/?text=" + encodeURIComponent("Check out these cool minecraft online tools made by unnamedDE.\nClick on https://unnamedde.tk to check out these tools!")
       whatsapp_link.target = "_blank"
