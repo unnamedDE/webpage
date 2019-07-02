@@ -75,9 +75,29 @@ body {
   background-color: #fff;
 }
 
-
 @media only screen and (max-width: 1300px) {
   #link-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (max-width: 950px) {
+    #link-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media only screen and (max-width: 625px) {
+      #link-container {
+        grid-template-columns: 1fr;
+      }
+      h1#header {
+        font-size: 75px;
+      }
+      @media only screen and (max-width: 500px) {
+          h1#header {
+            font-size: 50px;
+          }
+          #container_header {
+            min-width: 300px;
+          }
+      }
+    }
   }
 }

@@ -198,3 +198,25 @@
 #button_back:hover i {
   color: #444;
 }
+
+.whatsapp_button_active {
+  background: #25D366;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  transition: background .2s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.22);
+  z-index: 1000;
+}
+.whatsapp_button_active:hover {
+  background: #1EA551;
+}
+.whatsapp_button_active i {
+  color: white;
+}

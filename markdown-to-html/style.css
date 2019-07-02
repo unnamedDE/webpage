@@ -56,6 +56,9 @@ textarea {
   padding: 10px;
   border-radius: 10px;
 }
+.whatsapp_button_active ~ #credits {
+  left: 100px;
+}
 
 #container {
   display: flex;

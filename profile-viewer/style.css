@@ -187,7 +187,9 @@ input:focus {
   padding: 10px;
   border-radius: 10px;
 }
-
+.whatsapp_button_active ~ #credits {
+  left: 100px;
+}
 
 @media only screen and (max-width: 1700px) {
   @media only screen and (max-width: 1000px) {
