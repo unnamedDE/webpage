@@ -65,7 +65,7 @@ window.addEventListener('load', () => {
           whatsapp_button.classList.add('flash')
       let whatsapp_link = document.createElement('a')
       whatsapp_link.href = "https://wa.me/?text=" + encodeURIComponent("Check out these cool minecraft online tools made by unnamedDE.\nClick on https://unnamedde.tk to check out these tools!")
-      whatsapp_link.target = "_blank"
+      // whatsapp_link.target = "_blank"
       whatsapp_link.innerHTML = "<i class=\"fab fa-whatsapp\"></i>"
       whatsapp_button.appendChild(whatsapp_link)
     }
