@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: 
+Allow: /
+Sitemap: https://unnamedde.tk/sitemap.xml
+
