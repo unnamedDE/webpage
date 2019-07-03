@@ -2,19 +2,20 @@
 var menu_open = false;
 
 
-function click_social() {
-  const menu = document.getElementsByClassName('social-button');
-  const icon = document.getElementById('social-icon');
+function click_contact() {
+  const menu = document.getElementsByClassName('contact-button');
+  const icon = document.getElementById('contact-icon');
   if(menu_open == true) {
     menu_open = false;
 
-    menu[0].classList.remove('social-button-open')
+    menu[0].classList.remove('contact-button-open')
     icon.classList.remove('fa-times')
-    icon.classList.add('fa-share-alt')
+    // icon.classList.add('fa-share-alt')
+    icon.classList.add('fa-comment-alt')
 
-    var menu_point = document.getElementsByClassName("social-point");
+    var menu_point = document.getElementsByClassName("contact-point");
     for (let i = 0; i < menu_point.length; i++) {
-        menu_point[i].classList.remove('social-point-open');
+        menu_point[i].classList.remove('contact-point-open');
       setTimeout(function() {
         menu_point[i].hidden = true;
       }, 800)
@@ -22,15 +23,16 @@ function click_social() {
   } else {
     menu_open = true;
 
-    menu[0].classList.add('social-button-open');
-    icon.classList.remove('fa-share-alt')
+    menu[0].classList.add('contact-button-open');
+    // icon.classList.remove('fa-share-alt')
+    icon.classList.remove('fa-comment-alt')
     icon.classList.add('fa-times')
 
-    var menu_point = document.getElementsByClassName("social-point");
+    var menu_point = document.getElementsByClassName("contact-point");
     for (let i = 0; i < menu_point.length; i++) {
       menu_point[i].hidden = false;
       setTimeout(function() {
-        menu_point[i].classList.add('social-point-open');
+        menu_point[i].classList.add('contact-point-open');
       }, 200)
     }
   }
@@ -55,14 +57,17 @@ function getParameter(key) {
 
   return undefined;
 };
+window.addEventListener('load', () => {
+  document.querySelector('.contact-button').innerHTML = "<i class=\"fas fa-comment-alt\" id=\"contact-icon\"></i><a hidden class=\"contact-point\" href=\"https://unnamedde.tk/discord\" target=\"_blank\" title=\"Discord\"><i class=\"fab fa-discord\"></i></a><a hidden class=\"contact-point\" href=\"https://unnamedde.tk/mail\" target=\"_blank\" title=\"Email\"><i class=\"fas fa-envelope\"></i></a><a hidden class=\"contact-point\" href=\"https://unnamedde.tk/curseforge\" target=\"_blank\" title=\"Curseforge\"><div></div></a><a hidden class=\"contact-point\" href=\"https://unnamedde.tk/planetminecraft\" target=\"_blank\" title=\"Planetminecraft\"><div></div></a><a hidden class=\"contact-point\" href=\"https://unnamedde.tk/github\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\"></i></a>";
+})
 
 window.addEventListener('load', () => {
   let whatsapp_button = document.querySelector('.whatsapp_button')
   if(whatsapp_button) {
     if(/\W?mobile/i.test(navigator.userAgent) || /\W?android/i.test(navigator.userAgent) || isMobile()) {
       whatsapp_button.classList.add('whatsapp_button_active')
-        whatsapp_button.classList.add('animated')
-          whatsapp_button.classList.add('flash')
+      whatsapp_button.classList.add('animated')
+      whatsapp_button.classList.add('flash')
       let whatsapp_link = document.createElement('a')
       // whatsapp_link.href = "https://wa.me/?text=" + encodeURIComponent("Check out these cool minecraft online tools made by unnamedDE.\nClick on https://unnamedde.tk to check out these tools!")
       whatsapp_link.href = "whatsapp://send?text=" + encodeURIComponent("Check out these cool minecraft online tools made by unnamedDE.\nClick on https://unnamedde.tk to check out these tools!")
