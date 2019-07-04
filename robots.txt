@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /discord
 Disallow: /planetminecraft
 Disallow: /curseforge
 Disallow: /github

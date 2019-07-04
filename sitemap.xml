@@ -11,44 +11,44 @@
 
   <url>
        <loc>https://unnamedde.tk/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
-       <priority>1.0000</priority>
+       <priority>10.0000</priority>
   </url>
   <url>
        <loc>https://unnamedde.tk/aclib-generator/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://unnamedde.tk/execute-converter/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://unnamedde.tk/id-converter/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://unnamedde.tk/profile-viewer/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://unnamedde.tk/markdown-to-html/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://unnamedde.tk/datapacks/aclib/</loc>
-       <lastmod>2019-07-03T18:56:11+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.4096</priority>
+       <loc>https://unnamedde.tk/discord/</loc>
+       <lastmod>2019-07-04T18:56:11+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.6400</priority>
   </url>
 </urlset>
