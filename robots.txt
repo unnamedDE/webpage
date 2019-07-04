@@ -4,4 +4,5 @@ Disallow: /curseforge
 Disallow: /github
 Disallow: /mail
 Disallow: /datapacks
+Disallow: /bookmarklets
 Sitemap: https://unnamedde.tk/sitemap.xml

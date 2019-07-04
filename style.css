@@ -67,12 +67,12 @@ body {
 #link-container #profile-viewer a {
   background-image: url(https://minotar.net/helm/Steve/256.png);
 }
+#link-container #mc-tools a {
+  background-image: url(img/mc-tools-logo.png);
+  background-color: #fff;
+}
 #link-container #markdown-to-html a {
   background-image: url(img/markdown-to-html.png);
-}
-#link-container #mcstacker a {
-  background-image: url(https://mcstacker.net/MCStackerPS.png);
-  background-color: #fff;
 }
 
 @media only screen and (max-width: 1300px) {
