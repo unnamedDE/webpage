@@ -1,5 +1,8 @@
 User-agent: *
-Disallow: 
-Allow: /
+Disallow: /discord
+Disallow: /planetminecraft
+Disallow: /curseforge
+Disallow: /github
+Disallow: /mail
+Disallow: /datapacks
 Sitemap: https://unnamedde.tk/sitemap.xml
-
