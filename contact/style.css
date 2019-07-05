@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Calibri, sans-serif;
+  /* color: #ddd; */
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #555;
+}
+
+#particles-js {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+a[href="../discord/"] {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%) translateY(-50%);
+  font-size: 90px;
+  color: #7289DA;
+  background-color: #2C2F33;
+  margin: 5px;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  border-radius: 50%;
+}
+
+#contact-list {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  /* height: 250px; */
+  /* width: 250px; */
+  width: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+}
+#contact-list a {
+  position: absolute;
+  font-size: 60px;
+  left: 50%;
+  line-height: 60px;
+  transform: translate(-50%);
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100px;
+  height: 100px;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+
+#contact-list a[title="Twitter"] {
+  background-color: #1da1f2;
+}
+#contact-list a[title="Mail"] {
+  background-color: #DC4E41;
+}
+#contact-list a[title="Planetminecraft"] {
+  background-image: url('https://www.planetminecraft.com/images/layout/themes/modern/nav_bg.png');
+  background-repeat: round;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+}
+#contact-list a[title="Planetminecraft"] > div {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../import/global/img/planetminecraft.png);
+}
+#contact-list a[title="Curseforge"] {
+  background-color: #57B13B;
+  display: flex;
+  flex-direction: column;
+}
+#contact-list a[title="Curseforge"] > div {
+  transform: translate(-10%);
+  height: 125%;
+  width: 125%;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../import/global/img/curseforge.png);
+}
+#contact-list a[title="GitHub"] {
+  background-color: #333;
+}
+#contact-list a[title="Datapack Center"] {
+  background-color: #2d3194;
+  display: flex;
+  flex-direction: column;
+}
+#contact-list a[title="Datapack Center"] > div {
+  /* transform: translate(-10%); */
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(img/datapackcenter.png);
+}

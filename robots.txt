@@ -3,6 +3,10 @@ Disallow: /planetminecraft
 Disallow: /curseforge
 Disallow: /github
 Disallow: /mail
+Disallow: /twitter
+Disallow: /instagram
+Disallow: /datapack-center
+Disallow: /contact
 Disallow: /datapacks
 Disallow: /bookmarklets
 Sitemap: https://unnamedde.tk/sitemap.xml
