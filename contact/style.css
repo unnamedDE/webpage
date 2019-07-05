@@ -126,3 +126,7 @@ a[href="../discord/"] {
   background-position: center;
   background-image: url(img/datapackcenter.png);
 }
+#contact-list a[title="Instagram"] {
+  background-color: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
