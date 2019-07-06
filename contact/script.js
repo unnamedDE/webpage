@@ -1,4 +1,5 @@
-particlesJS.load('particles-js', 'particles.json', function() {});
+if(isMobile() == false)
+  particlesJS.load('particles-js', 'particles.json', function() {});
 
 window.addEventListener('load', () => {
   let discord = document.querySelector('a[href="../discord/"]')
