@@ -1,0 +1,17 @@
+#header {
+  font-size: 175px;
+}
+
+#link-container {
+  grid-template-columns: 1fr;
+}
+#link-container > div.link-container-item {
+  width: 750px;
+  height: 750px;
+}
+
+@media only screen and (max-width: 1060px) {
+  #header {
+    font-size: 150px;
+  }
+}

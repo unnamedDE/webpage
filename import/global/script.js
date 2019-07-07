@@ -1,4 +1,11 @@
 
+if(isMobile()) {
+  let mobile_style = document.createElement('link');
+  mobile_style.rel = "stylesheet";
+  mobile_style.href = "/import/global/mobile.css";
+  document.querySelector('head').appendChild(mobile_style);
+}
+
 var contact_open = false;
 var social_open = false;
 
