@@ -1,86 +1,97 @@
 .contact-button, .social-button {
-   width: 120px;
-   height: 120px;
-   line-height: 120px;
-	 font-size: 48px;
+   /* width: 120px;
+   height: 120px; */
+   width: 12vmin;
+   height: 12vmin;
+   line-height: 12vmin;
+	 font-size: 5vmin;
 }
 
 .contact-button-open, .social-button-open {
-   bottom: 170px;
+   /* bottom: 170px; */
+   bottom: 17vmin;
 }
 .contact-button .contact-point{
-   line-height: 100px;
-	 font-size: 48px;
+   line-height: 10vmin;
+	 font-size: 4.8vmin;
 }
 .contact-button .contact-point:nth-child(2),
 .contact-button .contact-point:nth-child(3),
 .contact-button .contact-point:nth-child(4),
 .contact-button .contact-point:nth-child(5),
 .contact-button .contact-point:nth-child(6) {
-    right: 100px;
-    bottom: 100px;
+    right: 10vmin;
+    bottom: 10vmin;
 }
 .contact-button-open .contact-point-open{
  	 opacity: 1;
- 	 width: 100px;
- 	 height: 100px;
+ 	 width: 10vmin;
+ 	 height: 10vmin;
 }
 .contact-button-open .contact-point-open:nth-child(2) {
- 	 right: 10px;
- 	 bottom: 160px;
+ 	 right: 1vmin;
+ 	 bottom: 16vmin;
 }
 .contact-button-open .contact-point-open:nth-child(3) {
- 	 right: 130px;
- 	 bottom: 130px;
+ 	 right: 13vmin;
+ 	 bottom: 13vmin;
 }
 .contact-button-open .contact-point-open:nth-child(4) {
- 	 right: 160px;
- 	 bottom: 10px;
+ 	 right: 16vmin;
+ 	 bottom: 1vmin;
+}
+.contact-button .contact-point:nth-child(4) div {
+  height: 4.8vmin;
+  width: 8vmin;
 }
 .contact-button-open .contact-point-open:nth-child(5) {
- 	 right: 130px;
- 	 bottom: -130px;
+ 	 right: 13vmin;
+ 	 bottom: -13vmin;
+}
+.contact-button .contact-point:nth-child(5) div {
+  height: 4.8vmin;
+  width: 8vmin;
 }
 .contact-button-open .contact-point-open:nth-child(6) {
- 	 right: 10px;
-   bottom: -160px;
+ 	 right: 1vmin;
+   bottom: -16vmin;
 }
 
 
 .social-button .social-point{
-   line-height: 100px;
-	 font-size: 48px;
+   line-height: 10vmin;
+	 font-size: 4.8vmin;
 }
 .social-button .social-point:nth-child(2),
 .social-button .social-point:nth-child(3),
 .social-button .social-point:nth-child(4),
 .social-button .social-point:nth-child(5),
 .social-button .social-point:nth-child(6) {
-    left: 100px;
-    bottom: 100px;
+    left: 10vmin;
+    bottom: 10vmin;
 }
 .social-button-open .social-point-open{
  	 opacity: 1;
- 	 width: 100px;
- 	 height: 100px;
+ 	 width: 10vmin;
+ 	 height: 10vmin;
 }
 .social-button-open .social-point-open:nth-child(2) {
- 	 left: 10px;
- 	 bottom: 160px;
+ 	 left: 1vmin;
+ 	 bottom: 16vmin;
 }
 .social-button-open .social-point-open:nth-child(3) {
- 	 left: 130px;
- 	 bottom: 130px;
+ 	 left: 13vmin;
+ 	 bottom: 13vmin;
 }
 .social-button-open .social-point-open:nth-child(4) {
- 	 left: 160px;
- 	 bottom: 10px;
+ 	 left: 16vmin;
+ 	 bottom: 1vmin;
 }
 .social-button-open .social-point-open:nth-child(5) {
- 	 left: 130px;
- 	 bottom: -130px;
+ 	 left: 13vmin;
+ 	 bottom: -13vmin;
 }
 .social-button-open .social-point-open:nth-child(6) {
- 	 left: 10px;
-   bottom: -160px;
+ 	 left: 1vmin;
+   bottom: -16vmin;
 }
