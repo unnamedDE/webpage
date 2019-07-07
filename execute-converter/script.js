@@ -1,12 +1,3 @@
-fetch('../id-converter/idlist.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    // console.log(JSON.stringify(myJson));
-    return idlist = myJson;
-  });
-
 function convert(pos, tokens) {
   var converted = "execute as ";
 
@@ -63,7 +54,7 @@ function onChangeTxt() {
   var input = document.getElementById('txt_input').value;
   var output = document.getElementById('txt_output');
 
-  if(!(/^\/?execute/.test(input)) && input != "") {
+  if(!(/^\/?execute/i.test(input)) && input != "") {
     swal({   title: "No execute command detected",
       text: "Please input an execute command",
       type: "error",
@@ -87,23 +78,101 @@ function onChangeTxt() {
   output.value += convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")
   if(!getParameter('notracking')) {
     var sendInfo = new XMLHttpRequest();
-    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + encodeURIComponent(input) + '&value2=' + encodeURIComponent(convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "").toLowerCase()), true)
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedExecuteConverter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=' + encodeURIComponent(input) + '&value2=' + encodeURIComponent(convert(0, tokens).replace(/positioned ~ ~ ~ /g, "").replace(/as @s at @s /g, "")), true)
     sendInfo.send();
   }
 }
 
-function convertID(input) {
-  var input_data = input.replace(/^minecraft:/,"").toLowerCase();
-  if(idlist[input_data.replace(/ 0$/,"")] == undefined) {
-    if(/.+?:.+/.test(input.replace(/ 0$/,""))) {
-      return input.replace(/ 0$/,"").replace(/ $/,"").toLowerCase();
-    } else if(input != "") {
-      return "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"").toLowerCase();
-    } else {
-      return ""
-    }
-  }
+fetch('../id-converter/idlist.json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    // console.log(JSON.stringify(myJson));
+    return idlist = myJson;
+  });
+fetch('../id-converter/idlist-num.json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    // console.log(JSON.stringify(myJson));
+    return idlist_num = myJson;
+  });
 
-  var toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")];
-  return toReturn
+function convertID(input_raw) {
+  let input = input_raw.replace(/^minecraft:/, "").replace(/ 0$/, "").toLowerCase();
+  if(/^\d+$/.test(input)) {
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input && idlist_num[i].meta == 0) {
+        return "minecraft:" + idlist_num[i].id;
+      }
+    }
+    swal({   title: "Error",
+      text: "Can't find that ID",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw
+  } else if(/^\d+? \d+$/.test(input)) {
+    let input_tokens = input.split(' ');
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input_tokens[0] && idlist[idlist_num[i].id + " " + input_tokens[1]]) {
+        if(/:/.test(input_tokens[0]))
+          return idlist[idlist_num[i].id + " " + input_tokens[1]];
+        else
+          return "minecraft:" + idlist[idlist_num[i].id + " " + input_tokens[1]];
+      }
+    }
+    swal({   title: "Error",
+      text: "Can't find the ID '" + input_raw + "'!\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\d+?:\d+$/.test(input)) {
+    let input_tokens = input.split(':');
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input_tokens[0] && idlist[idlist_num[i].id + " " + input_tokens[1]]) {
+        return "minecraft:" + idlist[idlist_num[i].id + " " + input_tokens[1]];
+      }
+    }
+    swal({   title: "Error",
+      text: "Can't find the ID '" + input_raw + "'!\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+? \d+$/.test(input)) {
+    if(idlist[input])
+      return "minecraft:" + idlist[input];
+    swal({   title: "Error",
+      text: "Can't find the ID '" + input_raw + "'!\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+?:\d+$/.test(input)) {
+    if(idlist[input.replace(/:/, " ")])
+      return "minecraft:" + idlist[input.replace(/:/, " ")];
+    swal({   title: "Error",
+      text: "Can't find the ID '" + input_raw + "'!\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+$/.test(input)) {
+    return "minecraft:" + input.toLowerCase();
+  } else
+    return input_raw;
 }

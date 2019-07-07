@@ -25,54 +25,86 @@ fetch('./idlist-num.json')
 function onChangeIdTxt() {
   const input = document.getElementById('txt_input').value;
   var output = document.getElementById('txt_output');
-  if(!(/^\d+?(:\d+?)?$/.test(input))) {
-    output.value = convertID(input)
-    return
-  } else {
-    output.value = convertNumIDtxt(input)
-    return
-  }
+
+  output.value = convertID(input);
 
 }
 
-function convertID(input) {
-  let input_data = input.replace(/^minecraft:/,"").toLowerCase()
-  if(idlist[input_data.replace(/ 0$/,"")] == undefined) {
-    if(/.+?:.+/.test(input.replace(/ 0$/,""))) {
-      sendInfo(encodeURIComponent(input) + '&value2=' + encodeURIComponent(input.replace(/ 0$/,"").replace(/ $/,"")))
-      return input.replace(/ 0$/,"").replace(/ $/,"");
-    } else if(input != "") {
-      sendInfo(encodeURIComponent(input) + '&value2=' + encodeURIComponent("minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"")))
-      return "minecraft:" + input.replace(/ 0$/,"").replace(/ $/,"");
-    } else {
-      return ""
+function convertID(input_raw) {
+  let input = input_raw.replace(/^minecraft:/, "").replace(/ 0$/, "").toLowerCase();
+  if(/^\d+$/.test(input)) {
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input && idlist_num[i].meta == 0) {
+        return "minecraft:" + idlist_num[i].id;
+      }
     }
-  }
-
-  let toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")].toLowerCase();
-  sendInfo(encodeURIComponent(input) + '&value2=' + encodeURIComponent(toReturn))
-  return toReturn
-}
-
-function convertNumIDtxt(input) {
-  let input_data = input.split(':');
-  if(!(input_data[1])) {
-    input_data[1] = 0;
-  }
-  for(i in idlist_num) {
-    if(idlist_num[i].id_num == input_data[0] && idlist_num[i].meta == input_data[1]) {
-      return convertNumID(idlist_num[i].id + " " + input_data[1], input)
+    swal({   title: "Error",
+      text: "Can't find that ID",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw
+  } else if(/^\d+? \d+$/.test(input)) {
+    let input_tokens = input.split(' ');
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input_tokens[0] && idlist[idlist_num[i].id + " " + input_tokens[1]]) {
+        if(/:/.test(input_tokens[0]))
+          return idlist[idlist_num[i].id + " " + input_tokens[1]];
+        else
+          return "minecraft:" + idlist[idlist_num[i].id + " " + input_tokens[1]];
+      }
     }
-  }
-}
-
-function convertNumID(input, input_raw) {
-  let input_data = input.replace(/^minecraft:/,"").toLowerCase()
-
-  let toReturn = "minecraft:" + idlist[input_data.replace(/ 0$/,"")].toLowerCase();
-  console.log(encodeURIComponent(input_raw) + '&value2=' + encodeURIComponent(toReturn));
-  sendInfo(input_raw + '&value2=' + toReturn)
-  return toReturn
+    swal({   title: "Error",
+      text: "Can't find that ID\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\d+?:\d+$/.test(input)) {
+    let input_tokens = input.split(':');
+    for (var i = 0; i < idlist_num.length; i++) {
+      if(idlist_num[i].id_num == input_tokens[0] && idlist[idlist_num[i].id + " " + input_tokens[1]]) {
+        return "minecraft:" + idlist[idlist_num[i].id + " " + input_tokens[1]];
+      }
+    }
+    swal({   title: "Error",
+      text: "Can't find that ID\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+? \d+$/.test(input)) {
+    if(idlist[input])
+      return "minecraft:" + idlist[input];
+    swal({   title: "Error",
+      text: "Can't find that ID\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+?:\d+$/.test(input)) {
+    if(idlist[input.replace(/:/, " ")])
+      return "minecraft:" + idlist[input.replace(/:/, " ")];
+    swal({   title: "Error",
+      text: "Can't find that ID\nIf you're sure that '" + input_raw + "' is a valid ID please contact me",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    });
+    return input_raw;
+  } else if(/^\w+$/.test(input)) {
+    return "minecraft:" + input.toLowerCase();
+  } else
+    return input_raw;
 }
 
 
