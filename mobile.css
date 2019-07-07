@@ -6,8 +6,10 @@
   grid-template-columns: 1fr;
 }
 #link-container > div.link-container-item {
-  width: 750px;
-  height: 750px;
+  width: 50vw;
+  height: 50vw;
+  /* width: 750px; */
+  /* height: 750px; */
 }
 
 @media only screen and (max-width: 1060px) {
