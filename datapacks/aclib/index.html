@@ -4,7 +4,18 @@
     <meta charset="utf-8">
     <title>ACLib</title>
     <link rel="shortcut icon" href="../img/shortcut.png">
+    <script src="../import/redirect/script.js" charset="utf-8"></script>
   </head>
-  <body onload="window.location.replace('https://dmanager.stevertus.com/pack/unnamedde:ac_lib');">
+  <body>
+    <script type="text/javascript">
+    setTimeout(() => {
+      if(!getParameter('notracking')) {
+        var sendInfo = new XMLHttpRequest();
+        sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Datapack&value2=AClib', true)
+        sendInfo.send();
+      }
+      window.location.replace('https://dmanager.stevertus.com/pack/unnamedde:ac_lib');
+    },2500)
+    </script>
   </body>
 </html>

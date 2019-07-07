@@ -309,18 +309,18 @@ function overrideDefault(ev) {
   ev.stopPropagation();
 }
 
-function dropFiles(ev) {
-  console.log('dropFiles()');
-  let droppedFiles = ev.dataTransfer.files;
-  let fileInput= droppedFiles[0];
-  if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {return}
-  console.log(ev.dataTransfer.files[0]);
+// function dropFiles(ev) {
+  // console.log('dropFiles()');
+  // let droppedFiles = ev.dataTransfer.files;
+  // let fileInput= droppedFiles[0];
+  // if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {return}
+  // console.log(ev.dataTransfer.files[0]);
   // var reader = new FileReader();
   // reader.onload = function() {
   // console.log(reader.result)
   // }
   // reader.readAsText(fileInput)
-}
+// }
 
 /*
 let input = document.getElementById('input_file')

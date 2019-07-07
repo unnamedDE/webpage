@@ -128,7 +128,6 @@ window.addEventListener('load', () => {
   if(whatsapp_button) {
     if(/\W?mobile/i.test(navigator.userAgent) || /\W?android/i.test(navigator.userAgent) || isMobile()) {
       whatsapp_button.href = "whatsapp://send?text=" + encodeURIComponent("Check out these cool minecraft online tools made by unnamedDE.\nClick on https://unnamedde.tk to check out these tools!")
-      console.log('mobile');
     }
   }
 })

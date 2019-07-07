@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <title>Mail</title>
     <link rel="shortcut icon" href="../img/shortcut.png">
+    <script src="../import/redirect/script.js" charset="utf-8"></script>
   </head>
   <body onload="whenloaded()">
     <script type="text/javascript">
-      function whenloaded() {
-        if(window.history.length <= 2) {
-          window.location = 'https://discord.gg/SaxuDBw';
-        } else {
-          window.open('https://discord.gg/SaxuDBw', '_blank');
-          window.history.back();
+      setTimeout(() => {
+        if(!getParameter('notracking')) {
+          var sendInfo = new XMLHttpRequest();
+          sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedRedirect/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=Discord&value2=pmc%20request', true)
+          sendInfo.send();
         }
-      }
+        window.location.replace('https://discord.gg/SaxuDBw');
+      },2500)
     </script>
   </body>
 </html>
