@@ -133,6 +133,9 @@ a[href="../discord/"] {
   background: -webkit-radial-gradient(30% 107%, ellipse cover, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);
   background: radial-gradient(ellipse at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);
 }
+#contact-list a[title="Reddit"] {
+  background-color: #ff4500;
+}
 #contact-list a[title="My Website"] {
   background-color: #999;
 }
