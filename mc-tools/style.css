@@ -43,28 +43,27 @@ h2 {
     border-radius: 5px;
 }
 
-#container div {
+#container > div {
   padding: 5px;
   font-size: 25px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 2fr 3.5fr 5fr;
+  grid-gap: 10px;
 }
 
-#container div:not(:first-child) {
+#container > div:not(:first-child) {
   border-top: 2px #666 solid;
 }
 
-#container div span.url {
-  position: absolute;
-  left: 20%;
+#container > div > span {
+  word-wrap: break-word;
+  word-break: break-all;
 }
-#container div span.description {
-  position: absolute;
-  left: 42.5%;
-}
+
 
 #credits {
   position: fixed;
-  left: 100px;
+  left: 175px;
   bottom: 10px;
   background: #333;
   padding: 10px;
@@ -72,7 +71,21 @@ h2 {
 }
 
 @media only screen and (max-width: 1200px) {
-    #container div {
-      font-size: 20px;
+  #container div {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 1050px) {
+    #credits {
+      max-width: 500px;
     }
+    @media only screen and (max-width: 700px) {
+      #container > div {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, auto);
+      }
+      #container > div > span:first-child {
+        font-size: 25px;
+      }
+    }
+  }
 }
