@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Calibri, sans-serif;
+  color: #ddd;
+}
+
+html {
+}
+
+body {
+  /* overflow-y: hidden; */
+  background: #555;
+}
+
+#header {
+  background-color: #333;
+  margin-bottom: 25px;
+  width: 100%;
+}
+#header h1 {
+  text-align: center;
+  font-size: 75px;
+  padding: 5px;
+}
+
+#container {
+  background-color: #444;
+  width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.container-item {
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 4fr 1.5fr 6fr 1.15fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+  "name version description download"
+  "extra extra extra extra";
+}
+.container-item > span {
+  /* margin: 5px; */
+  /* padding: 5px; */
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.container-item > div {
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+  grid-area: extra;
+  margin: 0 5px;
+  border-top: 1px #555 solid;
+  border-bottom: 1px #555 solid;
+}
+.container-item > span * {
+  max-width: 100%;
+}
+.container-item > span:nth-child(1) {
+  border-right: 1px #555 solid;
+  grid-area: name;
+}
+.container-item > span:nth-child(2) {
+  border-right: 1px #555 solid;
+  grid-area: version;
+  text-align: center;
+}
+.container-item > span:nth-child(3) {
+  border-right: 1px #555 solid;
+  grid-area: description;
+}
+.container-item > span:nth-child(4) {
+  text-align: center;
+  grid-area: download;
+  padding-top: 8px;
+}
+.container-item > span .download {
+  margin: -5px;
+  padding: 5px;
+  border-radius: 7px;
+  background-color: #222;
+  color: #bbb;
+  transition: all .2s;
+}
+.container-item > span .download:hover {
+  border-radius: 50%;
+  background-color: #111;
+  color: #ddd;
+}
+.container-item:first-child {
+  background-color: #333;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.container-item:first-child span {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+.container-item:first-child span:nth-child(4) {
+  font-size: 25px;
+}
+.container-item:last-child span {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+@media only screen and (max-width: 900px) {
+  .container-item {
+    grid-template-columns: 9fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+    "name download"
+    "version download"
+    "description description"
+    "extra extra";
+  }
+  .container-item > span:nth-child(1) {
+    border-right: none;
+    text-align: left;
+  }
+  .container-item:not(:first-child):not(:nth-child(2)) > span:nth-child(1) {
+    border-top: 1px #555 solid;
+  }
+  .container-item > span:nth-child(2) {
+    border-right: none;
+    text-align: left;
+  }
+  .container-item > span:nth-child(3) {
+    border-right: none;
+  }
+  .container-item > span:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    grid-area: download;
+    /* border-left: 1px #555 solid; */
+    /* border-bottom: 1px #555 solid; */
+    /* padding-right: 5px; */
+    /* margin-right: 5px; */
+    /* padding-top: 5px;
+    margin-top: 5px; */
+    font-size: 40px;
+    width: 70px;
+  }
+  .container-item:not(:first-child):not(:nth-child(2)) > span:nth-child(4) {
+    border-top: 1px #555 solid;
+  }
+  .container-item > div {
+    padding: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+    grid-area: extra;
+    margin: 0 5px;
+    border-bottom: none;
+    border-top: 1px #555 dashed;
+  }
+  .container-item:first-child span:nth-child(4) {
+    font-size: 40px;
+    width: 70px;
+  }
+}

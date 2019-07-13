@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wiki - Custom Loot</title>
+  <meta name="description" content="How to use Custom Loot">
+  <meta property="og:title" content="Wiki - Custom Loot">
+  <meta property="og:description" content="How to use Custom Loot">
+  <meta property="og:url" content="unnamedde.tk/datapacks/custom_loot/wiki">
+  <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+  <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+  <link rel="stylesheet" href="/import/sweetalert/dark.css">
+  <link rel="stylesheet" href="/import/animate.css">
+  <link rel="stylesheet" href="/import/global/style.css">
+  <script src="/import/sweetalert/script.js"></script>
+  <script src="/import/jquery.js" charset="utf-8"></script>
+
+  <script src="/import/bootstrap/script.js"></script>
+  <link rel="stylesheet" href="/import/bootstrap/style.css">
+
+  <link rel="shortcut icon" href="/img/shortcut.png">
+  <script src="/import/global/script.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="../../..">unnamedDE's Webpage</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class=" navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../..">Datapacks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="..">Custom Loot</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Wiki<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="alert alert-warning mt-2 mb-2" role="alert">This datapack won't work standalone!<br>It is a library for other developers and doesn't add any visible features for survival gameplay.</div>
+    <div class="alert alert-info mt-2 mb-2" role="alert">
+      <h5 class="mb-0">Info:</h5>
+      <p>
+        <code>&lt;YOURDATAPACK&gt;</code> has to be replaced with something of the given type (In this example the name of your datapack).<br>
+        <code>[OPTIONA | OPTIONB]</code> has to be replaced with one of the given options (OPTIONA or OPTIONB).
+      </p>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="basics">
+        <h2>Basics</h2>
+      </a>
+      <p class="lead">Learn how to use Custom Loot</p>
+      <hr class="my-4">
+      <p>The basic concept of Custom Loot is to add <a href="https://minecraft.gamepedia.com/Tag#Function_Tags">function tags</a> that get executed whenever a living creature dies.</p>
+      <p>
+        The functions either get executed as the entity which died or the player who killed it and are in <code>.json</code> format like every tag.<br>
+        There are two types of tags. Non-Specific and Entity-Type-Specific tags.
+      </p>
+      <p>Get more info here:</p>
+      <div class="btn-group" role="group">
+        <a class="btn btn-dark" href="#non-specific">Non-Specific</a>
+        <a class="btn btn-dark" href="#entity-specific">Entity-Type-Specific</a>
+      </div>
+      <a class="btn btn-dark" href="#tag-structure">Structure of a tag</a><br>
+      <div class="btn-group mt-2" role="group">
+        <a class="btn btn-dark" href="#example-basic">Examples: Basic</a>
+        <a class="btn btn-dark" href="#example-loottable">Loot table</a>
+        <a class="btn btn-dark" href="#example-check-entity">Check killed entity</a>
+        <a class="btn btn-dark" href="#example-remove-default">Remove default loot</a>
+      </div>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="non-specific">
+        <h2>General Tags</h2>
+      </a>
+      <p class="lead">Non-type specific function tags</p>
+      <hr class="my-4">
+      <p>The tag <code>killed</code> gets executed as/at every living creature regardless of the entity-type when it dies and <code>killer</code> as/at every player who killed a creature (The entity who died can be checked with
+        <code>@e[tag=cl_dead,limit=1,sort=nearest,distance=..128]</code>).</p>
+      <p>They are located at <code style="word-break: break-all;">.minecraft/saves/&lt;YOURWORLD&gt;/datapacks/&lt;YOURDATAPACK&gt;/data/custom_loot/tags/functions/[killed | killer]</code>.</p>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="entity-specific">
+        <h2>Specific Tags</h2>
+      </a>
+      <p class="lead">Entity-type specific function tags</p>
+      <hr class="my-4">
+      <p>The tag <code>killed</code> gets executed as/at every living creature with the specified entity tag dies and <code>killer</code> as/at every player who killed this creature (The entity who died can be checked with
+        <code>@e[tag=cl_dead,limit=1,sort=nearest,distance=..128]</code>).</p>
+      <p>They are located at <code style="word-break: break-all;">.minecraft/saves/&lt;YOURWORLD&gt;/datapacks/&lt;YOURDATAPACK&gt;/data/custom_loot/tags/functions/[killed | killer]/&lt;ENTITY-TYPE&gt;</code>.</p>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="tag-structure">
+        <h2>Structure of a function tag</h2>
+      </a>
+      <p class="lead">Learn how to create function tags</p>
+      <hr class="my-4">
+      <p>Function tags are in <a href="https://en.wikipedia.org/wiki/JSON">JSON format</a> and should look something like this:<br>
+        <code>{<br>
+          &nbsp;"values":[<br>
+          &nbsp;&nbsp;"&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;"<br>
+          &nbsp;]<br>
+          }</code>
+      </p>
+      <p>
+        Multiple functions in one tag have to be seperated with a comma and should get executed from top to bottom:<br>
+        <code>{<br>
+          &nbsp;"values":[<br>
+          &nbsp;&nbsp;"&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;",<br>
+          &nbsp;&nbsp;"&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH-2&gt;",<br>
+          &nbsp;&nbsp;"&lt;YOURPACKNAMESPACE-2&gt;:&lt;YOUR-FUNCTION-PATH&gt;"<br>
+          &nbsp;]<br>
+          }</code>
+      </p>
+      <a href="https://minecraft.gamepedia.com/Tag#Function_Tags" class="btn btn-dark">More info here</a>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="example-basic">
+        <h2>Basic Example</h2>
+      </a>
+      <p class="lead">How to add loot to a entity (basic)</p>
+      <hr class="my-4">
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        I will assume that you are in the data folder of your <a href="https://minecraft.gamepedia.com/Data_pack">datapack</a> (<code>&lt;YOURDATAPACKNAME&gt;/data/</code>).
+      </div>
+      <p class="mt-3">I will add one <a href="https://minecraft.gamepedia.com/Cooked_Porkchop">cooked porkchop</a> to the loot of every <a href="https://minecraft.gamepedia.com/Zombie_Pigman">zombie pigman</a>.</p>
+      <p>
+        First I will create the function which will be called as/at dead pigmen.<br>
+        For this I will create the folders <code>basic_loot_tutorial/functions</code> (<code>basic_loot_tutorial</code> will be your namespace, so you can name it however you want) and in it I will create a file called <code>zombie_pigman.mcfunction</code>.<br>
+        Inside you have to put every command that should get executed (In my case I want to summon a cooked pork item). The content will be <code>summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:cooked_porkchop",Count:1b}}</code>. This command will summon one item with the item type of cooked porkchop.
+      </p>
+      <p>
+        Now I have to create the function tag used by custom loot. I will head back into <code>/data/</code> and create the folders <code>custom_loot/tags/functions/killed/</code> and the file <code>zombie_pigman.json</code>.<br>
+        In this file I will put the JSON content <a href="#tag-structure">from above</a> and replace the path <code>&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;</code> with <code>basic_loot_tutorial:zombie_pigman</code>. If you used a different namespace you will use it here instead of <code>basic_loot_tutorial</code>.
+      </p>
+      <p>Now you can type <code>/reload</code> into chat and try if it works ;)</p>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="example-loottable">
+        <h2>Example: Using loot tables</h2>
+      </a>
+      <p class="lead">How to add a loot table to a entity</p>
+      <hr class="my-4">
+      <div class="alert alert-warning mt-2 mb-2" role="alert">
+        This is not for beginners. You should try <a href="#example-basic">this</a> first before starting with loot tables!
+      </div>
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        I will assume that you are in the data folder of your <a href="https://minecraft.gamepedia.com/Data_pack">datapack</a> (<code>&lt;YOURDATAPACKNAME&gt;/data/</code>).
+      </div>
+      <p class="mt-3">I will add 2-4 <a href="https://minecraft.gamepedia.com/Rotten_Flesh">rotten flesh</a> to the loot of every <a href="https://minecraft.gamepedia.com/Wolf">wolf</a>.</p>
+      <p>
+        First I will create the <a href="https://minecraft.gamepedia.com/Loot_table">loot table</a> which will be called as/at dead wolf.<br>
+        For this I will create the folders <code>advanced_loot_tutorial/loot_tables</code> (<code>advanced_loot_tutorial</code> will be your namespace, so you can name it however you want) and in it I will create a file called <code>dog.json</code>. For creating loot tables I use <a href="https://minecraft.tools/en/loots.php">Minecraft Tools</a>, but it is not optimized for 1.14+.<br>
+        Inside I will put the loot table data:<br>
+        <code>
+          {<br>
+          &nbsp;"pools": [<br>
+          &nbsp;&nbsp;{<br>
+          &nbsp;&nbsp;&nbsp;"rolls": 1,<br>
+          &nbsp;&nbsp;&nbsp;"entries": [<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type": "item",<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "minecraft:rotten_flesh",<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"weight": 1,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"functions": [<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"function": "set_count",<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"count": {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min": 2,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max": 4<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;&nbsp;]<br>
+          &nbsp;&nbsp;}<br>
+          &nbsp;]<br>
+          }
+      </code>
+      </p>
+      <p>
+        After that I have to create the function used to trigger the loot table. I will head back into <code>/data/advanced_loot_tutorial/</code> and create the folder <code>functions/</code> and the file <code>dog.mcfunction</code>.<br>
+        In this file I will put the command which will drop the contents of the loot table; <code>loot spawn ~ ~ ~ loot advanced_loot_tutorial:dog</code>.
+      </p>
+      <p>
+        Now I have to create the function tag used by custom loot. I will head back into <code>/data/</code> and create the folders <code>custom_loot/tags/functions/killed/</code> and the file <code>dog.json</code>.<br>
+        In this file I will put the JSON content <a href="#tag-structure">from above</a> and replace the path <code>&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;</code> with <code>advanced_loot_tutorial:dog</code>. If you used a different namespace you will use it here instead of <code>advanced_loot_tutorial</code>.
+      </p>
+      <p>Now you can type <code>/reload</code> into chat and try if it works ;)</p>
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        This can be also combined with <a href="#example-check-entity">nbt-checking</a>.
+      </div>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="example-check-entity">
+        <h2>Example: Check nbt-data</h2>
+      </a>
+      <p class="lead">How to add loot to a entity with <a href="https://minecraft.gamepedia.com/Chunk_format#Entity_format">nbt-data</a></p>
+      <hr class="my-4">
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        I will assume that you are in the data folder of your <a href="https://minecraft.gamepedia.com/Data_pack">datapack</a> (<code>&lt;YOURDATAPACKNAME&gt;/data/</code>).
+      </div>
+      <p class="mt-3">I will add one <a href="https://minecraft.gamepedia.com/Slimeball">slime ball</a> to the loot of every <a href="https://minecraft.gamepedia.com/Zombie">zombie</a> with the <a href="https://minecraft.gamepedia.com/Commands/tag">tag</a> <code>alien</code>.</p>
+      <p>
+        First I will create the function which will be called as/at every dead zombies.<br>
+        For this I will create the folders <code>nbt_loot_tutorial/functions</code> (<code>nbt_loot_tutorial</code> will be your namespace, so you can name it however you want) and in it I will create a file called <code>alien.mcfunction</code>.<br>
+        Inside you have to put every command that should get executed (In my case I want to summon a slime ball item if the zombie has the tag <code>alien</code>). The content will be <code>execute if entity @s[tag=alien] run summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:slime_ball",Count:1b}}</code>. This command will summon one item with the item type of slime ball.
+      </p>
+      <p>
+        Now I have to create the function tag used by custom loot. I will head back into <code>/data/</code> and create the folders <code>custom_loot/tags/functions/killed/</code> and the file <code>zombie.json</code>.<br>
+        In this file I will put the JSON content <a href="#tag-structure">from above</a> and replace the path <code>&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;</code> with <code>nbt_loot_tutorial:alien</code>. If you used a different namespace you will use it here instead of <code>nbt_loot_tutorial</code>.
+      </p>
+      <p>Now you can type <code>/reload</code> into chat and try if it works ;)</p>
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        This can be also combined with <a href="#example-loottable">loot tables</a>.
+      </div>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="example-remove-default">
+        <h2>Example: Remove default loot</h2>
+      </a>
+      <p class="lead">How to remove default loot of an entity</p>
+      <hr class="my-4">
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        I will assume that you are in the data folder of your <a href="https://minecraft.gamepedia.com/Data_pack">datapack</a> (<code>&lt;YOURDATAPACKNAME&gt;/data/</code>).
+      </div>
+      <p class="mt-3">I will remove all loot from skeletons</p>
+      <p>
+        First I will create the function which will be called as/at every dead skeleton.<br>
+        For this I will create the folders <code>remove_loot_tutorial/functions</code> (<code>remove_loot_tutorial</code> will be your namespace, so you can name it however you want) and in it I will create a file called <code>skeleton.mcfunction</code>.<br>
+        Inside you have to put every command that should get executed. The content will be <code>tp @s ~ -500 ~</code>. This command will teleport the skeleton to Y: -500 so it will instantly die and the loot will fall into the void.
+      </p>
+      <p>
+        Now I have to create the function tag used by custom loot. I will head back into <code>/data/</code> and create the folders <code>custom_loot/tags/functions/killed/</code> and the file <code>skeleton.json</code>.<br>
+        In this file I will put the JSON content <a href="#tag-structure">from above</a> and replace the path <code>&lt;YOURPACKNAMESPACE&gt;:&lt;YOUR-FUNCTION-PATH&gt;</code> with <code>remove_loot_tutorial:skeleton</code>. If you used a different namespace you will use it here instead of <code>remove_loot_tutorial</code>.
+      </p>
+      <p>Now you can type <code>/reload</code> into chat and try if it works ;)</p>
+      <div class="alert alert-info mt-2 mb-2" role="alert">
+        This can be also combined with <a href="#example-check-entity">nbt-checking</a>.
+      </div>
+    </div>
+    <div class="jumbotron mb-2">
+      <a name="contact">
+        <h2>Contact me</h2>
+      </a>
+      <p class="lead">if you found any bugs, need help or have some ideas</p>
+      <hr class="my-4">
+      <p>You can contact me via <a href="/discord/">my discord server</a>.</p>
+      <a href="/contact/" class="btn btn-dark">More contact options</a>
+    </div>
+  </div>
+</body>
+</html>

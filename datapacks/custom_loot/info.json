@@ -1,0 +1,26 @@
+{
+  "pmc": "https://www.planetminecraft.com/mod/custom-loot-datapack-1-14-x/",
+  "list": [
+    {
+      "id": "custom_loot_v1.0",
+      "name": "Custom Loot V1.0",
+      "version": "1.0",
+      "description": "Adds the ability to add loot to entities without replacing default loot",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/588064859908734976/custom_loot-v1.0.zip"
+    },
+    {
+      "id": "custom_loot_v1.1",
+      "name": "Custom Loot V1.1",
+      "version": "1.1",
+      "description": "<ul><li>added missing tag</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/588787184534945935/custom_loot-v1.1.zip"
+    },
+    {
+      "id": "custom_loot_v1.2",
+      "name": "Custom Loot V1.2",
+      "version": "1.2",
+      "description": "<ul><li>added function tag that gets executed as/at every living entity upon death</li><li>added function tag that gets executed as/at every player who killed a living entity</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/591955826751701002/custom_loot-v1.2.zip"
+    }
+  ]
+}
