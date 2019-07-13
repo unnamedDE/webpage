@@ -6,8 +6,8 @@
   grid-template-columns: 1fr;
 }
 #link-container > div.link-container-item {
-  width: 50vw;
-  height: 50vw;
+  width: 75vw;
+  height: 75vw;
   /* width: 750px; */
   /* height: 750px; */
 }

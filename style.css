@@ -67,6 +67,9 @@ body {
 #link-container #profile-viewer a {
   background-image: url(https://minotar.net/helm/Steve/256.png);
 }
+#link-container #datapacks a {
+  background-image: url(img/datapacks.png);
+}
 #link-container #mc-tools a {
   background-image: url(img/mc-tools-logo.png);
 }
