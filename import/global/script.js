@@ -161,5 +161,4 @@ function downloadFile(file,filename) {
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
-  setTimeout(windowBack, 1000)
 }

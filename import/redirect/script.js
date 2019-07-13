@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
   document.querySelector('head').appendChild(viewport);
   let style = document.createElement('link');
   style.rel = "stylesheet";
-  style.href = "../import/redirect/style.css";
+  style.href = "/import/redirect/style.css";
   document.querySelector('head').appendChild(style);
   let body = document.querySelector('body');
   body.innerHTML = `<div class="body">
