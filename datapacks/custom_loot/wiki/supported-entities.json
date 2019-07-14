@@ -1,63 +1,262 @@
 [
-  "bat",
-  "blaze",
-  "cat",
-  "cave_spider",
-  "chicken",
-  "cod",
-  "cow",
-  "creeper",
-  "dolphin",
-  "donkey",
-  "drowned",
-  "elder_guardian",
-  "enderman",
-  "endermite",
-  "evoker",
-  "fox",
-  "ghast",
-  "giant",
-  "guardian",
-  "horse",
-  "husk",
-  "illusioner",
-  "iron_golem",
-  "llama",
-  "magma_cube",
-  "mooshroom",
-  "mule",
-  "ocelot",
-  "panda",
-  "parrot",
-  "phantom",
-  "pig",
-  "pillager",
-  "polar_bear",
-  "pufferfish",
-  "rabbit",
-  "ravager",
-  "salmon",
-  "shulker",
-  "silverfish",
-  "skeleton",
-  "skeleton_horse",
-  "slime",
-  "snow_golem",
-  "spider",
-  "squid",
-  "stray",
-  "trader_llama",
-  "tropical_fish",
-  "turtle",
-  "vex",
-  "villager",
-  "vindicator",
-  "wandering_trader",
-  "witch",
-  "wither_skeleton",
-  "wolf",
-  "zombie",
-  "zombie_horse",
-  "zombie_pigman",
-  "zombie_villager"
+  {
+    "id": "bat",
+    "info": null
+  },
+  {
+    "id": "blaze",
+    "info": null
+  },
+  {
+    "id": "cat",
+    "info": null
+  },
+  {
+    "id": "cave_spider",
+    "info": null
+  },
+  {
+    "id": "chicken",
+    "info": null
+  },
+  {
+    "id": "cod",
+    "info": null
+  },
+  {
+    "id": "cow",
+    "info": null
+  },
+  {
+    "id": "creeper",
+    "info": null
+  },
+  {
+    "id": "dog",
+    "info": "Tamed dog, no wolf"
+  },
+  {
+    "id": "dolphin",
+    "info": null
+  },
+  {
+    "id": "donkey",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "drowned",
+    "info": null
+  },
+  {
+    "id": "elder_guardian",
+    "info": null
+  },
+  {
+    "id": "ender_dragon",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "enderman",
+    "info": null
+  },
+  {
+    "id": "endermite",
+    "info": null
+  },
+  {
+    "id": "evoker",
+    "info": null
+  },
+  {
+    "id": "fox",
+    "info": null
+  },
+  {
+    "id": "ghast",
+    "info": null
+  },
+  {
+    "id": "giant",
+    "info": null
+  },
+  {
+    "id": "guardian",
+    "info": null
+  },
+  {
+    "id": "horse",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "husk",
+    "info": null
+  },
+  {
+    "id": "illusioner",
+    "info": null
+  },
+  {
+    "id": "iron_golem",
+    "info": null
+  },
+  {
+    "id": "llama",
+    "info": null
+  },
+  {
+    "id": "magma_cube",
+    "info": null
+  },
+  {
+    "id": "mooshroom",
+    "info": null
+  },
+  {
+    "id": "mule",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "ocelot",
+    "info": null
+  },
+  {
+    "id": "panda",
+    "info": null
+  },
+  {
+    "id": "parrot",
+    "info": null
+  },
+  {
+    "id": "phantom",
+    "info": null
+  },
+  {
+    "id": "pig",
+    "info": null
+  },
+  {
+    "id": "pillager",
+    "info": null
+  },
+  {
+    "id": "polar_bear",
+    "info": null
+  },
+  {
+    "id": "pufferfish",
+    "info": null
+  },
+  {
+    "id": "rabbit",
+    "info": null
+  },
+  {
+    "id": "ravager",
+    "info": null
+  },
+  {
+    "id": "salmon",
+    "info": null
+  },
+  {
+    "id": "shulker",
+    "info": null
+  },
+  {
+    "id": "silverfish",
+    "info": null
+  },
+  {
+    "id": "skeleton",
+    "info": null
+  },
+  {
+    "id": "skeleton_horse",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "slime",
+    "info": null
+  },
+  {
+    "id": "snow_golem",
+    "info": null
+  },
+  {
+    "id": "spider",
+    "info": null
+  },
+  {
+    "id": "squid",
+    "info": null
+  },
+  {
+    "id": "stray",
+    "info": null
+  },
+  {
+    "id": "trader_llama",
+    "info": null
+  },
+  {
+    "id": "tropical_fish",
+    "info": null
+  },
+  {
+    "id": "turtle",
+    "info": null
+  },
+  {
+    "id": "vex",
+    "info": null
+  },
+  {
+    "id": "villager",
+    "info": null
+  },
+  {
+    "id": "vindicator",
+    "info": null
+  },
+  {
+    "id": "wandering_trader",
+    "info": null
+  },
+  {
+    "id": "witch",
+    "info": null
+  },
+  {
+    "id": "wither",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "wither_skeleton",
+    "info": null
+  },
+  {
+    "id": "wolf",
+    "info": "Just wolf, no tamed dog"
+  },
+  {
+    "id": "wolf-all",
+    "info": "Wolf and tamed dog"
+  },
+  {
+    "id": "zombie",
+    "info": null
+  },
+  {
+    "id": "zombie_horse",
+    "info": "Only has killer tag & no entity checking possible"
+  },
+  {
+    "id": "zombie_pigman",
+    "info": null
+  },
+  {
+    "id": "zombie_villager",
+    "info": null
+  }
 ]
