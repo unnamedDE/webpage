@@ -72,6 +72,7 @@
       <div class="btn-group" role="group">
         <a class="btn btn-dark" href="#non-specific">Non-Specific</a>
         <a class="btn btn-dark" href="#entity-specific">Entity-Type-Specific</a>
+        <a class="btn btn-dark" href="#special-cases">Special cases</a>
       </div>
       <a class="btn btn-dark" href="#tag-structure">Structure of a tag</a><br>
       <div class="btn-group mt-2" role="group">
@@ -98,9 +99,25 @@
       </a>
       <p class="lead">Entity-type specific function tags</p>
       <hr class="my-4">
-      <p>The tag <code>killed</code> gets executed as/at every living creature with the specified entity tag dies and <code>killer</code> as/at every player who killed this creature (The entity who died can be checked with
+      <p>The tag <code>killed</code> gets executed as/at every living creature with the the entity type of <code>&lt;ENTITY-TYPE&gt;</code> dies and <code>killer</code> as/at every player who killed this creature (The entity who died can be checked with
         <code>@e[tag=cl_dead,limit=1,sort=nearest,distance=..128]</code>).</p>
       <p>They are located at <code style="word-break: break-all;">.minecraft/saves/&lt;YOURWORLD&gt;/datapacks/&lt;YOURDATAPACK&gt;/data/custom_loot/tags/functions/[killed | killer]/&lt;ENTITY-TYPE&gt;</code>.</p>
+      <a class="btn btn-dark mt-2" href="supported-entities.json" target="_blank">Click here to view a full list of supported entities</a>
+    </div>
+    <div class="jumbotron mb-4">
+      <a name="special-cases">
+        <h2>Special cases</h2>
+      </a>
+      <p class="lead">Special function tags</p>
+      <hr class="my-4">
+      <div class="alert alert-warning mt-2 mb-2" role="alert">Read this first before contacting me because of a bug!</div>
+      <p>There are some exceptions for the default rule:</p>
+      <ul>
+        <li>Ender Dragons, Withers, Horses, Donkeys, Mules, Skeleton Horses & Zombie Horses only have a <code>killer</code> tag and the died can't be checked after death</li>
+        <li>The tag <code>dog</code> gets executed for tamed wolves <span class="text-danger">(Doesn't work for now because of a MC bug but should work when it's fixed)</span></li>
+        <li>The tag <code>wolf</code> only gets executed for non-tamed wolves</li>
+        <li>The tag <code>wolf-all</code> gets executed for all wolves (tamed and non-tamed)</li>
+      </ul>
     </div>
     <div class="jumbotron mb-4">
       <a name="tag-structure">
@@ -165,6 +182,8 @@
         First I will create the <a href="https://minecraft.gamepedia.com/Loot_table">loot table</a> which will be called as/at dead wolf.<br>
         For this I will create the folders <code>advanced_loot_tutorial/loot_tables</code> (<code>advanced_loot_tutorial</code> will be your namespace, so you can name it however you want) and in it I will create a file called <code>dog.json</code>. For creating loot tables I use <a href="https://minecraft.tools/en/loots.php">Minecraft Tools</a>, but it is not optimized for 1.14+.<br>
         Inside I will put the loot table data:<br>
+      </p>
+      <div class="pre-scrollable p-4 bg-dark" style="border-radius: .3rem">
         <code>
           {<br>
           &nbsp;"pools": [<br>
@@ -189,8 +208,8 @@
           &nbsp;&nbsp;}<br>
           &nbsp;]<br>
           }
-      </code>
-      </p>
+        </code>
+      </div>
       <p>
         After that I have to create the function used to trigger the loot table. I will head back into <code>/data/advanced_loot_tutorial/</code> and create the folder <code>functions/</code> and the file <code>dog.mcfunction</code>.<br>
         In this file I will put the command which will drop the contents of the loot table; <code>loot spawn ~ ~ ~ loot advanced_loot_tutorial:dog</code>.
@@ -258,6 +277,7 @@
       </a>
       <p class="lead">if you found any bugs, need help or have some ideas</p>
       <hr class="my-4">
+      <div class="alert alert-warning mt-2 mb-2" role="alert">Read <a href="#special-cases">this</a> first before contacting me because of a bug!</div>
       <p>You can contact me via <a href="/discord/">my discord server</a>.</p>
       <a href="/contact/" class="btn btn-dark">More contact options</a>
     </div>
