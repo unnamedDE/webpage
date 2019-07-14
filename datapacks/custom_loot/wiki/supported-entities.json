@@ -33,7 +33,7 @@
   },
   {
     "id": "dog",
-    "info": "Tamed dog, no wolf"
+    "info": "Doesn't work due to a bug in minecraft https://bugs.mojang.com/browse/MC-156746 but is implemented and should work when fixed in MC (Tamed dog, no wolf)"
   },
   {
     "id": "dolphin",
