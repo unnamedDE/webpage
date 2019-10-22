@@ -1,0 +1,25 @@
+{
+  "title": "AClib - Datapack",
+  "pmc": false,
+  "wiki": false,
+  "banner": false,
+  "list": [
+    {
+      "id": "ac_lib_v1.0",
+      "name": "AClib V1.0",
+      "version": "1.0",
+      "description": "Adds the ability to create crafting recipes with nbt support",
+      "download": "./files/ac_lib_v1.0.zip"
+    },
+    {
+      "id": "ac_lib_v2.0",
+      "name": "AClib V2.0",
+      "version": "2.0",
+      "description": "<ul><li>added more slots</li><li>made it better looking</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/636241691904573440/ac_lib-v2.0.zip"
+    }
+  ],
+  "extras": [
+    "Generate recipes with <a href=\"/aclib-generator\">this</a> handy generator!"
+  ]
+}

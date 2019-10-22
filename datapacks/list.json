@@ -3,5 +3,10 @@
     "id": "custom_loot",
     "name": "Custom Loot",
     "path": "custom_loot/"
+  },
+  {
+    "id": "aclib",
+    "name": "AClib",
+    "path": "aclib/"
   }
 ]
