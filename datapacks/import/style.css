@@ -29,6 +29,15 @@ li {
   padding: 5px;
 }
 
+#banner {
+  width: 85vw;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
 #container {
   background-color: #444;
   width: 85%;
@@ -36,6 +45,7 @@ li {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+  margin-bottom: 25px;
 }
 
 #latest-version-container {
@@ -135,6 +145,17 @@ li {
 .container-item:last-child span {
   margin-bottom: 5px;
   padding-bottom: 5px;
+}
+
+.container-extra {
+  font-size: 20px;
+  padding: 10px;
+  border-top: 1px #555 solid;
+}
+
+#pmc.disabled, #wiki.disabled {
+  filter: grayscale(90%);
+  cursor: default;
 }
 
 @media only screen and (max-width: 900px) {

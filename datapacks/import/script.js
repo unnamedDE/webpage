@@ -2,41 +2,56 @@ window.addEventListener('load', () => {
   let style = document.createElement('link');
   style.rel = "stylesheet";
   style.href = "../import/style.css";
-  document.querySelector('head').appendChild(style)
-  document.querySelector('body').innerHTML = `
-  <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
-  <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
-  <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
-
-  <div id="header">
-    <h1 class="animated fadeInDown">Custom Loot - Datapack</h1>
-  </div>
-  <div id="container">
-    <div class="container-item">
-      <span>Name</span>
-      <span>Version</span>
-      <span>Description / Changelog</span>
-      <span><i class="fas fa-arrow-circle-down"></i></span>
-    </div>
-    <div id="latest-version-container">
-      <a id="wiki" href="./wiki" title="Visit the wiki"><i class="fab fa-wikipedia-w"></i></a>
-      <a id="latest-version" href="#" title="Click to download">Download the latest Version</a>
-      <a id="pmc" href="#" title="Visit the pack on Planetminecraft"><img src="/import/global/img/planetminecraft.png" alt="PMC" style="height: 45px;"></a>
-    </div>
-  </div>`
-  addButtons();
+  document.querySelector('head').appendChild(style);
   fetch('./info.json')
     .then(function(response) {
       return response.json();
     })
-    .then(function(myJson) {
-      // console.log(JSON.stringify(myJson));
-      let info = myJson;
+    .then(function(info) {
+      let bannerElement = '';
+      if(info.banner) {
+        bannerElement = `\n<img src="${info.banner}" alt="banner" id="banner"/>`
+      }
+      document.querySelector('body').innerHTML = `
+      <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
+      <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
+      <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
+
+      <div id="header">
+        <h1 class="animated fadeInDown">${info.title}</h1>
+      </div>
+      ${bannerElement}
+      <div id="container">
+        <div class="container-item">
+          <span>Name</span>
+          <span>Version</span>
+          <span>Description / Changelog</span>
+          <span><i class="fas fa-arrow-circle-down"></i></span>
+        </div>
+        <div id="latest-version-container">
+          <a id="wiki" href="./wiki" title="Visit the wiki"><i class="fab fa-wikipedia-w"></i></a>
+          <a id="latest-version" href="#" title="Click to download">Download the latest Version</a>
+          <a id="pmc" href="#" title="Visit the pack on Planetminecraft"><img src="/import/global/img/planetminecraft.png" alt="PMC" style="height: 45px;"></a>
+        </div>
+      </div>`
+      addButtons();
       for(let i = 0; i < info.list.length; i++) {
         let pack = document.createElement('div');
         document.querySelector('a#latest-version').href = info.list[info.list.length - 1].download;
         document.querySelector('a#latest-version').download = info.list[i].id + ".zip";
-        document.querySelector('a#pmc').href = info.pmc;
+        if(info.pmc) {
+          document.querySelector('a#pmc').href = info.pmc;
+        } else {
+          document.querySelector('a#pmc').classList.add('disabled');
+          document.querySelector('a#pmc').title = 'Not available on planetminecraft';
+        }
+        if(!info.wiki) {
+          document.querySelector('a#wiki').href = '#';
+          document.querySelector('a#wiki').classList.add('disabled');
+          document.querySelector('a#wiki').title = 'No wiki available';
+        } else if(info.wiki !== true) {
+          document.querySelector('a#wiki').href = info.wiki;
+        }
         pack.classList.add('container-item');
         pack.innerHTML = `<span>` + info.list[i].name + `</span>
         <span>` + info.list[i].version + `</span>
@@ -45,9 +60,14 @@ window.addEventListener('load', () => {
       // insertAfter(pack, document.querySelector('.container-item'))
       insertAfter(pack, document.querySelector('#latest-version-container'));
       }
+      for(let i = 0; i < info.extras.length; i++) {
+        let e = document.createElement('div');
+        e.classList.add('container-extra');
+        e.innerHTML = info.extras[i];
+        document.querySelector('#container').appendChild(e);
+      }
       document.querySelector('#latest-version').href = info.list[info.list.length - 1].download;
       document.querySelector('#latest-version').download = info.list[info.list.length - 1].id + ".zip";
-      return info = myJson;
   });
 });
 

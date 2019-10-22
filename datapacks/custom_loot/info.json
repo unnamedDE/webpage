@@ -1,5 +1,7 @@
 {
+  "title": "Custom Loot - Datapack",
   "pmc": "https://www.planetminecraft.com/mod/custom-loot-datapack-1-14-x/",
+  "banner": "./img/banner.png",
   "list": [
     {
       "id": "custom_loot_v1.0",
@@ -22,5 +24,7 @@
       "description": "<ul><li>added function tag that gets executed as/at every living entity upon death</li><li>added function tag that gets executed as/at every player who killed a living entity</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/591955826751701002/custom_loot-v1.2.zip"
     }
+  ],
+  "extras": [
   ]
 }
