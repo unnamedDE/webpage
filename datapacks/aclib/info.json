@@ -1,7 +1,7 @@
 {
   "title": "AClib - Datapack",
-  "pmc": false,
-  "wiki": false,
+  "pmc": "https://www.planetminecraft.com/mod/aclib-datapack-1-14-x/",
+  "wiki": true,
   "banner": false,
   "list": [
     {

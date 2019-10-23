@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Player Wiki - AClib</title>
+    <meta name="description" content="How to use AClib">
+    <meta property="og:title" content="Player Wiki - AClib">
+    <meta property="og:description" content="How to use AClib">
+    <meta property="og:url" content="unnamedde.tk/datapacks/aclib/wiki/players">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <link rel="stylesheet" href="/import/animate.css">
+    <link rel="stylesheet" href="/import/global/style.css">
+    <script src="/import/sweetalert/script.js"></script>
+    <script src="/import/jquery.js" charset="utf-8"></script>
+
+    <script src="/import/bootstrap/script.js"></script>
+    <link rel="stylesheet" href="/import/bootstrap/style.css">
+
+    <link rel="shortcut icon" href="/img/shortcut.png">
+    <script src="/import/global/script.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../../../..">unnamedDE's Webpage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class=" navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../..">Datapacks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../..">AClib</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wiki</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item active" href="#">Players<span class="sr-only">(current)</span></a>
+                <a class="dropdown-item" href="../developers/">Developers</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="alert alert-warning mt-2 mb-2" role="alert">This is the wiki for players! If you are searching for information about using AClib for one of your datapack creations, you can visit the <a href="../developers/">developer wiki</a>.</div>
+      <div class="alert alert-warning mt-2 mb-2" role="alert">This datapack only works in minecraft java edition 1.14+!</div>
+
+      <div class="jumbotron mb-4">
+        <a name="install">
+          <h2>Installing AClib</h2>
+        </a>
+        <p class="lead">Learn how to install AClib</p>
+        <hr class="my-4">
+        <p>To install custom loot, you have to download the zip file and then navigate to your <code>.minecraft</code> folder. If you don't know how to find it, you can find the location on your operating system <a href="https://help.mojang.com/customer/portal/articles/1480874-where-are-minecraft-files-stored-">here</a>.</p>
+        <p>Enter the <code>saves</code> folder and open the folder with the name of your world. If you are playing in minecraft java 1.14+ (datapacks don't exist in bedrock edition) there should be a folder named <code>datapacks</code>. Put the <code>.zip</code> file inside that folder.</p>
+        <p>Now all datapacks that require AClib to work should work now.</p>
+      </div>
+
+      <div class="jumbotron mb-4">
+        <a name="items">
+          <h2>Items</h2>
+        </a>
+        <p class="lead">All items added by AClib</p>
+        <hr class="my-4">
+        <p>AClib only adds one item which is called the "<a href="#item-advanced_crafting_table">Advanced Crafting Table</a>".</p>
+        <p>In the future I will maybe add some more crafting blocks.</p>
+      </div>
+
+      <div class="jumbotron mb-4">
+        <a name="item-advanced_crafting_table">
+          <h2>Advanced Crafting Table</h2>
+        </a>
+        <p class="lead">Everything about the Advanced Crafting Table</p>
+        <hr class="my-4">
+        <p>The Advanced Crafting Table looks like a gray shulkerbox.</p>
+        <p>It can be crafted by placing a crafting table in the middle and surrounding it with iron ingots. It will look like structure void first, but you will get the correct item if you take it out.</p>
+        <img src="../imgs/crafting_recipe.png" alt="Recipe" class="mb-4">
+        <p>The Advanced Crafting Table has 9 input slots like a normal workbench, but 3 output slots and 3 additional augment slots.</p>
+        <img src="../imgs/gui.png" alt="GUI">
+        <p>The Advanced Crafting Table is used like a normal workbench (without the vanilla recipes), but if you close the GUI, the items will stay. An example recipe could look like this:</p>
+        <img src="../imgs/example-recipe.png" alt="Example Recipe">
+        <p>You put in the ingredients for the recipe and when a matching recipe is found the output shows. If you take out one of the ingredients, the output will vanish and if you take out the output, one of each ingredient will disappear.</p>
+        <div class="alert alert-warning mt-2 mb-2" role="alert">The recipes only work if the unused & output slots are empty!</div>
+      </div>
+
+      <div class="jumbotron mb-2">
+        <a name="contact">
+          <h2>Contact me</h2>
+        </a>
+        <p class="lead">if you found any bugs, need help or have some ideas</p>
+        <hr class="my-4">
+        <p>You can contact me via <a href="/discord/">my discord server</a>.</p>
+        <a href="/contact/" class="btn btn-dark">More contact options</a>
+      </div>
+    </div>
+  </body>
+</html>

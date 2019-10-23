@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Developer Wiki - AClib</title>
+    <meta name="description" content="How to use AClib">
+    <meta property="og:title" content="Developer Wiki - AClib">
+    <meta property="og:description" content="How to use AClib">
+    <meta property="og:url" content="unnamedde.tk/datapacks/aclib/wiki/developers">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <link rel="stylesheet" href="/import/animate.css">
+    <link rel="stylesheet" href="/import/global/style.css">
+    <script src="/import/sweetalert/script.js"></script>
+    <script src="/import/jquery.js" charset="utf-8"></script>
+
+    <script src="/import/bootstrap/script.js"></script>
+    <link rel="stylesheet" href="/import/bootstrap/style.css">
+
+    <link rel="shortcut icon" href="/img/shortcut.png">
+    <script src="/import/global/script.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../../../..">unnamedDE's Webpage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class=" navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../..">Datapacks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../..">AClib</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wiki</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../players/">Players</a>
+                <a class="dropdown-item active" href="#">Developers<span class="sr-only">(current)</span></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="alert alert-warning mt-4 mb-4" role="alert">This is the wiki for datapack developers! If you are just searching for information about how to install and play with it go to the <a href="../players/">player wiki</a>.</div>
+      <div class="alert alert-warning mt-2 mb-2" role="alert">This datapack only works in minecraft java edition 1.14+!</div>
+      <div class="alert alert-warning mt-2 mb-2" role="alert">This datapack won't work standalone!<br>It is a library for other developers and doesn't add any visible features for survival gameplay.</div>
+      <div class="alert alert-warning mt-2 mb-2" role="alert">Please make sure that you read the <a href="../players/">player wiki</a> first.</div>
+
+      <div class="jumbotron mb-4">
+        <a name="adding_recipes">
+          <h2>Adding Recipes</h2>
+        </a>
+        <p class="lead">Learn how to add recipes with NBT support</p>
+        <hr class="my-4">
+        <p>The easiest way to add recipes is to use my generator. Navigate to <a href="https://unnamedDE.tk/aclib-generator/" target="_blank">unnamedDE.tk/aclib-generator</a>. There are two ways to use the generator, to use <a href="https://github.com/Stevertus/mcscript" target="_blank">MCscript (a scripting language by Stevertus)</a> or using vanilla MCfunction. MCscript will output code for one file whereas MCfunction will output code for four files</p>
+        <hr class="my-2">
+        <a name="adding_recipes-mcfunction"><h3>Using MCfunction</h3></a>
+        <p>First choose a recipe ID which is unique (like "datapackname_recipename") and enter it in the input labeled "Recipe ID". In the input "Function path" you have to enter the "/function" path to where you want to place the MCfunction file (ex.: datapackname:path/to/function).</p>
+        <p>Now you are ready to input your recipe ingredients/outputs. Find the right slot and enter the item ID and if you want NBT. If the slot you are editing is an output you can choose the count as well.</p>
+        <p>When you are finished press "Generate" and it will generate four different codes for you. Create a file at the specified path ("Function Path") with the extension <code>.mcfunction</code> and input the contents of the left output field. Then create a folder with the name of the function file. Inside that folder you have to create three MCfunction files. <code>1.mcfunction</code>, <code>2.mcfunction</code> & <code>3.mcfunction</code> and paste the contents from the output fields from left to right.</p>
+        <p>The last step is to create a file in your datapack at the path <code>data/ac_lib/tags/functions/advanced_crafter_recipes.json</code> and add the function path from above to the JSON list.</p>
+        <hr class="my-2">
+        <a name="adding_recipes-mcfunction"><h3>Using MCscript</h3></a>
+        <p>First choose a recipe ID which is unique (like "datapackname_recipename") and enter it in the input labeled "Recipe ID". In the input "Function path" you have to enter the "/function" path to where you want to place the MCfunction file (ex.: datapackname:path/to/function). You also have to specify the path where MCscript will compile the output file.</p>
+        <p>Now you are ready to input your recipe ingredients/outputs. Find the right slot and enter the item ID and if you want NBT. If the slot you are editing is an output you can choose the count as well.</p>
+        <p>When you are finished press "Generate (MCScript)" and it will generate one text for you. Paste them to your <code>.mcscript</code> file and compile it. It will compile it into a file and a folder with three files. The path of the main function file should match with the path specified above.</p>
+        <p>The last step is to create a file in your datapack at the path <code>data/ac_lib/tags/functions/advanced_crafter_recipes.json</code> and add the function path from above to the JSON list.</p>
+        <hr class="my-2">
+        <div class="alert alert-primary mt-2 mb-2" role="alert">You can save the recipe to edit later by pressing "export" and import it later by drag-and-drop.</div>
+      </div>
+
+      <div class="jumbotron mb-2">
+        <a name="contact">
+          <h2>Contact me</h2>
+        </a>
+        <p class="lead">if you found any bugs, need help or have some ideas</p>
+        <hr class="my-4">
+        <p>You can contact me via <a href="/discord/">my discord server</a>.</p>
+        <a href="/contact/" class="btn btn-dark">More contact options</a>
+      </div>
+    </div>
+  </body>
+</html>
