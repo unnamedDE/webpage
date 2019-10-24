@@ -8,6 +8,9 @@ window.addEventListener('load', () => {
       return response.json();
     })
     .then(function(info) {
+      if(getParameter('download')) checkDownload(info);
+
+
       let bannerElement = '';
       if(info.banner) {
         bannerElement = `\n<img src="${info.banner}" alt="banner" id="banner"/>`
@@ -81,25 +84,13 @@ function addButtons() {
 function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
-fetch('./info.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    // console.log(JSON.stringify(myJson));
-    let info = myJson;
-    if(getParameter('download'))
-      checkDownload(info)
-    return info = myJson;
-});
 
 function checkDownload(info) {
   let request = decodeURIComponent(getParameter('download'));
-  for (var i = 0; i < info.list.length; i++) {
-    if(info.list[i].id == request || info.list[i].version == request) {
-      downloadFile(info.list[i].download, info.list[i].id + ".zip");
-      return;
-    }
+  let filtered = info.list.filter(e => e.id == request || e.version == request);
+  if(filtered.length > 0) {
+    downloadFile(filtered[0].download, filtered[0].id + ".zip");
+    return;
   }
   downloadFile(info.list[info.list.length - 1].download, info.list[info.list.length - 1].id + ".zip")
 }
