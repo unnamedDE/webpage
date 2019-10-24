@@ -17,6 +17,13 @@
       "version": "2.0",
       "description": "<ul><li>added more slots</li><li>made it better looking</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/636241691904573440/ac_lib-v2.0.zip"
+    },
+    {
+      "id": "ac_lib_v2.0.1",
+      "name": "AClib V2.0.1",
+      "version": "2.0.1",
+      "description": "<ul><li>fixed being able to take out glass panes</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/636971829889597440/ac_lib-v2.0.1.zip"
     }
   ],
   "extras": [
