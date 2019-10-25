@@ -244,8 +244,7 @@ function dragOver() {
     confirmButtonText: "cancel",
     closeOnConfirm: true});
 }
-function exportRecipe() {
-  console.log('exportRecipe()');
+function recipeToJson() {
   generateInit();
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
@@ -296,12 +295,19 @@ function exportRecipe() {
       console.log('export failed');
       return
   }
-  sendInfo('Export')
 
-  var output = {txtMainPath:txtMainPath,txtFunctionPath:txtFunctionPath,txtRecipeId:txtRecipeId,item0:{id:item0_id.value,nbt:item0_nbt.value},item1:{id:item1_id.value,nbt:item1_nbt.value},item2:{id:item2_id.value,nbt:item2_nbt.value},item3:{id:item3_id.value,nbt:item3_nbt.value},item4:{id:item4_id.value,nbt:item4_nbt.value},item5:{id:item5_id.value,nbt:item5_nbt.value},item6:{id:item6_id.value,nbt:item6_nbt.value},item7:{id:item7_id.value,nbt:item7_nbt.value},item8:{id:item8_id.value,nbt:item8_nbt.value},item9:{id:item9_id.value,nbt:item9_nbt.value},item10:{id:item10_id.value,nbt:item10_nbt.value},item11:{id:item11_id.value,nbt:item11_nbt.value},output0:{id:itemout0_id.value,nbt:itemout0_nbt.value,count:itemout0_count.value},output1:{id:itemout1_id.value,nbt:itemout1_nbt.value,count:itemout1_count.value},output2:{id:itemout2_id.value,nbt:itemout2_nbt.value,count:itemout2_count.value}};
+  return {txtMainPath:txtMainPath,txtFunctionPath:txtFunctionPath,txtRecipeId:txtRecipeId,item0:{id:item0_id.value,nbt:item0_nbt.value},item1:{id:item1_id.value,nbt:item1_nbt.value},item2:{id:item2_id.value,nbt:item2_nbt.value},item3:{id:item3_id.value,nbt:item3_nbt.value},item4:{id:item4_id.value,nbt:item4_nbt.value},item5:{id:item5_id.value,nbt:item5_nbt.value},item6:{id:item6_id.value,nbt:item6_nbt.value},item7:{id:item7_id.value,nbt:item7_nbt.value},item8:{id:item8_id.value,nbt:item8_nbt.value},item9:{id:item9_id.value,nbt:item9_nbt.value},item10:{id:item10_id.value,nbt:item10_nbt.value},item11:{id:item11_id.value,nbt:item11_nbt.value},output0:{id:itemout0_id.value,nbt:itemout0_nbt.value,count:itemout0_count.value},output1:{id:itemout1_id.value,nbt:itemout1_nbt.value,count:itemout1_count.value},output2:{id:itemout2_id.value,nbt:itemout2_nbt.value,count:itemout2_count.value}};
 
+
+}
+
+function exportRecipe() {
+  var txtRecipeId = document.getElementById("receipe_id").value;
+  console.log('exportRecipe()');
+  let output = recipeToJson();
+  sendInfo('Export&value2=' + JSON.stringify(output))
   console.log('Export output: ' + JSON.stringify(output));
-  download(txtRecipeId + '-recipe_export.txt', JSON.stringify(output))
+  download(txtRecipeId + '-recipe_export.txt', JSON.stringify(output));
 }
 
 function overrideDefault(ev) {
@@ -345,13 +351,15 @@ function generateMcscript() {
   // document.getElementById("output_mcfunction").style.marginTop = "0px";
   // document.getElementById("output_mcfunction").style.border = "none";
 
-  document.getElementById("output_mcscript").hidden = false;
-  document.getElementById("output_mcfunction").hidden = true;
-  document.getElementById("output_mcfunction").style.border = "none";
-  document.getElementById("output_mcfunction_0").hidden = true;
-  document.getElementById("output_mcfunction_1").hidden = true;
-  document.getElementById("output_mcfunction_2").hidden = true;
-  document.getElementById("output_mcfunction_3").hidden = true;
+  // document.getElementById("output_mcscript").hidden = false;
+  // document.getElementById("output_mcfunction").hidden = true;
+  // document.getElementById("output_mcfunction").style.border = "none";
+  // document.getElementById("output_mcfunction_0").hidden = true;
+  // document.getElementById("output_mcfunction_1").hidden = true;
+  // document.getElementById("output_mcfunction_2").hidden = true;
+  // document.getElementById("output_mcfunction_3").hidden = true;
+  document.getElementById("output_mcscript").classList.remove('hidden');
+  document.getElementById("output_mcfunction").classList.add('hidden');
 
   var item0_id = document.getElementById('item_0_id');
   var item0_nbt = document.getElementById('item_0_nbt');
@@ -559,22 +567,22 @@ function generateMcscript() {
     var itemOutUpClearCmd = "";
     if (itemout0_id.value != "")
     {
-        outputreplaceitemUp = "/replaceitem block ~ ~ ~ container.7 " + itemout0_id.value + ItemOutNbtUp.replace(",tag:", "") + " " + itemout0_count.value + "<br>";
-        itemOutUpClearCmd = "/replaceitem block ~ ~ ~ container.7 minecraft:air<br>";
+        outputreplaceitemUp = "/replaceitem block ~ ~ ~ container.7 " + itemout0_id.value + ItemOutNbtUp.replace(",tag:", "") + " " + itemout0_count.value + "&#13;&#10;";
+        itemOutUpClearCmd = "/replaceitem block ~ ~ ~ container.7 minecraft:air&#13;&#10;";
     }
     var outputreplaceitemMain = "";
     var itemOutMainClearCmd = "";
     if (itemout1_id.value != "")
     {
-        outputreplaceitemMain = "/replaceitem block ~ ~ ~ container.16 " + itemout1_id.value + ItemOutNbtMain.replace(",tag:", "") + " " + itemout1_count.value + "<br>";
-        itemOutMainClearCmd = "/replaceitem block ~ ~ ~ container.16 minecraft:air<br>";
+        outputreplaceitemMain = "/replaceitem block ~ ~ ~ container.16 " + itemout1_id.value + ItemOutNbtMain.replace(",tag:", "") + " " + itemout1_count.value + "&#13;&#10;";
+        itemOutMainClearCmd = "/replaceitem block ~ ~ ~ container.16 minecraft:air&#13;&#10;";
     }
     var outputreplaceitemDown = "";
     var itemOutDownClearCmd = "";
     if (itemout2_id.value != "")
     {
-        outputreplaceitemDown = "/replaceitem block ~ ~ ~ container.25 " + itemout2_id.value + ItemOutNbtDown.replace(",tag:", "") + " " + itemout2_count.value + "<br>";
-        itemOutDownClearCmd = "/replaceitem block ~ ~ ~ container.25 minecraft:air<br>";
+        outputreplaceitemDown = "/replaceitem block ~ ~ ~ container.25 " + itemout2_id.value + ItemOutNbtDown.replace(",tag:", "") + " " + itemout2_count.value + "&#13;&#10;";
+        itemOutDownClearCmd = "/replaceitem block ~ ~ ~ container.25 minecraft:air&#13;&#10;";
     }
 
     var outputUp = "";
@@ -593,8 +601,8 @@ function generateMcscript() {
         outputDown = " && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b,Count:" + itemout2_count.value + "b,id:\"" + itemout2_id.value + "\"" + ItemOutNbtDown.replace(/\\\"/g,"\\\\\"").replace(/'/g, "\\'") + "}]}'";
     }
 
-  document.getElementById('output_mcscript').innerHTML = "#file: " + txtMainPath + "<br><br>if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && " + Item0.replace(/,tag:{}/g,"") + " && " + Item1.replace(/,tag:{}/g,"") + " && " + Item2.replace(/,tag:{}/g,"") + " && " + Item3.replace(/,tag:{}/g,"") + " && " + Item4.replace(/,tag:{}/g,"") + " && " + Item5.replace(/,tag:{}/g,"") + " && " + Item6.replace(/,tag:{}/g,"") + " && " + Item7.replace(/,tag:{}/g,"") + " && " + Item8.replace(/,tag:{}/g,"") + " && " + Item9.replace(/,tag:{}/g,"") + " && " + Item10.replace(/,tag:{}/g,"") + " && " + Item11.replace(/,tag:{}/g,"") + " && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {<br>  /function " + txtFunctionPath + "/1<br>}<br>if('entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "]' && " + Item0.replace(/,tag:{}/g,"") + " && " + Item1.replace(/,tag:{}/g,"") + " && " + Item2.replace(/,tag:{}/g,"") + " && " + Item3.replace(/,tag:{}/g,"") + " && " + Item4.replace(/,tag:{}/g,"") + " && " + Item5.replace(/,tag:{}/g,"") + " && " + Item6.replace(/,tag:{}/g,"") + " && " + Item7.replace(/,tag:{}/g,"") + " && " + Item8.replace(/,tag:{}/g,"") + " && " + Item9.replace(/,tag:{}/g,"") + " && " + Item10.replace(/,tag:{}/g,"") + " && " + Item11.replace(/,tag:{}/g,"") + outputUp + outputMain + outputDown + ") {<br>  /function " + txtFunctionPath + "/2<br>}<br>if('entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {<br>  if(" + Item0I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item1I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item2I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item3I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item4I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item5I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item6I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item7I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item8I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item9I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item10I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>  if(" + Item11I.replace(/,tag:{}/g,"") + ") {<br>    /function " + txtFunctionPath + "/3<br>  }<br>}<br><br>#file: " + txtMainPath + "/1<br><br>" + outputreplaceitemUp + outputreplaceitemMain + outputreplaceitemDown + "/tag @s add ac_lib_advanced_crafter_crafted<br>/tag @s add ac_lib_advanced_crafter_crafted_" + txtRecipeId + "<br><br>#file: " + txtMainPath + "/2<br><br>/function ac_lib:advanced_crafter/crafted<br>//Add replacements here<br>/tag @s remove ac_lib_advanced_crafter_crafted<br>/tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId + "<br><br>#file: " + txtMainPath + "/3<br><br>" + itemOutUpClearCmd + itemOutMainClearCmd + itemOutDownClearCmd + "/tag @s remove ac_lib_advanced_crafter_crafted<br>/tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
-  sendInfo('MCScript')
+  document.getElementById('output_mcscript').innerHTML = "#file: " + txtMainPath + "&#13;&#10;&#13;&#10;if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && " + Item0.replace(/,tag:{}/g,"") + " && " + Item1.replace(/,tag:{}/g,"") + " && " + Item2.replace(/,tag:{}/g,"") + " && " + Item3.replace(/,tag:{}/g,"") + " && " + Item4.replace(/,tag:{}/g,"") + " && " + Item5.replace(/,tag:{}/g,"") + " && " + Item6.replace(/,tag:{}/g,"") + " && " + Item7.replace(/,tag:{}/g,"") + " && " + Item8.replace(/,tag:{}/g,"") + " && " + Item9.replace(/,tag:{}/g,"") + " && " + Item10.replace(/,tag:{}/g,"") + " && " + Item11.replace(/,tag:{}/g,"") + " && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {&#13;&#10;  /function " + txtFunctionPath + "/1&#13;&#10;}&#13;&#10;if('entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "]' && " + Item0.replace(/,tag:{}/g,"") + " && " + Item1.replace(/,tag:{}/g,"") + " && " + Item2.replace(/,tag:{}/g,"") + " && " + Item3.replace(/,tag:{}/g,"") + " && " + Item4.replace(/,tag:{}/g,"") + " && " + Item5.replace(/,tag:{}/g,"") + " && " + Item6.replace(/,tag:{}/g,"") + " && " + Item7.replace(/,tag:{}/g,"") + " && " + Item8.replace(/,tag:{}/g,"") + " && " + Item9.replace(/,tag:{}/g,"") + " && " + Item10.replace(/,tag:{}/g,"") + " && " + Item11.replace(/,tag:{}/g,"") + outputUp + outputMain + outputDown + ") {&#13;&#10;  /function " + txtFunctionPath + "/2&#13;&#10;}&#13;&#10;if('entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {&#13;&#10;  if(" + Item0I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item1I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item2I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item3I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item4I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item5I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item6I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item7I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item8I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item9I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item10I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;  if(" + Item11I.replace(/,tag:{}/g,"") + ") {&#13;&#10;    /function " + txtFunctionPath + "/3&#13;&#10;  }&#13;&#10;}&#13;&#10;&#13;&#10;#file: " + txtMainPath + "/1&#13;&#10;&#13;&#10;" + outputreplaceitemUp + outputreplaceitemMain + outputreplaceitemDown + "/tag @s add ac_lib_advanced_crafter_crafted&#13;&#10;/tag @s add ac_lib_advanced_crafter_crafted_" + txtRecipeId + "&#13;&#10;&#13;&#10;#file: " + txtMainPath + "/2&#13;&#10;&#13;&#10;/function ac_lib:advanced_crafter/crafted&#13;&#10;//Add replacements here&#13;&#10;/tag @s remove ac_lib_advanced_crafter_crafted&#13;&#10;/tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId + "&#13;&#10;&#13;&#10;#file: " + txtMainPath + "/3&#13;&#10;&#13;&#10;" + itemOutUpClearCmd + itemOutMainClearCmd + itemOutDownClearCmd + "/tag @s remove ac_lib_advanced_crafter_crafted&#13;&#10;/tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
+  sendInfo('MCScript&value2=' + JSON.stringify(recipeToJson()));
 }
 
 function generateMcfunction() {
@@ -609,13 +617,17 @@ function generateMcfunction() {
   // document.getElementById("output_mcscript").style.marginTop = "0px";
   // document.getElementById("output_mcscript").style.border = "none";
 
-  document.getElementById("output_mcfunction").hidden = false;
-  document.getElementById("output_mcfunction").style.border = "black 2px solid";
-  document.getElementById("output_mcfunction_0").hidden = false;
-  document.getElementById("output_mcfunction_1").hidden = false;
-  document.getElementById("output_mcfunction_2").hidden = false;
-  document.getElementById("output_mcfunction_3").hidden = false;
-  document.getElementById("output_mcscript").hidden = true;
+  // document.getElementById("output_mcfunction").hidden = false;
+  // document.getElementById("output_mcfunction").style.border = "black 2px solid";
+  // document.getElementById("output_mcfunction_0").hidden = false;
+  // document.getElementById("output_mcfunction_1").hidden = false;
+  // document.getElementById("output_mcfunction_2").hidden = false;
+  // document.getElementById("output_mcfunction_3").hidden = false;
+  // document.getElementById("output_mcscript").hidden = true;
+
+
+  document.getElementById("output_mcscript").classList.add('hidden');
+  document.getElementById("output_mcfunction").classList.remove('hidden');
 
 
   var item0_id = document.getElementById('item_0_id');
@@ -823,22 +835,22 @@ function generateMcfunction() {
     var itemOutUpClearCmd = "";
     if (itemout0_id.value != "")
     {
-        outputreplaceitemUp = "replaceitem block ~ ~ ~ container.7 " + itemout0_id.value + ItemOutNbtUp.replace(",tag:", "") + " " + itemout0_count.value + "<br>";
-        itemOutUpClearCmd = "replaceitem block ~ ~ ~ container.7 minecraft:air<br>";
+        outputreplaceitemUp = "replaceitem block ~ ~ ~ container.7 " + itemout0_id.value + ItemOutNbtUp.replace(",tag:", "") + " " + itemout0_count.value + "&#13;&#10;";
+        itemOutUpClearCmd = "replaceitem block ~ ~ ~ container.7 minecraft:air&#13;&#10;";
     }
     var outputreplaceitemMain = "";
     var itemOutMainClearCmd = "";
     if (itemout1_id.value != "")
     {
-        outputreplaceitemMain = "replaceitem block ~ ~ ~ container.16 " + itemout1_id.value + ItemOutNbtMain.replace(",tag:", "") + " " + itemout1_count.value + "<br>";
-        itemOutMainClearCmd = "replaceitem block ~ ~ ~ container.16 minecraft:air<br>";
+        outputreplaceitemMain = "replaceitem block ~ ~ ~ container.16 " + itemout1_id.value + ItemOutNbtMain.replace(",tag:", "") + " " + itemout1_count.value + "&#13;&#10;";
+        itemOutMainClearCmd = "replaceitem block ~ ~ ~ container.16 minecraft:air&#13;&#10;";
     }
     var outputreplaceitemDown = "";
     var itemOutDownClearCmd = "";
     if (itemout2_id.value != "")
     {
-        outputreplaceitemDown = "replaceitem block ~ ~ ~ container.25 " + itemout2_id.value + ItemOutNbtDown.replace(",tag:", "") + " " + itemout2_count.value + "<br>";
-        itemOutDownClearCmd = "replaceitem block ~ ~ ~ container.7 minecraft:air<br>";
+        outputreplaceitemDown = "replaceitem block ~ ~ ~ container.25 " + itemout2_id.value + ItemOutNbtDown.replace(",tag:", "") + " " + itemout2_count.value + "&#13;&#10;";
+        itemOutDownClearCmd = "replaceitem block ~ ~ ~ container.7 minecraft:air&#13;&#10;";
     }
 
     var outputUp = "";
@@ -857,11 +869,11 @@ function generateMcfunction() {
         outputDown = " unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b,Count:" + itemout2_count.value + "b,id:\"" + itemout2_id.value + "\"" + ItemOutNbtDown.replace(/\\\"/g,"\\\\\"") + "}]}";
     }
 
-  document.getElementById('output_mcfunction_0').innerHTML = "execute if entity @s[tag=!ac_lib_advanced_crafter_crafted] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]} run function " + txtFunctionPath + "/1<br><br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + outputUp + outputMain + outputDown + " run function " + txtFunctionPath + "/2<br><br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item0I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item1I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item2I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item3I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item4I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item5I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item6I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item7I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item8I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item9I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item10I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3<br>execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item11I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3";
-  document.getElementById('output_mcfunction_1').innerHTML = outputreplaceitemUp + outputreplaceitemMain + outputreplaceitemDown + "tag @s add ac_lib_advanced_crafter_crafted<br>tag @s add ac_lib_advanced_crafter_crafted_" + txtRecipeId;
-  document.getElementById('output_mcfunction_2').innerHTML = "function ac_lib:advanced_crafter/crafted<br>#Add replacements here<br>tag @s remove ac_lib_advanced_crafter_crafted<br>tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
-  document.getElementById('output_mcfunction_3').innerHTML = itemOutUpClearCmd + itemOutMainClearCmd + itemOutDownClearCmd + "tag @s remove ac_lib_advanced_crafter_crafted<br>tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
-  sendInfo('MCFunction')
+  document.getElementById('output_mcfunction_0').innerHTML = "execute if entity @s[tag=!ac_lib_advanced_crafter_crafted] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]} run function " + txtFunctionPath + "/1&#13;&#10;&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + outputUp + outputMain + outputDown + " run function " + txtFunctionPath + "/2&#13;&#10;&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item0I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item1I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item2I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item3I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item4I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item5I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item6I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item7I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item8I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item9I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item10I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item11I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3";
+  document.getElementById('output_mcfunction_1').innerHTML = outputreplaceitemUp + outputreplaceitemMain + outputreplaceitemDown + "tag @s add ac_lib_advanced_crafter_crafted&#13;&#10;tag @s add ac_lib_advanced_crafter_crafted_" + txtRecipeId;
+  document.getElementById('output_mcfunction_2').innerHTML = "function ac_lib:advanced_crafter/crafted&#13;&#10;#Add replacements here&#13;&#10;tag @s remove ac_lib_advanced_crafter_crafted&#13;&#10;tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
+  document.getElementById('output_mcfunction_3').innerHTML = itemOutUpClearCmd + itemOutMainClearCmd + itemOutDownClearCmd + "tag @s remove ac_lib_advanced_crafter_crafted&#13;&#10;tag @s remove ac_lib_advanced_crafter_crafted_" + txtRecipeId;
+  sendInfo('MCFunction&value2=' + JSON.stringify(recipeToJson()))
 }
 
 function sendInfo(method) {

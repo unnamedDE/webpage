@@ -29,7 +29,7 @@
     <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
     <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
 
-    <h1 id="header">ACLib recipe generator</h1>
+    <h1 id="header">ACLib recipe generator Beta</h1>
     <div class="container">
       <div class="container_form">
         <div class="container_items">
@@ -142,12 +142,12 @@
         <input type="button" name="help_export" value="?" onclick="helpExport()" id="button_help_export" class="help_button" spellcheck="false" autocomplete="off">
         <input type="button" name="reset" value="Reset" onclick="alertReset()" id="button_reset" class="big_button" spellcheck="false" autocomplete="off">
       </div>
-      <p id="output_mcscript" hidden></p>
+      <textarea id="output_mcscript" class="hidden" readonly></textarea>
       <div id="output_mcfunction">
-        <p id="output_mcfunction_0"></p>
-        <p id="output_mcfunction_1"></p>
-        <p id="output_mcfunction_2"></p>
-        <p id="output_mcfunction_3"></p>
+        <textarea id="output_mcfunction_0" readonly></textarea>
+        <textarea id="output_mcfunction_1" readonly></textarea>
+        <textarea id="output_mcfunction_2" readonly></textarea>
+        <textarea id="output_mcfunction_3" readonly></textarea>
       </div>
     </div>
     <script src="after.js"></script>
