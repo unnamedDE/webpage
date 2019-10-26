@@ -301,7 +301,7 @@ function exportRecipe() {
       console.log('export failed');
       return
   }
-  
+
   var txtRecipeId = document.getElementById("receipe_id").value;
   console.log('exportRecipe()');
   let output = recipeToJson();
@@ -856,17 +856,17 @@ function generateMcfunction() {
     var outputUp = "";
     if(itemout0_id.value != "")
     {
-        outputUp = " unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b,Count:" + itemout0_count.value + "b,id:\"" + itemout0_id.value + "\"" + ItemOutNbtUp.replace(/\\\"/g,"\\\\\"") + "}]}";
+        outputUp = "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b,Count:" + itemout0_count.value + "b,id:\"" + itemout0_id.value + "\"" + ItemOutNbtUp.replace(/\\\"/g,"\\\\\"") + "}]}";
     }
     var outputMain = "";
     if (itemout1_id.value != "")
     {
-        outputMain = " unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:" + itemout1_count.value + "b,id:\"" + itemout1_id.value + "\"" + ItemOutNbtMain.replace(/\\\"/g,"\\\\\"") + "}]}";
+        outputMain = "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:" + itemout1_count.value + "b,id:\"" + itemout1_id.value + "\"" + ItemOutNbtMain.replace(/\\\"/g,"\\\\\"") + "}]}";
     }
     var outputDown = "";
     if (itemout2_id.value != "")
     {
-        outputDown = " unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b,Count:" + itemout2_count.value + "b,id:\"" + itemout2_id.value + "\"" + ItemOutNbtDown.replace(/\\\"/g,"\\\\\"") + "}]}";
+        outputDown = "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b,Count:" + itemout2_count.value + "b,id:\"" + itemout2_id.value + "\"" + ItemOutNbtDown.replace(/\\\"/g,"\\\\\"") + "}]}";
     }
 
   document.getElementById('output_mcfunction_0').innerHTML = "execute if entity @s[tag=!ac_lib_advanced_crafter_crafted] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + "unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]} unless block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]} run function " + txtFunctionPath + "/1&#13;&#10;&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] " + Item0.replace(/,tag:{}/g,"") + Item1.replace(/,tag:{}/g,"") + Item2.replace(/,tag:{}/g,"") + Item3.replace(/,tag:{}/g,"") + Item4.replace(/,tag:{}/g,"") + Item5.replace(/,tag:{}/g,"") + Item6.replace(/,tag:{}/g,"") + Item7.replace(/,tag:{}/g,"") + Item8.replace(/,tag:{}/g,"") + Item9.replace(/,tag:{}/g,"") + Item10.replace(/,tag:{}/g,"") + Item11.replace(/,tag:{}/g,"") + outputUp + outputMain + outputDown + " run function " + txtFunctionPath + "/2&#13;&#10;&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item0I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item1I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item2I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item3I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item4I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item5I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item6I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item7I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item8I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item9I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item10I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3&#13;&#10;execute if entity @s[tag=ac_lib_advanced_crafter_crafted_" + txtRecipeId + "] if block ~ ~ ~ minecraft:gray_shulker_box " + Item11I.replace(/,tag:{}/g,"") + "run function " + txtFunctionPath + "/3";
