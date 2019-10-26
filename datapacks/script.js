@@ -1,9 +1,9 @@
-fetch('./list.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(list) {
-    window.addEventListener('load', () => {
+window.addEventListener('load', () => {
+  fetch('./list.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(list) {
 
       for(let i = 0; i < list.length; i++) {
         let pack = document.createElement('div');

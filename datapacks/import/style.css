@@ -147,6 +147,87 @@ li {
   padding-bottom: 5px;
 }
 
+#requirements {
+  background-color: #444;
+  width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.requirement {
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 4fr 2fr 6fr 1.5fr;
+  grid-template-areas:
+  "name version description download";
+}
+.requirement > span {
+  /* margin: 5px; */
+  /* padding: 5px; */
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.requirement > div {
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+  grid-area: extra;
+  margin: 0 5px;
+  border-top: 1px #555 solid;
+  border-bottom: 1px #555 solid;
+}
+.requirement > span * {
+  max-width: 100%;
+}
+.requirement > span:nth-child(1) {
+  border-right: 1px #555 solid;
+  grid-area: name;
+}
+.requirement > span:nth-child(2) {
+  border-right: 1px #555 solid;
+  grid-area: version;
+  text-align: center;
+}
+.requirement > span:nth-child(3) {
+  border-right: 1px #555 solid;
+  grid-area: description;
+}
+.requirement > span:nth-child(4) {
+  text-align: center;
+  grid-area: download;
+  padding-top: 8px;
+}
+.requirement > span .download {
+  margin: -5px;
+  padding: 5px;
+  border-radius: 7px;
+  background-color: #222;
+  color: #bbb;
+  transition: all .2s;
+}
+.requirement > span .download:hover {
+  border-radius: 50%;
+  background-color: #111;
+  color: #ddd;
+}
+.requirement:first-child {
+  background-color: #333;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.requirement:first-child span {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+.requirement:last-child span {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
 .container-extra {
   font-size: 20px;
   padding: 10px;

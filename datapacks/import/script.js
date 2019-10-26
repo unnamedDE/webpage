@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     .then(function(response) {
       return response.json();
     })
-    .then(function(info) {
+    .then(async function(info) {
       if(getParameter('download')) checkDownload(info);
 
 
@@ -15,6 +15,27 @@ window.addEventListener('load', () => {
       if(info.banner) {
         bannerElement = `\n<img src="${info.banner}" alt="banner" id="banner"/>`
       }
+      let requirementsElement = '';
+      if(info.requirements && info.requirements.length > 0) {
+        requirementsElement = `<div id="requirements">\n
+  <div class="requirement">
+    <span>Name</span>
+    <span>Type</span>
+    <span>Description</span>
+    <span>Tested Versions</span>
+  </div>`;
+        info.requirements.forEach(e => {
+        requirementsElement +=
+`<div class="requirement">
+  <span>${e.name}</span>
+  <span>${e.type}</span>
+  <span>${e.description}</span>
+  <span>${e.testedVersions.join(', ')}</span>
+</div>`;
+        });
+        requirementsElement += '</div>';
+    }
+
       document.querySelector('body').innerHTML = `
       <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
       <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
@@ -24,6 +45,7 @@ window.addEventListener('load', () => {
         <h1 class="animated fadeInDown">${info.title}</h1>
       </div>
       ${bannerElement}
+      ${requirementsElement}
       <div id="container">
         <div class="container-item">
           <span>Name</span>

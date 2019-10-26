@@ -29,5 +29,6 @@
   "extras": [
     "Generate recipes with <a href=\"/aclib-generator\" target=\"_blank\">this</a> handy generator!",
     "Download a template datapack for AClib <a href=\"files/aclib_template-v1.0.zip\" download>here</a>."
-  ]
+  ],
+  "requirements": []
 }
