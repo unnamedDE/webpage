@@ -19,6 +19,11 @@ function sltTypeChange() {
       .then(packList => {
         sltName.innerHTML = `<option selected disabled hidden value="none">Choose pack name...</option>`;
         sltName.disabled = false;
+        packList.sort((a, b) => {
+          if(a.name < b.name) return -1;
+          if(a.name > b.name) return 1;
+          return 0;
+        });
         packList.forEach(e => {
           const el = document.createElement('option');
           el.innerHTML = e.name;
@@ -58,7 +63,7 @@ btnDownload.addEventListener('click', () => {
 })
 
 function changedInput() {
-  if(sltType.value !== 'none' && sltName.value !== 'none' && sltVersion.value !== 'none') {
+  if(sltType.value != 'none' && sltName.value != 'none' && sltVersion.value != 'none') {
     btnDownload.disabled = false;
   } else {
     btnDownload.disabled = true;
