@@ -246,51 +246,111 @@ function dragOver() {
 }
 function recipeToJson() {
   generateInit();
-  var item0_id = document.getElementById('item_0_id');
-  var item0_nbt = document.getElementById('item_0_nbt');
-  var item1_id = document.getElementById('item_1_id');
-  var item1_nbt = document.getElementById('item_1_nbt');
-  var item2_id = document.getElementById('item_2_id');
-  var item2_nbt = document.getElementById('item_2_nbt');
-  var item3_id = document.getElementById('item_3_id');
-  var item3_nbt = document.getElementById('item_3_nbt');
-  var item4_id = document.getElementById('item_4_id');
-  var item4_nbt = document.getElementById('item_4_nbt');
-  var item5_id = document.getElementById('item_5_id');
-  var item5_nbt = document.getElementById('item_5_nbt');
-  var item6_id = document.getElementById('item_6_id');
-  var item6_nbt = document.getElementById('item_6_nbt');
-  var item7_id = document.getElementById('item_7_id');
-  var item7_nbt = document.getElementById('item_7_nbt');
-  var item8_id = document.getElementById('item_8_id');
-  var item8_nbt = document.getElementById('item_8_nbt');
-  var item9_id = document.getElementById('item_9_id');
-  var item9_nbt = document.getElementById('item_9_nbt');
-  var item10_id = document.getElementById('item_10_id');
-  var item10_nbt = document.getElementById('item_10_nbt');
-  var item11_id = document.getElementById('item_11_id');
-  var item11_nbt = document.getElementById('item_11_nbt');
+  var item0_id = document.getElementById('item_0_id').value;
+  var item0_nbt = document.getElementById('item_0_nbt').value;
+  var item1_id = document.getElementById('item_1_id').value;
+  var item1_nbt = document.getElementById('item_1_nbt').value;
+  var item2_id = document.getElementById('item_2_id').value;
+  var item2_nbt = document.getElementById('item_2_nbt').value;
+  var item3_id = document.getElementById('item_3_id').value;
+  var item3_nbt = document.getElementById('item_3_nbt').value;
+  var item4_id = document.getElementById('item_4_id').value;
+  var item4_nbt = document.getElementById('item_4_nbt').value;
+  var item5_id = document.getElementById('item_5_id').value;
+  var item5_nbt = document.getElementById('item_5_nbt').value;
+  var item6_id = document.getElementById('item_6_id').value;
+  var item6_nbt = document.getElementById('item_6_nbt').value;
+  var item7_id = document.getElementById('item_7_id').value;
+  var item7_nbt = document.getElementById('item_7_nbt').value;
+  var item8_id = document.getElementById('item_8_id').value;
+  var item8_nbt = document.getElementById('item_8_nbt').value;
+  var item9_id = document.getElementById('item_9_id').value;
+  var item9_nbt = document.getElementById('item_9_nbt').value;
+  var item10_id = document.getElementById('item_10_id').value;
+  var item10_nbt = document.getElementById('item_10_nbt').value;
+  var item11_id = document.getElementById('item_11_id').value;
+  var item11_nbt = document.getElementById('item_11_nbt').value;
 
-  var itemout0_id = document.getElementById('output_item_0_id');
-  var itemout0_nbt = document.getElementById('output_item_0_nbt');
-  var itemout0_count = document.getElementById('output_item_0_count');
-  var itemout1_id = document.getElementById('output_item_1_id');
-  var itemout1_nbt = document.getElementById('output_item_1_nbt');
-  var itemout1_count = document.getElementById('output_item_1_count');
-  var itemout2_id = document.getElementById('output_item_2_id');
-  var itemout2_nbt = document.getElementById('output_item_2_nbt');
-  var itemout2_count = document.getElementById('output_item_2_count');
+  var itemout0_id = document.getElementById('output_item_0_id').value;
+  var itemout0_nbt = document.getElementById('output_item_0_nbt').value;
+  var itemout0_count = document.getElementById('output_item_0_count').value;
+  var itemout1_id = document.getElementById('output_item_1_id').value;
+  var itemout1_nbt = document.getElementById('output_item_1_nbt').value;
+  var itemout1_count = document.getElementById('output_item_1_count').value;
+  var itemout2_id = document.getElementById('output_item_2_id').value;
+  var itemout2_nbt = document.getElementById('output_item_2_nbt').value;
+  var itemout2_count = document.getElementById('output_item_2_count').value;
 
   var txtMainPath = document.getElementById("main_path").value;
   var txtFunctionPath = document.getElementById("function_path").value;
   var txtRecipeId = document.getElementById("receipe_id").value;
 
-  return {txtMainPath:txtMainPath,txtFunctionPath:txtFunctionPath,txtRecipeId:txtRecipeId,item0:{id:item0_id.value,nbt:item0_nbt.value},item1:{id:item1_id.value,nbt:item1_nbt.value},item2:{id:item2_id.value,nbt:item2_nbt.value},item3:{id:item3_id.value,nbt:item3_nbt.value},item4:{id:item4_id.value,nbt:item4_nbt.value},item5:{id:item5_id.value,nbt:item5_nbt.value},item6:{id:item6_id.value,nbt:item6_nbt.value},item7:{id:item7_id.value,nbt:item7_nbt.value},item8:{id:item8_id.value,nbt:item8_nbt.value},item9:{id:item9_id.value,nbt:item9_nbt.value},item10:{id:item10_id.value,nbt:item10_nbt.value},item11:{id:item11_id.value,nbt:item11_nbt.value},output0:{id:itemout0_id.value,nbt:itemout0_nbt.value,count:itemout0_count.value},output1:{id:itemout1_id.value,nbt:itemout1_nbt.value,count:itemout1_count.value},output2:{id:itemout2_id.value,nbt:itemout2_nbt.value,count:itemout2_count.value}};
+  let output = { };
+
+  if(txtMainPath) output.txtMainPath = txtMainPath;
+  if(txtFunctionPath) output.txtFunctionPath = txtFunctionPath;
+  if(txtRecipeId) output.txtRecipeId = txtRecipeId;
+
+  if(item0_id || item0_nbt) output.item0 = { };
+  if(item0_id) output.item0.id = item0_id;
+  if(item0_nbt) output.item0.nbt = item0_nbt;
+  if(item1_id || item1_nbt) output.item1 = { };
+  if(item1_id) output.item1.id = item1_id;
+  if(item1_nbt) output.item1.nbt = item1_nbt;
+  if(item2_id || item2_nbt) output.item2 = { };
+  if(item2_id) output.item2.id = item2_id;
+  if(item2_nbt) output.item2.nbt = item2_nbt;
+  if(item3_id || item3_nbt) output.item3 = { };
+  if(item3_id) output.item3.id = item3_id;
+  if(item3_nbt) output.item3.nbt = item3_nbt;
+  if(item4_id || item4_nbt) output.item4 = { };
+  if(item4_id) output.item4.id = item4_id;
+  if(item4_nbt) output.item4.nbt = item4_nbt;
+  if(item5_id || item5_nbt) output.item5 = { };
+  if(item5_id) output.item5.id = item5_id;
+  if(item5_nbt) output.item5.nbt = item5_nbt;
+  if(item6_id || item6_nbt) output.item6 = { };
+  if(item6_id) output.item6.id = item6_id;
+  if(item6_nbt) output.item6.nbt = item6_nbt;
+  if(item7_id || item7_nbt) output.item7 = { };
+  if(item7_id) output.item7.id = item7_id;
+  if(item7_nbt) output.item7.nbt = item7_nbt;
+  if(item8_id || item8_nbt) output.item8 = { };
+  if(item8_id) output.item8.id = item8_id;
+  if(item8_nbt) output.item8.nbt = item8_nbt;
+  if(item9_id || item9_nbt) output.item9 = { };
+  if(item9_id) output.item9.id = item9_id;
+  if(item9_nbt) output.item9.nbt = item9_nbt;
+  if(item10_id || item10_nbt) output.item10 = { };
+  if(item10_id) output.item10.id = item10_id;
+  if(item10_nbt) output.item10.nbt = item10_nbt;
+  if(item11_id || item11_nbt) output.item11 = { };
+  if(item11_id) output.item11.id = item11_id;
+  if(item11_nbt) output.item11.nbt = item11_nbt;
+
+  if(itemout0_id || itemout0_nbt || itemout0_count != "1") output.itemout0 = { };
+  if(itemout0_id) output.itemout0.id = itemout0_id;
+  if(itemout0_nbt) output.itemout0.nbt = itemout0_nbt;
+  if(itemout0_count != "1") output.itemout0.count = itemout0_count;
+  if(itemout1_id || itemout1_nbt || itemout1_count != "1") output.itemout1 = { };
+  if(itemout1_id) output.itemout1.id = itemout1_id;
+  if(itemout1_nbt) output.itemout1.nbt = itemout1_nbt;
+  if(itemout1_count != "1") output.itemout1.count = itemout1_count;
+  if(itemout2_id || itemout2_nbt || itemout2_count != "1") output.itemout2 = { };
+  if(itemout2_id) output.itemout2.id = itemout2_id;
+  if(itemout2_nbt) output.itemout2.nbt = itemout2_nbt;
+  if(itemout2_count != "1") output.itemout2.count = itemout2_count;
+
+  return output;
+  //{txtMainPath:txtMainPath,txtFunctionPath:txtFunctionPath,txtRecipeId:txtRecipeId,item0:{id:item0_id.value,nbt:item0_nbt.value},item1:{id:item1_id.value,nbt:item1_nbt.value},item2:{id:item2_id.value,nbt:item2_nbt.value},item3:{id:item3_id.value,nbt:item3_nbt.value},item4:{id:item4_id.value,nbt:item4_nbt.value},item5:{id:item5_id.value,nbt:item5_nbt.value},item6:{id:item6_id.value,nbt:item6_nbt.value},item7:{id:item7_id.value,nbt:item7_nbt.value},item8:{id:item8_id.value,nbt:item8_nbt.value},item9:{id:item9_id.value,nbt:item9_nbt.value},item10:{id:item10_id.value,nbt:item10_nbt.value},item11:{id:item11_id.value,nbt:item11_nbt.value},output0:{id:itemout0_id.value,nbt:itemout0_nbt.value,count:itemout0_count.value},output1:{id:itemout1_id.value,nbt:itemout1_nbt.value,count:itemout1_count.value},output2:{id:itemout2_id.value,nbt:itemout2_nbt.value,count:itemout2_count.value}};
 
 
 }
 
 function exportRecipe() {
+
+  var txtRecipeId = document.getElementById("receipe_id").value;
+
   if(txtRecipeId == '') {
     swal({   title: "Export failed",
       text: "To export you have to set a recipe ID",
@@ -302,7 +362,6 @@ function exportRecipe() {
       return
   }
 
-  var txtRecipeId = document.getElementById("receipe_id").value;
   console.log('exportRecipe()');
   let output = recipeToJson();
   sendInfo('Export&value2=' + JSON.stringify(output))
