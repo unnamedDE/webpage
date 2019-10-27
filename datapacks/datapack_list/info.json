@@ -1,0 +1,17 @@
+{
+  "title": "Datapack List - Datapack",
+  "pmc": false,
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "datapack_list_v1.0",
+      "name": "Datapack List V1.0",
+      "version": "1.0",
+      "description": "Adds a scoreboard for checking which compatible packs are installed",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/638037192115224625/datapack_list-v1.0.zip"
+    }
+  ],
+  "extras": [],
+  "requirements": []
+}
