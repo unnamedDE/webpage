@@ -5,6 +5,12 @@ window.addEventListener('load', () => {
     })
     .then(function(list) {
 
+      list.sort((a, b) => {
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+      });
+
       for(let i = 0; i < list.length; i++) {
         let pack = document.createElement('div');
         pack.classList.add('container-item');
