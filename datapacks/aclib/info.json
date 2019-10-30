@@ -28,7 +28,8 @@
   ],
   "extras": [
     "Generate recipes with <a href=\"/aclib-generator\" target=\"_blank\">this</a> handy generator!",
-    "Download a template datapack for AClib <a href=\"files/aclib_template-v1.0.zip\" download>here</a>."
+    "Download a template datapack for AClib <a href=\"files/aclib_template-v1.0.zip\" download>here</a>.",
+    "Get a custom GUI by installing <a target=\"_blank\" href=\"/resourcepacks/unnamed_resources\">unnamed resources</a> and <a target=\"_blank\" href=\"https://optifine.net/downloads\">optifine</a>"
   ],
   "requirements": []
 }

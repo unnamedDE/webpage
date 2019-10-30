@@ -1,0 +1,19 @@
+{
+  "title": "Unnamed Resources - Resourcepack",
+  "pmc": "https://www.planetminecraft.com/texture_pack/unnamed-resources-resourcepack-1-14-x/",
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "unnamed_resources-v1.0",
+      "name": "Unnamed Resources V1.0",
+      "version": "1.0",
+      "description": "Adds all textures/models/sounds needed for my datapacks",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/639174032524181514/unnamed_resources-v1.0.zip"
+    }
+  ],
+  "extras": [
+    "Datapacks used for: <ul><li><a target=\"_blank\" href=\"/datapacks/aclib\">AClib</a> (optional)</li></ul>"
+  ],
+  "requirements": []
+}
