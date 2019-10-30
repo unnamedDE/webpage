@@ -70,6 +70,9 @@ body {
 #link-container #datapacks a {
   background-image: url(img/datapacks.png);
 }
+#link-container #resourcepacks a {
+  background-image: url(img/resourcepacks.png);
+}
 #link-container #mc-tools a {
   background-image: url(img/mc-tools-logo.png);
 }
