@@ -20,16 +20,16 @@
     <script src="../import/global/script.js"></script>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
   </head>
-  <body ondragover="overrideDefault(event);dragOver()" ondragenter="overrideDefault(event)" ondragleave="overrideDefault(event)" ondrop="overrideDefault(event);dropFiles(event)">
+  <body>
     <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left" style="color: #ddd;"></i></a>
     <!--  onclick="window.history.back();" -->
-    <a href="../datapacks/aclib" target="_blank" id="button_download" title="Download ACLib"><i class="fas fa-download"></i><!--  Download  --></a>
+    <button id="button_info" title="More info" onclick="document.querySelector('#info-overlay').classList.remove('hidden')"><i class="fas fa-info"></i><!--<i class="fas fa-download"></i>--><!--  Download  --></button>
+    <!-- <a href="../datapacks/aclib" target="_blank" id="button_download" title="Download ACLib"><i class="fas fa-download"></i></a> -->
     <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
     <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
 
-    <h1 id="header">ACLib recipe generator Beta</h1>
+    <h1 id="header">ACLib recipe generator</h1>
     <div class="container">
       <div class="container_form">
         <div class="container_items">
@@ -38,17 +38,17 @@
             <div class="container_item" id="item_0">
               <span>ID: <input type="text" name="item_0_id" id="item_0_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_0_nbt" id="item_0_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T<input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_0_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_3">
               <span>ID: <input type="text" name="item_3_id" id="item_3_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_3_nbt" id="item_3_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_3_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_6">
               <span>ID: <input type="text" name="item_6_id" id="item_6_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_6_nbt" id="item_6_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_6_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
           </div>
           <div class="container_row">
@@ -56,17 +56,17 @@
             <div class="container_item" id="item_1">
               <span>ID: <input type="text" name="item_1_id" id="item_1_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_1_nbt" id="item_1_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_1_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_4">
               <span>ID: <input type="text" name="item_4_id" id="item_4_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_4_nbt" id="item_4_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_4_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_7">
               <span>ID: <input type="text" name="item_7_id" id="item_7_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_7_nbt" id="item_7_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_7_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
           </div>
           <div class="container_row">
@@ -74,17 +74,17 @@
             <div class="container_item" id="item_2">
               <span>ID: <input type="text" name="item_2_id" id="item_2_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_2_nbt" id="item_2_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_2_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_5">
               <span>ID: <input type="text" name="item_5_id" id="item_5_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_5_nbt" id="item_5_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_5_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_8">
               <span>ID: <input type="text" name="item_8_id" id="item_8_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_8_nbt" id="item_8_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_8_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
           </div>
 
@@ -93,17 +93,17 @@
             <div class="container_item" id="item_9">
               <span>ID: <input type="text" name="item_9_id" id="item_9_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_9_nbt" id="item_9_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_9_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_10">
               <span>ID: <input type="text" name="item_10_id" id="item_10_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_10_nbt" id="item_10_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_10_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
             <div class="container_item" id="item_11">
               <span>ID: <input type="text" name="item_11_id" id="item_11_id" spellcheck="false" autocomplete="off"></span>
               <span>NBT: <input type="text" name="item_11_nbt" id="item_11_nbt" spellcheck="false" autocomplete="off"></span>
-              <span class="hidden">T: <input type="text" spellcheck="false" autocomplete="off"></span>
+              <span><select id="item_11_keep"><option value="use">Use up item after crafting</option><option value="keep">Keep item after crafting</option></select></span>
             </div>
           </div>
 
@@ -134,13 +134,13 @@
           <span>Recipe ID: <input type="text" id="receipe_id" name="receipe_id" value="" spellcheck="false" autocomplete="off"></span>
         </div>
       <div class="buttoncontainer">
-        <input type="button" name="generate_mcscript" value="Generate (MCScript)" onclick="generateMcscript()" id="button_generate_mcscript" class="big_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="help_mcscript" value="?" onclick="helpMcscript()" id="button_help_mcscript" class="help_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="generate_mcfunction" value="Generate" onclick="generateMcfunction()" id="button_generate_mcfunction" class="big_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="help_mcfunction" value="?" onclick="helpMcfunction()" id="button_help_mcfunction" class="help_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="export" value="Export" onclick="exportRecipe()" id="button_export" class="big_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="help_export" value="?" onclick="helpExport()" id="button_help_export" class="help_button" spellcheck="false" autocomplete="off">
-        <input type="button" name="reset" value="Reset" onclick="alertReset()" id="button_reset" class="big_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="Generate (MCScript)" onclick="generateMcscript()" id="button_generate_mcscript" class="big_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="?" onclick="helpMcscript()" id="button_help_mcscript" class="help_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="Generate" onclick="generateMcfunction()" id="button_generate_mcfunction" class="big_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="?" onclick="helpMcfunction()" id="button_help_mcfunction" class="help_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="Save / Load" onclick="document.querySelector('#save-overlay').classList.remove('hidden')" id="button_save-load" class="big_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="?" onclick="helpSave()" id="button_help_save-load" class="help_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="Reset" onclick="alertReset()" id="button_reset" class="big_button" spellcheck="false" autocomplete="off">
       </div>
       <textarea id="output_mcscript" class="hidden" readonly></textarea>
       <div id="output_mcfunction">
@@ -150,6 +150,37 @@
         <textarea id="output_mcfunction_3" readonly></textarea>
       </div>
     </div>
-    <script src="after.js"></script>
+    <div id="save-overlay" class="hidden">
+      <div id="save-container">
+        <button type="button" id="save-close-button" onclick="document.querySelector('#save-overlay').classList.add('hidden')"><i class="fas fa-times"></i></button>
+        <h1>Saved recipes</h1>
+        <p>Drag exported files here to import</p>
+
+        <hr style="border: #222 1px solid;margin: 10px auto;">
+
+        <div id="saved-recipes-container">
+          <div><span>Test Recipe</span><button type="button" class="delete-recipe">Delete</button><button type="button" class="load-recipe">Load</button></div>
+          <div><input type="text" placeholder="Recipe name" id="save-recipe-name" autocomplete="off"><button type="button" id="add-save-recipe">Save</button></div>
+        </div>
+
+        <button type="button" id="button_export" class="big_button">Export to file</button>
+      </div>
+    </div>
+
+    <div id="info-overlay" class="hidden">
+      <div id="info-container">
+        <button type="button" id="info-close-button" onclick="document.querySelector('#info-overlay').classList.add('hidden')"><i class="fas fa-times"></i></button>
+        <h1>Info about this generator and <a href="/datapacks/aclib">AClib</a></h1>
+        <hr style="border: #222 1px solid;margin: 10px auto;">
+
+        <p>This generator only works for AClib V2.0.0+</p>
+        <p>You can only use the keep item feature for AClib V2.1.0+</p>
+        <br>
+        <p>Please make sure you are using the correct version before reporting a bug</p>
+
+        <button type="button" id="button_download" class="big_button">Download AClib</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

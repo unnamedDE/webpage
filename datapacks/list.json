@@ -13,5 +13,10 @@
     "id": "datapack_list",
     "name": "Datapack List",
     "path": "datapack_list/"
+  },
+  {
+    "id": "unnamed_core",
+    "name": "Unnamed Core",
+    "path": "unnamed_core/"
   }
 ]
