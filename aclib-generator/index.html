@@ -164,7 +164,9 @@
           <div><input type="text" placeholder="Recipe name" id="save-recipe-name" autocomplete="off"><button type="button" id="add-save-recipe">Save</button></div>
         </div>
 
-        <button type="button" id="button_export" class="big_button">Export to file</button>
+        <div class="buttoncontainer">
+          <button type="button" id="button_export" class="big_button">Export current recipe to file</button><button type="button" id="button_export_saved" class="big_button">Export saved recipes to file</button>
+        </div>
       </div>
     </div>
     <div id="custom-commands-overlay" class="hidden">
@@ -205,7 +207,7 @@
         <br>
         <p>Please make sure you are using the correct version before reporting a bug</p>
 
-        <button type="button" id="button_download" class="big_button">Download AClib</button>
+        <a id="button_download" class="big_button" target="_blank" href="/datapacks/aclib/?download">Download AClib</a>
       </div>
     </div>
     <script src="script.js"></script>

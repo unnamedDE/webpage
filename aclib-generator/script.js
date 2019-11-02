@@ -663,9 +663,7 @@ function changedInputs() {
   localStorage.setItem('current-recipe', JSON.stringify(recipeToJson()));
 }
 
-document.querySelector('#button_export').addEventListener('click', exportRecipe)
-
-function exportRecipe() {
+document.querySelector('#button_export').addEventListener('click', () => {
 
   var txtRecipeId = document.getElementById("receipe_id").value;
 
@@ -685,7 +683,22 @@ function exportRecipe() {
   sendInfo('Export&value2=' + JSON.stringify(output))
   console.log('Export output: ' + JSON.stringify(output));
   download(txtRecipeId + '-recipe_export.txt', JSON.stringify(output));
-}
+});
+
+document.querySelector('#button_export_saved').addEventListener('click', () => {
+  if(JSON.parse(localStorage.getItem('saved-recipes')).length < 1) {
+    swal({   title: "Export failed",
+      text: "To export you have to at least save one recipe",
+      type: "error",
+      confirmButtonColor: "#E12F2F",
+      confirmButtonText: "OK",
+      closeOnConfirm: true});
+      console.log('export failed');
+      return
+    }
+    const date = new Date();
+    download(`saved-recipes-export-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}--${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.txt`, localStorage.getItem('saved-recipes'))
+});
 
 function overrideDefault(ev) {
   ev.preventDefault();

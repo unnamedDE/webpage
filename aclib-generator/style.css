@@ -426,17 +426,19 @@ input:focus {
   color: #aaa;
 }
 
-
-#save-overlay > #save-container > #button_export {
-  background-color: #42CFCE;
+/* Save recipes */
+#save-overlay > #save-container > .buttoncontainer {
   position: absolute;
   bottom: 0;
   transform: translate(-50%);
   left: 50%;
-  color: black;
   margin-bottom: 15px;
 }
-#save-overlay #button_export:hover {
+#save-overlay > #save-container > .buttoncontainer > button {
+  background-color: #42CFCE;
+  color: black;
+}
+#save-overlay > #save-container > .buttoncontainer > button:hover {
   background-color: #44BBBA;
   box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
 }
