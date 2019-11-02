@@ -37,6 +37,17 @@ function refreshSavedRecipes() {
   (() => {
     document.querySelector('button#add-save-recipe').addEventListener('click', () => {
       let result = savedRecipes;
+      if(savedRecipes.some(e => e.name == document.querySelector('#save-recipe-name').value)) {
+        swal({
+          title: "Error!",
+          text: "You have to choose a unique recipe name'",
+          type: "error",
+          showCancelButton: false,
+          confirmButtonColor: "#E12F2F",
+          closeOnConfirm: true});
+        document.querySelector('#save-recipe-name').value = '';
+        return;
+      }
       result.push({name: document.querySelector('#save-recipe-name').value, recipe: recipeToJson()});
       localStorage.setItem('saved-recipes', JSON.stringify(result));
       refreshSavedRecipes();
@@ -136,7 +147,8 @@ function dropFiles(ev) {
     let droppedFiles = ev.dataTransfer.files;
     let fileInput= droppedFiles[0];
     if(!droppedFiles[0]) return;
-    if(droppedFiles[0].type != 'text/plain' || (/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false) {
+    if(droppedFiles[0].type != 'text/plain') {
+      //(/.+?\-recipe_export.txt/.test(droppedFiles[0].name) == false) && ev.shiftKey == false
       // document.querySelector('button.confirm').click();
       swal({
         title: "Error!",
@@ -154,16 +166,35 @@ function dropFiles(ev) {
     reader.onload = function() {
       let input = JSON.parse(reader.result)
       // console.log(input)
-      console.log(input);
+      if(input.length) {
+        let output = [];
+        output = output.concat(JSON.parse(localStorage.getItem('saved-recipes')));
+        for(let i of input) {
+          if(!output.some(e => e.name == i.name)) {
+            output.push(i);
+          }
+        }
+        localStorage.setItem('saved-recipes', JSON.stringify(output))
+        // console.log(output);
+        swal({title: "Success",
+          text: "Import successfull",
+          type: "success",
+          confirmButtonColor: "#4CAF50",
+          confirmButtonText: "OK",
+          closeOnConfirm: true});
+      } else {
+        setRecipe(input);
+        swal({title: "Success",
+          text: "Import successfull",
+          type: "success",
+          confirmButtonColor: "#4CAF50",
+          confirmButtonText: "OK",
+          closeOnConfirm: true});
+            document.querySelector('#save-container #save-close-button').click();
+      }
     }
     reader.readAsText(fileInput)
     sendInfo('Import')
-    swal({title: "Success",
-      text: "Import successfull",
-      type: "success",
-      confirmButtonColor: "#4CAF50",
-      confirmButtonText: "OK",
-      closeOnConfirm: true});
 }
 
 function setRecipe(input) {
@@ -654,7 +685,7 @@ function recipeToJson() {
 
 }
 
-const inputs = Array.from(document.querySelectorAll('.container_items input[type=text]:not(.sweet-alert), input[type=number], .container_items select, #custom-commands-container textarea')).filter(e => e.offsetParent.id !== "save-container");
+const inputs = Array.from(document.querySelectorAll('.container_items input[type=text]:not(.sweet-alert), .container_items input[type=number], .paths_input input, .container_items select, #custom-commands-container textarea')).filter(e => e.offsetParent.id !== "save-container");
 for (let i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('change', changedInputs)
 }
