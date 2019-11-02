@@ -26,9 +26,11 @@ function refreshSavedRecipes() {
     const recipeDeleteButtons = document.querySelectorAll('button.delete-recipe');
     for (let i = 0; i < recipeDeleteButtons.length; i++) {
       recipeDeleteButtons[i].addEventListener('click', () => {
-        const result = savedRecipes.filter(e => e.name != recipeDeleteButtons[i].previousElementSibling.innerText);
-        localStorage.setItem('saved-recipes', JSON.stringify(result));
-        refreshSavedRecipes();
+        if(confirm('Are you sure to delete this recipe?') === true) {
+          const result = savedRecipes.filter(e => e.name != recipeDeleteButtons[i].previousElementSibling.innerText);
+          localStorage.setItem('saved-recipes', JSON.stringify(result));
+          refreshSavedRecipes();
+        }
       })
     }
   })();
