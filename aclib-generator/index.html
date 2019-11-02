@@ -141,6 +141,7 @@
         <input type="button" value="Save / Load" onclick="document.querySelector('#save-overlay').classList.remove('hidden')" id="button_save-load" class="big_button" spellcheck="false" autocomplete="off">
         <input type="button" value="?" onclick="helpSave()" id="button_help_save-load" class="help_button" spellcheck="false" autocomplete="off">
         <input type="button" value="Reset" onclick="alertReset()" id="button_reset" class="big_button" spellcheck="false" autocomplete="off">
+        <input type="button" value="Custom Commands" onclick="document.querySelector('#custom-commands-overlay').classList.remove('hidden')" id="button_custom-commands" class="big_button" spellcheck="false" autocomplete="off">
       </div>
       <textarea id="output_mcscript" class="hidden" readonly></textarea>
       <div id="output_mcfunction">
@@ -164,6 +165,32 @@
         </div>
 
         <button type="button" id="button_export" class="big_button">Export to file</button>
+      </div>
+    </div>
+    <div id="custom-commands-overlay" class="hidden">
+      <div id="custom-commands-container">
+        <button type="button" id="custom-commands-close-button" onclick="document.querySelector('#custom-commands-overlay').classList.add('hidden')"><i class="fas fa-times"></i></button>
+        <h1>Custom Commands</h1>
+        <p>Enter the commands you want to execute in the boxes below in seperate lines</p>
+        <hr style="border: #222 1px solid;margin: 10px auto;">
+
+        <div id="command-container">
+          <div id="container2">
+            <div>
+              <p>After correct recipe is put in</p>
+              <textarea id="commands_init" data-gramm_editor="false"></textarea>
+            </div>
+            <div>
+              <p>After output is taken out</p>
+              <textarea id="commands_craft" data-gramm_editor="false"></textarea>
+            </div>
+            <div>
+              <p>After recipe is cancelled</p>
+              <textarea id="commands_cancel" data-gramm_editor="false"></textarea>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
