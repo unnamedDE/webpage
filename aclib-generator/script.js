@@ -848,9 +848,9 @@ function generateMcscript() {
   var txtFunctionPath = document.getElementById("function_path").value;
   var txtRecipeId = document.getElementById("receipe_id").value;
 
-  var commandsInit = '/' + document.getElementById("commands_init").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;';
-  var commandsCraft = '/' + document.getElementById("commands_craft").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;';
-  var commandsCancel = '/' + document.getElementById("commands_cancel").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;';
+  var commandsInit = document.getElementById("commands_init").value.split('\n')[0] != '' ? '/' + document.getElementById("commands_init").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;' : '';
+  var commandsCraft = document.getElementById("commands_craft").value.split('\n')[0] != '' ? '/' + document.getElementById("commands_craft").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;' : '';
+  var commandsCancel = document.getElementById("commands_cancel").value.split('\n')[0] != '' ? '/' + document.getElementById("commands_cancel").value.split('\n').join('&#13;&#10;/') + '&#13;&#10;' : '';
 
 
  Item0 = "";
