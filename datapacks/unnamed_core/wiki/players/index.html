@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wiki - Unnamed Core</title>
+  <meta name="description" content="How to use unnamed core">
+  <meta property="og:title" content="Wiki - Custom Loot">
+  <meta property="og:description" content="How to use Unnamed Core">
+  <meta property="og:url" content="unnamedde.tk/datapacks/custom_loot/wiki/developers">
+  <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+  <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+  <link rel="stylesheet" href="/import/sweetalert/dark.css">
+  <link rel="stylesheet" href="/import/animate.css">
+  <link rel="stylesheet" href="/import/global/style.css">
+  <script src="/import/sweetalert/script.js"></script>
+  <script src="/import/jquery.js" charset="utf-8"></script>
+
+  <script src="/import/bootstrap/script.js"></script>
+  <link rel="stylesheet" href="/import/bootstrap/style.css">
+
+  <link rel="shortcut icon" href="/img/shortcut.png">
+  <script src="/import/global/script.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../../..">unnamedDE's Webpage</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class=" navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../..">Datapacks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../..">unnamed core</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wiki</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item active" href="#">Players<span class="sr-only">(current)</span></a>
+            <a class="dropdown-item" href="../developers/">Developers</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+  <div class="container">
+    <div class="alert alert-warning mt-2 mb-2" role="alert">This datapack only works in minecraft java edition 1.14+!</div>
+    <div class="alert alert-warning mt-2 mb-2" role="alert">When using this pack standalone it will only add money to the game. You may want to consider installing <a href="/datapacks/">other datapacks</a>.</div>
+
+    <div class="jumbotron mb-4">
+      <a name="group-system">
+        <h2>The group system</h2>
+      </a>
+      <p class="lead">Everything about the group system</p>
+      <hr class="my-4">
+      <p>At the start every player is in his own group. Group owners can invite the nearest player by running the command <code>/trigger invite_player</code>. The player invited has to accept the invite and his group ID will change to the other players group ID. Everyone except the group owner can leave with <code>/trigger leave_group</code> and the owner can kick the nearest player with <code>/trigger kick_player</code>.</p>
+    </div>
+
+    <div class="jumbotron mb-4">
+      <a name="money-system">
+        <h2>The money system</h2>
+      </a>
+      <p class="lead">Everything about the money system</p>
+      <hr class="my-4">
+      <p>At the start every player gets a preconfigured amount of money (default is 1000$). You can check your money with the command <code>/trigger check_money</code>.</p>
+      <p>You can send the nearest player money by running the command <code>/trigger pay_money set &lt;amount&gt;</code> and replacing <code>&lt;amount&gt;</code> with the amount you want to send.</p>
+    </div>
+
+    <div class="jumbotron mb-4">
+      <a name="creative-menu">
+        <h2>The creative menu</h2>
+      </a>
+      <p class="lead">Everything about the creative menu</p>
+      <hr class="my-4">
+      <p>You can view the creative menu by running <code>/function unnamed_core:creative_menu</code> and then select the datapack to view the contents of.</p>
+      <p>Click the number between the square brackets and you will get the corresponding amount of the item.</p>
+    </div>
+
+    <div class="jumbotron mb-4">
+      <a name="reverse-rotate">
+        <h2>Reverse rotating</h2>
+      </a>
+      <p class="lead">How to use reverse rotating</p>
+      <hr class="my-4">
+      <p>You can rotate the item in an item frame anti-clockwise by holding shift and right-clicking.</p>
+    </div>
+
+    <div class="jumbotron mb-2">
+      <a name="contact">
+        <h2>Contact me</h2>
+      </a>
+      <p class="lead">if you found any bugs, need help or have some ideas</p>
+      <hr class="my-4">
+      <p>You can contact me via <a href="/discord/">my discord server</a>.</p>
+      <a href="/contact/" class="btn btn-dark">More contact options</a>
+    </div>
+
+  </div>
+</body>
+</html>

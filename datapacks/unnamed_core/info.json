@@ -1,0 +1,19 @@
+{
+  "title": "Unnamed Core - Datapack",
+  "pmc": false,
+  "banner": false,
+  "wiki": true,
+  "list": [
+    {
+      "id": "unnamed_core_v1.0",
+      "name": "Unnamed Core V1.0",
+      "version": "1.0",
+      "description": "Adds different mechanics for me and other developers to use in my other datapacks",
+      "download": ""
+    }
+  ],
+  "extras": [
+    "Required for <a href=\"/datpacks/unnamed_tweaks\">unnamed tweaks</a>"
+  ],
+  "requirements": []
+}
