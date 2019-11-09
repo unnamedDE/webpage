@@ -1,17 +1,17 @@
 
 window.addEventListener('load', () => {
-  if(localStorage.getItem('current-recipe')) {
-    const recipe = JSON.parse(localStorage.getItem('current-recipe'));
+  if(localStorage.getItem('aclib-current-recipe')) {
+    const recipe = JSON.parse(localStorage.getItem('aclib-current-recipe'));
     setRecipe(recipe);
   }
-  if(!localStorage.getItem('saved-recipes')) localStorage.setItem('saved-recipes', "[]")
+  if(!localStorage.getItem('aclib-saved-recipes')) localStorage.setItem('saved-recipes', "[]")
   refreshSavedRecipes();
 });
 
 function refreshSavedRecipes() {
   document.querySelector('div#saved-recipes-container').innerHTML = '';
-  if(localStorage.getItem('saved-recipes')) {
-    const savedRecipes = JSON.parse(localStorage.getItem('saved-recipes'));
+  if(localStorage.getItem('aclib-saved-recipes')) {
+    const savedRecipes = JSON.parse(localStorage.getItem('aclib-saved-recipes'));
     const recipeContainer = document.querySelector('#saved-recipes-container');
     for (let i = 0; i < savedRecipes.length; i++) {
       const e = document.createElement('div');
@@ -21,7 +21,7 @@ function refreshSavedRecipes() {
     }
   }
   document.querySelector('div#saved-recipes-container').innerHTML += '\n<div><input type="text" placeholder="Recipe name" id="save-recipe-name" autocomplete="off"><button type="button" id="add-save-recipe">Save</button></div>';
-  const savedRecipes = JSON.parse(localStorage.getItem('saved-recipes'));
+  const savedRecipes = JSON.parse(localStorage.getItem('aclib-saved-recipes'));
   (() => {
     const recipeDeleteButtons = document.querySelectorAll('button.delete-recipe');
     for (let i = 0; i < recipeDeleteButtons.length; i++) {
@@ -168,7 +168,7 @@ function dropFiles(ev) {
       // console.log(input)
       if(input.length) {
         let output = [];
-        output = output.concat(JSON.parse(localStorage.getItem('saved-recipes')));
+        output = output.concat(JSON.parse(localStorage.getItem('aclib-saved-recipes')));
         for(let i of input) {
           if(!output.some(e => e.name == i.name)) {
             output.push(i);
@@ -717,7 +717,7 @@ document.querySelector('#button_export').addEventListener('click', () => {
 });
 
 document.querySelector('#button_export_saved').addEventListener('click', () => {
-  if(JSON.parse(localStorage.getItem('saved-recipes')).length < 1) {
+  if(JSON.parse(localStorage.getItem('aclib-saved-recipes')).length < 1) {
     swal({   title: "Export failed",
       text: "To export you have to at least save one recipe",
       type: "error",
@@ -728,7 +728,7 @@ document.querySelector('#button_export_saved').addEventListener('click', () => {
       return
     }
     const date = new Date();
-    download(`saved-recipes-export-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}--${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.txt`, localStorage.getItem('saved-recipes'))
+    download(`saved-recipes-export-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}--${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.txt`, localStorage.getItem('aclib-saved-recipes'))
 });
 
 function overrideDefault(ev) {
