@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Calibri, sans-serif;
+  color: #ddd;
+}
+
+body {
+  /* overflow-y: hidden; */
+  background: #555;
+}
+
+input {
+  background-color: #444;
+  border: #222 1px solid;
+}
+
+input:focus {
+  outline: none;
+}
+
+h1 {
+  padding-top: 5px;
+  font-size: 40pt;
+}
+h2 {
+  font-size: 30pt;
+  padding-bottom: 5px;
+}
+
+#heading {
+  text-align: center;
+  background: #333;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  width: 90%;
+  margin: 150px auto;
+}
+
+.card {
+  background-color: #333;
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.card-head {
+  font-size: 25px;
+}
+
+.card-body {
+  font-size: 150px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+
+.big_button, .big_button, .big_button {
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px;
+  height: 50px;
+  width: 250px;
+  border-radius: 5px;
+  color: #333;
+}
+.help_button {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+}
+
+#button_github {
+  background-color: #4C36EC;
+}
+#button_github:hover {
+  background-color: #4735CD;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}
+#button_documentation {
+  background-color: #3FBE0C;
+}
+#button_documentation:hover {
+  background-color: #34980B;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}
+#button_quickstart {
+  background-color: #D44E14;
+}
+#button_quickstart:hover {
+  background-color: #B14212;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}
+#button_code {
+  background-color: #9F15D7;
+}
+#button_code:hover {
+  background-color: #8A13BB;
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}

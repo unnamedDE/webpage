@@ -1,0 +1,127 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#button_back {
+  margin: 15px;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 50%;
+  background-color: #eee;
+  color: #333;
+  font-size: 30pt;
+  z-index: 1000;
+  transition: all .2s;
+}
+#button_back i {
+  color: #333;
+}
+#button_back:hover {
+  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+  background-color: #ddd;
+}
+#button_back:hover i {
+  color: #444;
+}
+
+#header, #sidebar {
+  font-family: 'Roboto', Calibri, sans-serif;
+}
+
+#header {
+  background-color: #333;
+  /* margin-bottom: 25px; */
+  width: 100%;
+  color: #ddd;
+}
+#header h1 {
+  font-size: 75px;
+  text-align: center;
+  padding: 5px;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  height: 100%;
+}
+
+#sidebar {
+  background-color: #444;
+}
+#sidebar > #btnCompile {
+  background-color: #42CFCE;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  height: 50px;
+  width: 90%;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+#sidebar > #btnCompile:hover {
+    background-color: #44BBBA;
+    box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
+}
+#sidebar > #spSaveLocal, #sidebar > #spTheme, #sidebar > #spAutoCompile, #sidebar > #spFontSize {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  color: #ddd;
+}
+
+#inputFile {
+  color: #ddd;
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1px #333 solid;
+  border-bottom: 1px #333 solid;
+  padding: 5px;
+  cursor: pointer;
+}
+#inputFile.active {
+  border-top: 1px #666 solid;
+  border-bottom: 1px #666 solid;
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+#outputFiles {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+#outputFiles span {
+  display: block;
+  color: #ddd;
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1px #333 solid;
+  padding: 5px;
+  cursor: pointer;
+}
+#outputFiles span:last-child {
+  border-bottom: 1px #333 solid;
+}
+#outputFiles span.active {
+  border-top: 1px #666 solid;
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+
+
+#editor {
+  /* width: 80vw; */
+  /* height: 80vh; */
+  min-width: 100px;
+  min-height: 100px;
+  width: 100%;
+  height: calc(100vh - 100px);
+}

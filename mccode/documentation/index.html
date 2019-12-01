@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MCCode documentation</title>
+    <meta name="description" content="MCCode documentation">
+    <meta property="og:title" content="MCCode documentation - unnamedDE's Webpage">
+    <meta property="og:description" content="MCCode documentation">
+    <meta property="og:url" content="unnamedde.tk/mccode/documentation">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <script src="/import/sweetalert/script.js"></script>
+    <link rel="stylesheet" href="/import/animate.css">
+    <link rel="stylesheet" href="/import/global/style.css">
+    <script src="/import/global/script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
+    <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
+    <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
+
+    <div id="heading">
+      <h1 class="animated fadeInDown">MCCode</h1>
+      <h2 class="animated fadeInDown">Documentation</h2>
+    </div>
+
+    <div id="container">
+      <div class="card">
+        <div class="card-header">
+          Installing MCCode
+        </div>
+        <div class="card-body">
+          Open a command line and run <code>npm install mccode -g</code> to install MCCode globally.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          CLI Commands
+        </div>
+        <div class="card-body">
+          Open command line and navigate to the folder of your datapack (with <code>cd PATH</code>) and run <code>mccode compile</code> to compile all files in sub-directories.
+          You can also add a path after compile to a folder or just to one file.<br>
+          Run <code>mccode watch</code> with the same arguments as compile to watch the file/folder for file changes and automatically compile.<br>
+          You can add flags after the above commands to modify behaviour:<br>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; margin: 15px;">
+            <span>-generateJSON</span><span>generate mcJSON files as well</span>
+            <span>-fullErr</span><span>log full Error messages</span>
+            <span>-noWhitelines</span><span>ignore whitelines</span>
+            <span>-noErrors</span><span>don't output errors</span>
+            <span>-noOutput</span><span>don't log anything</span>
+            <span>-noCredits</span><span>don't add credits to generated files</span>
+            <span>-respectJsonPath</span><span>generate mcJSON files exactly without modification of path (not recommended)</span>
+            <span>-noInitial</span><span>(Only for watch) only run after changes but not after start</span>
+          </div>
+          <br>
+          Navigate to your datapack folder and run <code>mccode generate PACKNAME</code> to generate the neccessary folder/file structure for a datapack.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Basic Syntax
+        </div>
+        <div class="card-body">
+          Every mccode file has to start with <code>!file: PATH</code> where PATH is the path relative to the mccode file where the mcfunction will be generated.<br>
+          Start Minecraft commands with <code>/</code>, production comments with <code>#</code> and debug comments with <code>//</code>.<br>
+          Commands will be added to the mcfunction file without the slash and production comments will be transferred one-to-one. Debug comments won't show up at all in the mcfunctions.<br>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Shortcuts
+        </div>
+        <div class="card-body">
+          Available shortcuts are: as, at, asat, align, anchored, facing, in, positioned, rotated. The arguments get transferred one-to-one in the execute commmand.
+          <div style="display: flex; margin-top: 15px;">
+            <code style="display: block;">positioned(~ ~1 ~) {<br>
+              &nbsp;&nbsp;/setblock ~ ~ ~ minecraft:stone<br>
+            }</code>
+            <div style="margin-left: 25px;">
+              gets compiled to:<br>
+              <code>execute positioned ~ ~1 ~ run setblock ~ ~ ~ minecraft:stone</code>
+            </div>
+            <code style="display: block; margin-left: 25px;">as(@e[limit=1, sort=nearest] || @p) {<br>
+              &nbsp;&nbsp;/say hi<br>
+            }</code>
+            <div style="margin-left: 25px;">
+              gets compiled to:<br>
+              <code>execute as @e[limit=1, sort=nearest] run say hi<br>
+              execute as @p run say hi</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          If-Node
+        </div>
+        <div class="card-body">
+          If-Node arguments can be inverted with <code>!</code> (becomes <code>execute unless ...</code>).<br>
+          You can require multiple conditions by seperating them with <code> && </code>. To choose between two conditions, seperate them with <code> || </code>.<br>
+          Multiple parameters can be grouped with brackets (<code>()</code>).<br>
+          Else statements are also supported.<br>
+          <br>
+          <code>
+            if(block ~ ~ ~ minecraft:dirt || block ~ ~ ~ minecraft:grass_block) {<br>
+              &nbsp;&nbsp;/say success1<br>
+            } else {<br>
+              &nbsp;&nbsp;/say fail1<br>
+            }<br>
+            if(!block ~ ~ ~ minecraft:stone && (block ~ ~1 ~ minecraft:stone || block ~ ~1 ~ minecraft:stone_bricks)) {<br>
+              &nbsp;&nbsp;/say success2<br>
+            }<br>
+          </code>
+          <code>
+            execute if block ~ ~ ~ minecraft:dirt run say success1<br>
+            execute if block ~ ~ ~ minecraft:grass_block run say success1<br>
+            <br>
+            execute unless block ~ ~ ~ minecraft:dirt run say fail1<br>
+            execute unless block ~ ~ ~ minecraft:grass_block run say fail1<br>
+            <br>
+            execute unless block ~ ~ ~ minecraft:stone if block ~ ~1 ~ minecraft:stone say success2<br>
+            execute unless block ~ ~ ~ minecraft:stone if block ~ ~1 ~ minecraft:stone_bricks say success2
+          </code>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

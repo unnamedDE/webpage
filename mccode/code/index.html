@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MCCode Online Editor</title>
+    <meta name="description" content="Online editor for MCCode">
+    <meta property="og:title" content="MCCode editor - unnamedDE's Webpage">
+    <meta property="og:description" content="Online editor for MCCode">
+    <meta property="og:url" content="unnamedde.tk/mccode/code">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
+
+    <div id="header"><h1>MCCode Online Editor</h1></div>
+
+    <div id="container">
+      <div id="sidebar">
+        <button id="btnCompile">Compile</button>
+        <span id="spSaveLocal"><input type="checkbox" checked id="cbSaveLocal"><label for="cbSaveLocal"> Keep input after restart</label></span>
+        <span id="spAutoCompile"><input type="checkbox" id="cbAutoCompile"><label for="cbAutoCompile"> Autocompile</label></span>
+        <span id="spTheme">
+          Theme:
+          <select id="slcTheme">
+            <option value="monokai">Monokai</option>
+            <option value="twilight">Twilight</option>
+            <option value="textmate">TextMate</option>
+          </select>
+        </span>
+        <span id="spFontSize">
+          Font Size:
+          <input type="number" value="12" min="8" max="48">
+        </span>
+        <br>
+        <div id="inputFile" class="active">
+          input.mccode
+        </div>
+        <br>
+        <div id="outputFiles"></div>
+
+      </div>
+
+
+      <div id="editor"></div>
+    </div>
+
+
+
+
+    <script src="./import/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="bundle.js" charset="utf-8"></script>
+  </body>
+</html>

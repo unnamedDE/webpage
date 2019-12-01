@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MCCode quickstart</title>
+    <meta name="description" content="MCCode quickstart guide">
+    <meta property="og:title" content="MCCode quickstart - unnamedDE's Webpage">
+    <meta property="og:description" content="MCCode quickstart guide">
+    <meta property="og:url" content="unnamedde.tk/mccode/quickstart">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <script src="/import/sweetalert/script.js"></script>
+    <link rel="stylesheet" href="/import/animate.css">
+    <link rel="stylesheet" href="/import/global/style.css">
+    <script src="/import/global/script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a id="button_back" href=".." title="Go to Home"><i class="fas fa-chevron-left"></i></a>
+    <div class="contact-button animated flash" onclick="click_contact();" title="expand contact options"></div>
+    <div class="social-button animated flash" onclick="click_social();" title="expand social options"></div>
+
+    <div id="heading">
+      <h1 class="animated fadeInDown">MCCode</h1>
+      <h2 class="animated fadeInDown">Quickstart</h2>
+    </div>
+
+    <div id="container">
+
+      <div class="card">
+        <div class="card-header">
+          Installing NodeJS & npm
+        </div>
+        <div class="card-body">
+          Download and install NodeJS from this link: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>. It also includes npm.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Installing MCCode
+        </div>
+        <div class="card-body">
+          Open a command line and run <code>npm install mccode -g</code> to install MCCode globally.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          CLI Commands
+        </div>
+        <div class="card-body">
+          Open command line and navigate to the folder of your datapack (with <code>cd PATH</code>) and run <code>mccode compile</code> to compile all files in sub-directories.
+          You can also add a path after compile to a folder or just to one file.<br>
+          Run <code>mccode watch</code> with the same arguments as compile to watch the file/folder for file changes and automatically compile.<br>
+          <!-- You can add flags after the above commands to modify behaviour:<br>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; margin: 15px;">
+            <span>-generateJSON</span><span>generate mcJSON files as well</span>
+            <span>-fullErr</span><span>log full Error messages</span>
+            <span>-noWhitelines</span><span>ignore whitelines</span>
+            <span>-noInitial</span><span>(Only for watch) only run after changes but not after start</span>
+          </div> -->
+          <br>
+          Navigate to your datapack folder and run <code>mccode generate PACKNAME</code> to generate the neccessary folder/file structure for a datapack.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Basic Syntax
+        </div>
+        <div class="card-body">
+          Every mccode file has to start with <code>!file: PATH</code> where PATH is the path relative to the mccode file where the mcfunction will be generated.<br>
+          Start Minecraft commands with <code>/</code>, production comments with <code>#</code> and debug comments with <code>//</code>.<br>
+          Commands will be added to the mcfunction file without the slash and production comments will be transferred one-to-one. Debug comments won't show up at all in the mcfunctions.<br>
+          There are shortcuts for every execute subcommand:
+          <code style="display: block; width: 150px;">as(@p) {<br>
+          &nbsp;&nbsp;/say hi<br>
+          }</code>
+          will result into: <code>execute as @p run say hi</code>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 50px;">
+        <div class="card-header">
+          Try it out!!
+        </div>
+        <div class="card-body">
+          <a href="../code" style="margin-top: 15px;" class="button">Code!!!</a>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
