@@ -5,15 +5,15 @@
   "wiki": true,
   "list": [
     {
-      "id": "unnamed_core_v1.0",
+      "id": "unnamed-core_v1.0",
       "name": "Unnamed Core V1.0",
       "version": "1.0",
       "description": "Adds different mechanics for me and other developers to use in my other datapacks",
-      "download": ""
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/650776676929765422/unnamed-core-v1.0.0.zip"
     }
   ],
   "extras": [
-    "Required for <a href=\"/datpacks/unnamed_tweaks\">unnamed tweaks</a>"
+    "Required for <a href=\"/datpacks/unnamed_tweaks\">unnamed tweaks</a>",
     "Required for <a href=\"/datpacks/horsetastic\">horsetastic</a>"
   ],
   "requirements": []
