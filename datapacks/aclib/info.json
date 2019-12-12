@@ -31,6 +31,13 @@
       "version": "2.1.0",
       "description": "<ul><li>added unistall function</li><li>added datapack list support</li><li>added option to keep inputs after crafting</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/640214349461585920/ac_lib-V2.1.0.zip"
+    },
+    {
+      "id": "ac_lib_v2.1.1",
+      "name": "AClib V2.1.1",
+      "version": "2.1.1",
+      "description": "<ul><li>added compatibility to unnamed-core creative menu</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/654760836442882080/ac_lib-v2.1.1.zip"
     }
   ],
   "extras": [
