@@ -18,5 +18,10 @@
     "id": "unnamed-core",
     "name": "Unnamed Core",
     "path": "unnamed-core/"
+  },
+  {
+    "id": "hosetastic",
+    "name": "Horsetastic",
+    "path": "horsetastic/"
   }
 ]

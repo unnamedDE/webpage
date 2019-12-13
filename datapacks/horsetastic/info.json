@@ -1,0 +1,18 @@
+{
+  "title": "AClib - Datapack",
+  "pmc": "https://www.planetminecraft.com/mod/horsetastic-datapack-1-15/",
+  "wiki": true,
+  "banner": false,
+  "list": [
+    {
+      "id": "horsetastic_v1.0.0",
+      "name": "Horsetastic V1.0.0",
+      "version": "1.0.0",
+      "description": "Tries to make horses more useful",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/655127137556234251/horsetastic-v1.0.0.zip"
+    }
+  ],
+  "extras": [
+  ],
+  "requirements": []
+}
