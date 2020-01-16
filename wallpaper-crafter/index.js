@@ -71,7 +71,7 @@ imgContainer.appendChild(imgForeground);
 
 skinSelecter.addEventListener('change', generate);
 // window.addEventListener('load', generate(undefined, './skins/steve.png'));
-window.addEventListener('load', () => {
+(() => {
   imgOutput.src = './presets/' + presetName + '/preview.png';
   const img = document.createElement('img');
   img.src = './presets/' + presetName + '/preview.png';
@@ -86,7 +86,7 @@ window.addEventListener('load', () => {
       document.querySelector('span#presetName').innerText = name;
       btnDownload.download = name + ' - unnamedDE wallpaper crafter.png';
     });
-});
+})();
 imgOutput.addEventListener('error', e => {
   if (!getParameter('nopreview')) {
     if (presetName == undefined || presetName == true) window.location.href = "gallery";
