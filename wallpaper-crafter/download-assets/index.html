@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Download Assets</title>
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
   </head>
   <body style="display: flex; justify-content: space-around;">
     <span style="display: inline-block">
@@ -13,5 +14,40 @@
       <img src="skin.png" alt="Rig Preview" style="height: 60vh; image-rendering: pixelated">
       <a href="skin.png" download="wallpaper-crafter-skin.png" style="text-align: center; display: block;">Download Skin</a>
     </span>
+    <script type="text/javascript">
+      function getParameter(key) {
+        var query = window.location.search.substring(1);
+        var pairs = query.split('&');
+
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+          if (pair[0] == key) {
+            if (pair[1]) {
+              if (pair[1].length > 0) {
+                return decodeURI(pair[1]);
+              }
+            } else {
+              return true
+            }
+          }
+        }
+        return undefined;
+      };
+      
+      document.querySelector('a[href="blender-rig.blend"]').addEventListener('click', () => {
+        if(!getParameter('notracking')) {
+          const sendInfo = new XMLHttpRequest();
+          sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedWallpaperCrafter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=downloadAsset&value2=rig', true)
+          sendInfo.send();
+        }
+      });
+      document.querySelector('a[href="skin.png"]').addEventListener('click', () => {
+        if(!getParameter('notracking')) {
+          const sendInfo = new XMLHttpRequest();
+          sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedWallpaperCrafter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=downloadAsset&value2=skin', true)
+          sendInfo.send();
+        }
+      });
+    </script>
   </body>
 </html>

@@ -5,7 +5,8 @@
     "keywords": [
       "update",
       "nature",
-      "animal"
+      "animal",
+      "bee"
     ]
   },
   {
@@ -14,7 +15,8 @@
     "author": "unnamedDE",
     "keywords": [
       "glow",
-      "void"
+      "void",
+      "light"
     ]
   },
   {
@@ -22,14 +24,17 @@
     "name": "Parrot Selfie",
     "author": "unnamedDE",
     "keywords": [
-      "animal"
+      "animal",
+      "parrot"
     ]
   },
   {
     "id": "selfie",
     "name": "Selfie",
     "author": "unnamedDE",
-    "keywords": []
+    "keywords": [
+      "selfie"
+    ]
   },
   {
     "id": "horsetastic",
@@ -37,7 +42,9 @@
     "author": "unnamedDE",
     "keywords": [
       "datapack",
-      "animal"
+      "animal",
+      "horse",
+      "skeleton"
     ]
   },
   {
@@ -45,7 +52,8 @@
     "name": "Visiting Grave",
     "author": "unnamedDE",
     "keywords": [
-      "datapack"
+      "datapack",
+      "grave"
     ]
   },
   {
@@ -53,13 +61,17 @@
     "name": "Simple House",
     "author": "unnamedDE",
     "keywords": [
-      "building"
+      "building",
+      "house"
     ]
   },
   {
     "id": "plain-text",
     "name": "Plain Text",
     "author": "unnamedDE",
-    "keywords": []
+    "keywords": [
+      "text",
+      "simple"
+    ]
   }
 ]

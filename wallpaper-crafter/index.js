@@ -36,6 +36,13 @@ skinSelectOverlay.addEventListener('click', e => {
   skinSelectOverlay.classList.remove('active');
 });
 document.querySelector('#skinSelectOverlay > div > .close').addEventListener('click', () => skinSelectOverlay.classList.remove('active'));
+btnDownload.addEventListener('click', () => {
+  if(!getParameter('notracking')) {
+    const sendInfo = new XMLHttpRequest();
+    sendInfo.open('GET', 'https://maker.ifttt.com/trigger/usedWallpaperCrafter/with/key/dAUX3HMXPTv0Mbt0-Yvpim?value1=download&value2=' + presetName, true)
+    sendInfo.send();
+  }
+})
 
 const imgBackground = document.createElement('img');
 imgBackground.src = './presets/' + presetName + '/background.png';
