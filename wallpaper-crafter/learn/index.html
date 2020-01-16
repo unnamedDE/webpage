@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn how to create a wallpaper for wallpaper-crafter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <a href="../gallery" id="backButton" title="Go to Gallery"><i class="fas fa-chevron-left"></i></a>
+    <header>
+      <h1>Learn how to create a wallpaper for wallpaper-crafter</h1>
+    </header>
+    <div id="generalContainer">
+      <h3>General method (without blender)</h4>
+      <span class="warning">!!! Images all have to be in the same resolution !!!</span>
+      <span>Images needed:</span>
+      <ul>
+        <li>background.png - The background of the wallpaper</li>
+        <li>players.png - The pose of the player without armor layer using <a href="../skin.png" target="_blank">this skin</a></li>
+        <li>mask_player.png - Mask of the pose of the player without armor layer (No player > black, player > white)</li>
+        <li>shading_players.png - Shadows of the player without armor layer (Blend mode multiplication)</li>
+        <li>players_armor.png - The pose of the player with armor layer using <a href="../skin.png" target="_blank">this skin</a></li>
+        <li>mask_armor.png - Mask of the pose of the player with armor layer (No player > black, player > white)</li>
+        <li>shading_armor.png - Shadows of the player with armor layer (Blend mode multiplication)</li>
+        <li>foreground.png - Foreground of the image, applied over the image (You can add a watermark here)</li>
+      </ul>
+      <span>Go to <a href="../testing/" target="_blank">this site</a>, select the above mentioned files and right-click the image. Then save it as "preview.png"</span>
+      <iframe src="../view-preset-files/?preset=plain-text" width="1000" height="250"></iframe>
+    </div>
+    <div id="blenderContainer">
+      <h3>Blender method</h4>
+      <span class="warning">!!! Images all have to be in the same resolution !!!</span>
+      <span><a href="../download-assets">Download</a> my modified version of the <a href="https://www.youtube.com/watch?v=30VuC5MkaRs">Mashed Potato Rig</a>.</span><br>
+      <span>Steps:</span>
+      <ol>
+        <li>
+          <ol>
+            <li>In properties window goto "Scene > Render Properties > Color Management and change "View Transform" to "Standart"</li>
+            <li>In properties window goto "Scene > View Layer > Passes > Cryptomatte and enable Material</li>
+          </ol>
+        </li>
+        <li>
+          <ol>
+            <li>Hide Teeth, Tongue and Pupils in the viewport and for camera</li>
+            <li>Change "Only Shadows" in Player material to 1</li>
+            <li>Fix dark spots by moving overlapping meshes</li>
+            <li>Render and save as "background.png"</li>
+            <li>Unhide Teeth, Tongue and Pupils (unless not using face)</li>
+            <li>Change "Only Shadows" in Player material back to 0</li>
+          </ol>
+          OR
+          <ol>
+            <li>Hide Players</li>
+            <li>Render and save as "background.png"</li>
+            <li>Show Players</li>
+          </ol>
+        </li>
+        <li>
+          In properties window goto "Scene > Render Properties > Film > Pixel Filter" and change "Type" to "Blackman-Harris" and change "Width" to 0.01px
+        </li>
+        <li>
+          <ol>
+            <li>Change "Overlay" in Player material to 0</li>
+            <li>Render and save as "players.png"</li>
+            <li>Save cryptomatte of player in compositing tab as "mask_player.png"</li>
+            <li>Change "Overlay" in Player material to 1</li>
+            <li>Render and save as "players_armor.png"</li>
+            <li>Save cryptomatte of player in compositing tab as "mask_armor.png"</li>
+          </ol>
+        </li>
+        <li>
+          <ol>
+            <li>Change "Shading" in Player material to 1</li>
+            <li>Change "Overlay" in Player material to 0</li>
+            <li>Render and save as "shading_players.png"</li>
+            <li>Change "Overlay" in Player material to 1</li>
+            <li>Render and save as "shading_armor.png"</li>
+          </ol>
+        </li>
+      </ol>
+      <span>Go to <a href="../testing/" target="_blank">this site</a>, select the above mentioned files and right-click the image. Then save it as "preview.png"</span>
+      <iframe src="../view-preset-files/?preset=simple-house" width="1000" height="250"></iframe>
+    </div>
+
+    <div id="contactContainer">
+      <h3>Submitting the wallpaper</h3>
+      <span>Submitting the wallpaper is easy. Just send me an email to <a href="mailto:wallpaper-submission@unnamedDE.tk">wallpaper-submission@unnamedDE.tk</a>. Make sure that you tell me how the wallpaper should be named, how I should call you and attach all 9 images. Also include your discord username+tag if you want me to contact you on discord if I have to.</span>
+    </div>
+
+  </body>
+</html>

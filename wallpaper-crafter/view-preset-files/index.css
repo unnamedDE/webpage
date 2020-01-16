@@ -1,0 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#imgContainer > img {
+  margin: 5px;
+  width: 18.9%;
+  background-color: #555;
+}

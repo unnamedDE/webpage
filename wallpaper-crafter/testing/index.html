@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing Wallpapers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="../index.css">
+    <style media="screen">
+      #inputPresetFiles {
+        display: none;
+      }
+      #lblInputPresetFiles {
+        color: #ddd;
+        font-size: 50px;;
+        font-family: Arial;
+        cursor: pointer;
+        line-height: 80px;
+      }
+      #imgOutput {
+        width: 55%;
+      }
+      #errors {
+        background-color: #252525;
+        width: 65%;
+        height: 20vh;
+        font-family: sans-serif;
+        color: #ddd;
+      }
+      #errors > *:first-child {
+        background-color: #444;
+        padding: 5px;
+      }
+      #errors > *:last-child {
+        max-height: 85%;
+        overflow-y: auto;
+      }
+      #errorsInsert > * {
+        margin: 5px;
+        margin-bottom: 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #444;
+      }
+      #errorsInsert > *:last-child {
+        border-bottom: none;
+      }
+
+      #lblInputSkin {
+        color: #ddd;
+        font-size: 56px;
+        background-color: #555;
+        width: 81px;
+        height: 81px;
+        line-height: 81px;
+        border-radius: 50%;
+        text-align: center;
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+      #lblInputSkin:hover {
+        background-color: #555;
+      }
+
+      #lblInputSkin i {
+        padding-right: 7.5px;
+      }
+
+      #inputSkin {
+        display: none
+      }
+
+      #lblInputSkin {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="leftContainer">
+        <div id="toolbar">
+          <a href="../gallery" id="backButton" title="Go to Gallery"><i class="fas fa-chevron-left"></i></a>
+          <input type="file" id="inputPresetFiles" multiple accept="image/png">
+          <label for="inputPresetFiles" id="lblInputPresetFiles">Click to select Preset Files</label>
+          <input type="file" id="inputSkin" accept="image/png">
+          <label for="inputSkin" id="lblInputSkin" title="Select Skin File"><i class="fas fa-file-import"></i></label>
+
+        </div>
+        <img id="imgOutput" src="default/preview.png"/>
+        <div class="centerContent">
+          <div id="errors">
+            <div>
+              Errors:
+            </div>
+            <div id="errorsInsert"></div>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <span id="btnClear"><i class="fas fa-times-circle"></i></span>
+        <span id="dummy-skins">
+          <img src="../skins/steve.png">
+          <img src="../skins/alex.png" title="May not be supported">
+          <img src="../skins/bandit.png">
+          <img src="../skins/santa.png">
+          <img src="../skins/deadpool.png">
+          <img src="../skins/ghost.png">
+        </span>
+      </div>
+
+    </div>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Error</title>
+    <style media="screen">
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        color: #ddd;
+      }
+      body {
+        background-color: #333;
+      }
+      #container {
+        width: 80vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #container * {
+        text-align: center;
+        width: 100%;
+        font: 400 45px Arial;;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <p>The preset with the name <span id="presetName"></span> doesn't exist.</p>
+      <p><a href="../gallery">Go back to gallery</a></p>
+    </div>
+
+    <script charset="utf-8">
+      function getParameter(key) {
+        var query = window.location.search.substring(1);
+        var pairs = query.split('&');
+
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+          if (pair[0] == key) {
+            if (pair[1]) {
+              if (pair[1].length > 0) {
+                return decodeURI(pair[1]);
+              }
+            } else {
+              return true
+            }
+          }
+        }
+        return undefined;
+      };
+
+      const presetName = getParameter('preset');
+
+      document.querySelector('#presetName').innerText = presetName
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container {
+  display: flex;
+}
+
+#leftContainer {
+  flex-basis: 92.5%;
+}
+
+#sidebar {
+  height: 100vh;
+  flex-basis: 7.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #353535;
+}
+
+#toolbar {
+  width: 65%;
+  margin: 0 auto;
+  margin-top: 2.5px;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #353535;
+  padding: 0 10px;
+}
+
+#backButton, #openSkinSelect {
+  color: #ddd;
+  font-size: 56px;
+  background-color: #555;
+  width: 81px;
+  height: 81px;
+  line-height: 81px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+#backButton i, #openSkinSelect i {
+  padding-right: 7.5px;
+}
+
+#presetName {
+  font: 400 64px Arial;
+  color: #ddd;
+  padding: 5px;
+}
+
+#inputSkin {
+  display: none
+}
+
+#openSkinSelect {
+  cursor: pointer;
+}
+
+#imgOutput {
+  width: 65%;
+  display: block;
+  margin: 4vh auto;
+  /* image-rendering: pixelated; */
+}
+
+#btnDownload {
+  text-decoration: none;
+  color: #ddd;
+  font: 300 56px Arial;
+  display: inline-block;
+  /* text-align: center; */
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #353535;
+  transition: background-color .1s;
+}
+#btnDownload:hover {
+  background-color: #555555;
+}
+
+#btnClear {
+  display: inline-block;
+  color: #ddd;
+  font-size: 56px;
+  background-color: #555;
+  width: 81px;
+  height: 81px;
+  line-height: 85px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2.5px;
+}
+
+#dummy-skins {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 7.5vh;
+}
+
+#dummy-skins img {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  background-color: #252525;
+  transition: background-color .1s;
+}
+#dummy-skins img:hover {
+  background-color: #454545;
+}
+#dummy-skins img[src="./skins/alex.png"] {
+  background-color: rgba(100, 37, 37, 255);
+}
+#dummy-skins img[src="./skins/alex.png"]:hover {
+  background-color: rgba(150, 69, 69, 255);
+}
+
+#skinSelectOverlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#skinSelectOverlay.active {
+  display: block;
+}
+
+
+#skinSelectOverlay > div {
+  min-height: 50%;
+  background-color: #ddd;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+}
+#skinSelectOverlay > div >  .close {
+  font-size: 56px;
+  border: none;
+  background: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+#skinSelectOverlay > div > .warning {
+  font-family: sans-serif;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 70%;
+  text-align: center;
+  /* padding: 5px; */
+  /* background-color: #fff; */
+  font-size: 25px;
+}
+
+#lblInputSkin {
+  font-family: sans-serif;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
+  width: 70%;
+  text-align: center;
+  padding: 5px;
+  background-color: #fff;
+  font-size: 30px;
+}
+#lblInputSkin:hover {
+  background-color: #eee;
+}
+
+#playername {
+    font-family: sans-serif;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 35%;
+    transform: translateX(-50%);
+    width: 70%;
+    text-align: center;
+    border-left: #999 2px solid;
+    padding: 5px;
+    font-size: 30px;
+}
