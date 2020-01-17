@@ -24,7 +24,6 @@ const btnClear = document.querySelector('#btnClear');
 const reader = new FileReader();
 const imgOutput = document.querySelector('#imgOutput');
 const btnDownload = document.querySelector('#btnDownload');
-const imgContainer = document.querySelector('#imgContainer');
 const openSkinSelect = document.querySelector('#openSkinSelect');
 const skinSelectOverlay = document.querySelector('#skinSelectOverlay');
 
@@ -44,30 +43,38 @@ btnDownload.addEventListener('click', () => {
   }
 })
 
+let imgsLoaded = 0;
 const imgBackground = document.createElement('img');
 imgBackground.src = './presets/' + presetName + '/background.png';
-imgContainer.appendChild(imgBackground);
+imgBackground.addEventListener('load', imgLoaded);
 const imgPlayers = document.createElement('img');
 imgPlayers.src = './presets/' + presetName + '/players.png';
-imgContainer.appendChild(imgPlayers);
+imgPlayers.addEventListener('load', imgLoaded);
 const imgPlayerMask = document.createElement('img');
 imgPlayerMask.src = './presets/' + presetName + '/mask_player.png';
-imgContainer.appendChild(imgPlayerMask);
+imgPlayerMask.addEventListener('load', imgLoaded);
 const imgPlayerShading = document.createElement('img');
 imgPlayerShading.src = './presets/' + presetName + '/shading_players.png';
-imgContainer.appendChild(imgPlayerShading);
+imgPlayerShading.addEventListener('load', imgLoaded);
 const imgArmor = document.createElement('img');
 imgArmor.src = './presets/' + presetName + '/players_armor.png';
-imgContainer.appendChild(imgArmor);
+imgArmor.addEventListener('load', imgLoaded);
 const imgArmorMask = document.createElement('img');
 imgArmorMask.src = './presets/' + presetName + '/mask_armor.png';
-imgContainer.appendChild(imgArmorMask);
+imgArmorMask.addEventListener('load', imgLoaded);
 const imgArmorShading = document.createElement('img');
 imgArmorShading.src = './presets/' + presetName + '/shading_armor.png';
-imgContainer.appendChild(imgArmorShading);
+imgArmorShading.addEventListener('load', imgLoaded);
 const imgForeground = document.createElement('img');
 imgForeground.src = './presets/' + presetName + '/foreground.png';
-imgContainer.appendChild(imgForeground);
+imgForeground.addEventListener('load', imgLoaded);
+
+function imgLoaded() {
+  imgsLoaded++;
+  if(imgsLoaded==8) {
+    imgOutput.classList.remove('loading');
+  }
+}
 
 skinSelecter.addEventListener('change', generate);
 // window.addEventListener('load', generate(undefined, './skins/steve.png'));
@@ -119,6 +126,7 @@ for (let img of document.querySelector('#dummy-skins').children) {
 }
 
 function generate(e, selSkin) {
+  if(imgsLoaded != 8) return alert('Please try again in a few seconds...')
 
   skinSelectOverlay.classList.remove('active');
 
@@ -335,7 +343,7 @@ playername.addEventListener('change', e => {
         canvas.height = image.height;
         canvas.width = image.width;
         ctx.drawImage(image, 0, 0);
-        playername.value = "";
+        if(imgsLoaded == 8) playername.value = "";
         generate(undefined, canvas.toDataURL());
       });
     }

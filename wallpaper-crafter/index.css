@@ -77,6 +77,10 @@ body {
   display: block;
   margin: 4vh auto;
   /* image-rendering: pixelated; */
+  transition: filter .5s;
+}
+#imgOutput.loading {
+  filter: grayscale(90%) blur(2px);
 }
 
 #btnDownload {
