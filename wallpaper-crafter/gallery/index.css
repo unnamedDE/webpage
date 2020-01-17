@@ -59,7 +59,7 @@ a {
 }
 
 #preset-container {
-  width: 70vw;
+  width: 65vw;
   margin: 0 auto;
 }
 
@@ -102,4 +102,24 @@ header > h1 {
   background-color: #333;
   border: none;
   color: #ddd;
+}
+
+.preset-tags {
+  padding: 5px;
+  line-height: 10px;
+  margin-bottom: 5px;
+}
+.preset-tags span {
+  font-size: 25px;
+}
+.preset-tags span.preset-tag {
+  color: #bbb;
+  padding: 2.5px;
+}
+.preset-tags span.preset-tag:hover {
+  color: #ddd;
+  background-color: #333;
+}
+.preset-tags > span.seperator {
+  margin-right: 15px;
 }
