@@ -8,7 +8,8 @@
   <body style="display: flex; justify-content: space-around;">
     <span style="display: inline-block">
       <img src="rig-preview.png" alt="Rig Preview" style="height: 60vh;">
-      <a href="blender-rig.blend" download="wallpaper-crafter-blender-rig.blend" style="text-align: center; display: block;">Download Blender Rig</a>
+      <a href="blender-rig.blend" download="wallpaper-crafter-blender-rig.blend" style="text-align: center; display: block;" id="download-blender-rig">Download Blender Rig</a>
+      <label for="download-blender-rig">Made by <a href="https://www.youtube.com/watch?v=30VuC5MkaRs">TheButtonMash3r</a></label>
     </span>
     <span style="display: inline-block;">
       <img src="skin.png" alt="Rig Preview" style="height: 60vh; image-rendering: pixelated">
@@ -33,7 +34,7 @@
         }
         return undefined;
       };
-      
+
       document.querySelector('a[href="blender-rig.blend"]').addEventListener('click', () => {
         if(!getParameter('notracking')) {
           const sendInfo = new XMLHttpRequest();
