@@ -26,6 +26,7 @@ const imgOutput = document.querySelector('#imgOutput');
 const btnDownload = document.querySelector('#btnDownload');
 const openSkinSelect = document.querySelector('#openSkinSelect');
 const skinSelectOverlay = document.querySelector('#skinSelectOverlay');
+const authorDisplay = document.querySelector('#author');
 
 openSkinSelect.addEventListener('click', () => {
   skinSelectOverlay.classList.add('active');
@@ -70,6 +71,8 @@ imgForeground.src = './presets/' + presetName + '/foreground.png';
 imgForeground.addEventListener('load', imgLoaded);
 
 function imgLoaded() {
+  const imgNames = ["Background", "Players", "Mask Player", "Shading Players", "Players Armor", "Mask Armor", "Shading Armor", "Foreground"]
+  console.log('Image "' + imgNames[imgsLoaded] + '" has loaded');
   imgsLoaded++;
   if(imgsLoaded==8) {
     imgOutput.classList.remove('loading');
@@ -89,9 +92,11 @@ skinSelecter.addEventListener('change', generate);
   fetch('./list.json')
     .then(res => res.json())
     .then(list => {
-      const name = list.find(e => e.id == presetName).name;
-      document.querySelector('span#presetName').innerText = name;
-      btnDownload.download = name + ' - unnamedDE wallpaper crafter.png';
+      const item = list.find(e => e.id == presetName);
+      document.querySelector('span#presetName').innerText = item.name;
+      btnDownload.download = item.name + ' - unnamedDE wallpaper crafter.png';
+      authorDisplay.innerText = '@' + item.author;
+      authorDisplay.href = 'gallery/?s=%40' + item.author;
     });
 })();
 imgOutput.addEventListener('error', e => {

@@ -49,8 +49,13 @@ fetch('../list.json')
             ee = ee.replace(/^#/, '');
             isTag = true;
           }
+          let isAuthor = false;
+          if(/^@/.test(ee)) {
+            ee = ee.replace(/^@/, '');
+            isAuthor = true;
+          }
           const r = new RegExp(ee.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i');
-          if(!((r.test(e.name) && isTag == false) || ((r.test(e.author) && isTag == false) && (e.author != "unnamedDE" || searchBox.value.toLowerCase() == "unnamedde")) || e.keywords.map(eee => r.test(eee)).some(eee => eee == true))) ret = false;
+          if(!((r.test(e.name) && isTag == false && isAuthor == false) || ((r.test(e.author) && isTag == false) && ((e.author != "unnamedDE" || isAuthor) || searchBox.value.toLowerCase() == "unnamedde")) || (e.keywords.map(eee => r.test(eee)).some(eee => eee == true) && isAuthor == false))) ret = false;
         });
         return ret;
       });
@@ -58,7 +63,7 @@ fetch('../list.json')
       searched.forEach(e => {
         const img = document.createElement('img');
         img.src = `../presets/${e.id}/preview.png`;
-        img.alt = e;
+        img.alt = e.name;
         img.classList.add('preset-image');
         const container = document.createElement('div');
         container.classList.add("preset-container");
@@ -69,6 +74,10 @@ fetch('../list.json')
         container.appendChild(text);
         container.appendChild(img);
 
+        const presetFooter = document.createElement('div');
+        presetFooter.classList.add('preset-footer');
+        container.appendChild(presetFooter);
+
         const tagContainer = document.createElement('div');
         tagContainer.classList.add('preset-tags');
         e.keywords.forEach((ee, i) => {
@@ -76,7 +85,9 @@ fetch('../list.json')
           el.innerText = '#' + ee;
           el.classList.add('preset-tag');
           el.addEventListener('click', e => {
-            window.location = replaceParameter(window.location.href, 's', '%23' + ee);
+            searchBox.value = '#' + ee;
+            search();
+            // window.location = replaceParameter(window.location.href, 's', '%23' + ee);
             e.preventDefault();
           });
           tagContainer.appendChild(el);
@@ -87,21 +98,38 @@ fetch('../list.json')
             tagContainer.appendChild(seperator);
           }
         });
+        presetFooter.appendChild(tagContainer);
 
+        const presetAuthor = document.createElement('span');
+        presetAuthor.classList.add('preset-author');
+        presetAuthor.innerText = '@' + e.author;
+        presetAuthor.addEventListener('click', ev => {
+          searchBox.value = '@' + e.author;
+          search();
+          // window.location = replaceParameter(window.location.href, 's', '@' + e.author);
+          ev.preventDefault();
+        });
+        presetFooter.appendChild(presetAuthor);
 
-
-        container.appendChild(tagContainer);
         const link = document.createElement('a');
         link.appendChild(container);
         link.href = `../?preset=${e.id}`;
         link.classList.add('preset-link');
         presetContainer.appendChild(link);
       });
+
+      if(searched.length == 0) {
+        const nothingFound = document.createElement('span');
+        nothingFound.id = 'nothing-found';
+        nothingFound.innerText = 'Nothing found for your search...';
+        presetContainer.appendChild(nothingFound);
+      }
     }
 
     const searchParameter = getParameter('s');
     if(searchParameter && searchParameter != true) {
       searchBox.value = searchParameter.replace('%23', '#');
+      searchBox.value = searchParameter.replace('%40', '@');
       search();
     }
   });
