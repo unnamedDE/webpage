@@ -16,7 +16,19 @@
     "keywords": [
       "glow",
       "void",
-      "light"
+      "light",
+      "abstract"
+    ]
+  },
+  {
+    "id": "strange-world",
+    "name": "Strange World",
+    "author": "unnamedDE",
+    "keywords": [
+      "abstract",
+      "void",
+      "light",
+      "face"
     ]
   },
   {
