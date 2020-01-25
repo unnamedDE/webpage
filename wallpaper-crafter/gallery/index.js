@@ -128,8 +128,8 @@ fetch('../list.json')
 
     const searchParameter = getParameter('s');
     if(searchParameter && searchParameter != true) {
-      searchBox.value = searchParameter.replace('%23', '#');
-      searchBox.value = searchParameter.replace('%40', '@');
+      // searchBox.value = searchParameter.replace('%23', '#').replace('%40', '@');
+      searchBox.value = decodeURIComponent(searchParameter);
       search();
     }
   });
