@@ -193,7 +193,7 @@ function generate(e, selSkin) {
                                       r: Math.round(((t.r * (s.r * s.a)) * (t.a * mask) + (b.r * b.a) * (1 - (t.a * mask))) * 255),
                                       g: Math.round(((t.g * (s.g * s.a)) * (t.a * mask) + (b.g * b.a) * (1 - (t.a * mask))) * 255),
                                       b: Math.round(((t.b * (s.b * s.a)) * (t.a * mask) + (b.b * b.a) * (1 - (t.a * mask))) * 255),
-                                      a: Math.round((b.a + (t.a * mask) * b.a) * 255)
+                                      a: Math.round((b.a + (t.a * mask) * (1-b.a)) * 255)
                                     };
                                     modified.data[i] = n.r;
                                     modified.data[i + 1] = n.g;
@@ -233,7 +233,7 @@ function generate(e, selSkin) {
                                       r: Math.round(((t.r * (s.r * s.a)) * (t.a * mask) + (b.r * b.a) * (1 - (t.a * mask))) * 255),
                                       g: Math.round(((t.g * (s.g * s.a)) * (t.a * mask) + (b.g * b.a) * (1 - (t.a * mask))) * 255),
                                       b: Math.round(((t.b * (s.b * s.a)) * (t.a * mask) + (b.b * b.a) * (1 - (t.a * mask))) * 255),
-                                      a: Math.round((b.a + (t.a * mask) * b.a) * 255)
+                                      a: Math.round((b.a + (t.a * mask) * (1-b.a)) * 255)
                                     };
                                     modified.data[i] = n.r;
                                     modified.data[i + 1] = n.g;
@@ -398,7 +398,7 @@ function generate(e, selSkin) {
         r: Math.round((t.r * (t.a * c) + (b.r * b.a) * (1 - (t.a * c))) * 255),
         g: Math.round((t.g * (t.a * c) + (b.g * b.a) * (1 - (t.a * c))) * 255),
         b: Math.round((t.b * (t.a * c) + (b.b * b.a) * (1 - (t.a * c))) * 255),
-        a: Math.round((b.a + (t.a * c) * b.a) * 255)
+        a: Math.round((b.a + (t.a * c) * (1-b.a)) * 255)
       };
       bottom.data[i] = n.r;
       bottom.data[i + 1] = n.g;
