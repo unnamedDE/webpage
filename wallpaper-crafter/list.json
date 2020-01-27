@@ -10,6 +10,21 @@
     ]
   },
   {
+    "id": "squid",
+    "name": "Squid",
+    "author": "unnamedDE",
+    "keywords": [
+      "update",
+      "nature",
+      "animal",
+      "turtle",
+      "fish",
+      "salmon",
+      "tropical",
+      "squid"
+    ]
+  },
+  {
     "id": "light_halo",
     "name": "Light Halo",
     "author": "unnamedDE",
@@ -28,7 +43,8 @@
       "abstract",
       "void",
       "light",
-      "face"
+      "face",
+      "flying"
     ]
   },
   {
