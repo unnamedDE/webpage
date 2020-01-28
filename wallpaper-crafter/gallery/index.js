@@ -81,6 +81,8 @@ fetch('../list.json')
         const tagContainer = document.createElement('div');
         tagContainer.classList.add('preset-tags');
         e.keywords.forEach((ee, i) => {
+          const container = document.createElement('span');
+          container.classList.add('preset-tag-container');
           const el = document.createElement('span');
           el.innerText = '#' + ee;
           el.classList.add('preset-tag');
@@ -90,13 +92,14 @@ fetch('../list.json')
             // window.location = replaceParameter(window.location.href, 's', '%23' + ee);
             e.preventDefault();
           });
-          tagContainer.appendChild(el);
+          container.appendChild(el);
           if(i+1 != e.keywords.length) {
             const seperator = document.createElement('span');
             seperator.innerText = ",";
             seperator.classList.add('seperator')
-            tagContainer.appendChild(seperator);
+            container.appendChild(seperator);
           }
+          tagContainer.appendChild(container);
         });
         presetFooter.appendChild(tagContainer);
 
