@@ -25,6 +25,25 @@
     ]
   },
   {
+    "id": "diamond_sword",
+    "name": "Diamond Sword",
+    "author": "unnamedDE",
+    "keywords": [
+      "weapon",
+      "lighting"
+    ]
+  },
+  {
+    "id": "diamond_sword_face",
+    "name": "Diamond Sword (Face)",
+    "author": "unnamedDE",
+    "keywords": [
+      "face",
+      "weapon",
+      "lighting"
+    ]
+  },
+  {
     "id": "light_halo",
     "name": "Light Halo",
     "author": "unnamedDE",
