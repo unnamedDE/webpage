@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirect not found...</title>
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #ddd;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        background-color: #333;
+      }
+      h1 {
+        display: block;
+        text-align: center;
+        font-size: 10vh;
+      }
+      h3 {
+        display: block;
+        text-align: center;
+        font-size: 5vh;
+      }
+      #link-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20vh;
+      }
+      a {
+        display: inline-block;
+        font-size: 5vh;
+        padding: 2.5vh;
+        background-color: #555;
+      }
+      a span {
+        font-size: 5vh;
+        background-color: #333;
+        border: none;
+        width: 20px;
+        padding: 1vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Redirect Error</h1>
+    <h3>The requested link doesn't exist...</h3>
+    <div id="link-container">
+      <a href="">https://link.unnamedDE.tk/<span contenteditable="true" autofocus></span></a>
+    </div>
+
+    <script type="text/javascript">
+      const link = document.querySelector('a');
+      const input = document.querySelector('a > span');
+      const urlParam = new URL(location.href).searchParams.get('link');
+
+      input.innerText = urlParam
+      input.addEventListener('input', () => {
+        if(input.innerText.toLowerCase() == urlParam) return link.href = '';
+        link.href = 'https://link.unnamedDE.tk/' + input.innerText;
+      });
+      input.addEventListener('click', e => e.preventDefault())
+    </script>
+  </body>
+</html>
