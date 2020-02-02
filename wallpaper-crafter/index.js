@@ -27,6 +27,8 @@ const btnDownload = document.querySelector('#btnDownload');
 const openSkinSelect = document.querySelector('#openSkinSelect');
 const skinSelectOverlay = document.querySelector('#skinSelectOverlay');
 const authorDisplay = document.querySelector('#author');
+const loadingBar = document.querySelector('#loading-bar');
+const loadingBarChild = loadingBar.querySelector('span');
 
 openSkinSelect.addEventListener('click', () => {
   skinSelectOverlay.classList.add('active');
@@ -74,8 +76,10 @@ function imgLoaded() {
   const imgNames = ["Background", "Players", "Mask Player", "Shading Players", "Players Armor", "Mask Armor", "Shading Armor", "Foreground"]
   console.log('Image "' + imgNames[imgsLoaded] + '" has loaded');
   imgsLoaded++;
-  if(imgsLoaded==8) {
+  loadingBarChild.style.width = (imgsLoaded/imgNames.length)*100 + '%';
+  if(imgsLoaded == imgNames.length) {
     imgOutput.classList.remove('loading');
+    loadingBar.classList.add('hidden');
   }
 }
 
