@@ -1,0 +1,334 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+.hidden {
+  display: none!important;
+}
+
+#backButton {
+  margin-left: 1vmin;
+  margin-top: 1vmin;
+  position: absolute;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 5fr 3fr;
+  height: 100vh;
+  grid-template-areas: "recipe details"
+                                    "export details";
+}
+
+#recipeContainer {
+  grid-area: recipe;
+  display: flex;
+  justify-content: center;
+}
+#recipeContainer > .recipeInterface {
+  padding-top: 10vmin;
+}
+#recipeContainer .craftingModeContainer {
+  display: inline-grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1vmin;
+  margin-right: 2vmin;
+}
+#recipeContainer .craftingModeContainer > span:not(.craftingMode) {
+  visibility: hidden;
+}
+#recipeContainer .baseInput {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1vmin;
+  margin-right: 2vmin;
+}
+#recipeContainer .augmentInput,
+#recipeContainer .output {
+  display: inline-grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1vmin;
+  margin-right: 7.5vmin;
+}
+#recipeContainer .baseInput > span,
+#recipeContainer .augmentInput > span,
+#recipeContainer .output > span,
+#recipeContainer .craftingModeContainer > span {
+  position: relative;
+  height: 7.5vmin;
+  width: 7.5vmin;
+  background-color: rgba(255, 255, 255, .5);
+  transition: background-color .2s;
+  box-shadow: -.5vmin .5vmin 4px #333;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#recipeContainer .baseInput > span:hover,
+#recipeContainer .augmentInput > span:hover,
+#recipeContainer .output > span:hover,
+#recipeContainer .craftingModeContainer > span:hover {
+  background-color: rgba(255, 255, 255, .75);
+}
+#recipeContainer .baseInput > span.active,
+#recipeContainer .augmentInput > span.active,
+#recipeContainer .output > span.active,
+#recipeContainer .craftingModeContainer > span.active {
+  background-color: rgba(255, 255, 255, .25);
+}
+#recipeContainer .baseInput > span.active:hover,
+#recipeContainer .augmentInput > span.active:hover,
+#recipeContainer .output > span.active:hover,
+#recipeContainer .craftingModeContainer > span.active:hover {
+  background-color: rgba(255, 255, 255, .15);
+}
+#recipeContainer .baseInput > span.dragging,
+#recipeContainer .augmentInput > span.dragging,
+#recipeContainer .output > span.dragging,
+#recipeContainer .baseInput > span.dragover,
+#recipeContainer .augmentInput > span.dragover,
+#recipeContainer .output > span.dragover {
+  background-color: rgba(225, 255, 255, .25);
+}
+#recipeContainer .baseInput > span > img.display,
+#recipeContainer .augmentInput > span > img.display,
+#recipeContainer .output > span > img.display,
+#recipeContainer .craftingModeContainer > span > img.display {
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+  pointer-events: none;
+}
+#recipeContainer .baseInput > span > img.display.pixelated,
+#recipeContainer .augmentInput > span > img.display.pixelated,
+#recipeContainer .output > span > img.display.pixelated,
+#recipeContainer .craftingModeContainer > span > img.display.pixelated {
+  image-rendering: pixelated;
+}
+#recipeContainer .output > span > .amount{
+  position: absolute;
+  right: .1vmin;
+  bottom: .1vmin;
+  color: #fff;
+  pointer-events: none;
+}
+#recipeContainer .baseInput > span > .nbt,
+#recipeContainer .augmentInput > span > .nbt,
+#recipeContainer .output > span > .nbt,
+#recipeContainer .craftingModeContainer > span > .nbt {
+  position: absolute;
+  left: .1vmin;
+  bottom: .1vmin;
+  width: 2vmin;
+  height: 2vmin;
+  pointer-events: none;
+}
+#recipeContainer .baseInput > span > .keep,
+#recipeContainer .augmentInput > span > .keep {
+  position: absolute;
+  right: .1vmin;
+  bottom: .1vmin;
+  width: 2vmin;
+  height: 2vmin;
+  pointer-events: none;
+}
+
+#exportContainer {
+  grid-area: export;
+  text-align: center;
+}
+#exportContainer > .jumbotron {
+  display: inline-block;
+  width: 90%;
+  padding-top: 2.5vmin;
+}
+
+#detailsContainer {
+  grid-area: details;
+  background-color: #384043;
+}
+#detailsContainer > .closeButton {
+  font-size: 5vmin;
+  line-height: 5vmin;
+  position: absolute;
+  right: 1vmin;
+  top: 1vmin;
+  transition: color .2s;
+}
+#detailsContainer > .closeButton:hover {
+  color: #8A8A8A;
+}
+
+#detailsContainer > .content > .default > .heading {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .default > .inputs > input {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default .btn.reset {
+  margin-top: 2vmin;
+  width: 80%;
+}
+#detailsContainer > .content > .default .btn.showAdvanced {
+  margin-top: 2vmin;
+  width: 80%;
+}
+#detailsContainer > .content > .default .btn.showAdvanced > i.fas {
+  float: left;
+  font-size: 14px;
+  margin-top: 2px;
+}
+#detailsContainer > .content > .default .advanced {
+}
+#detailsContainer > .content > .default .advanced input {
+  width: 80%;
+  display: inline-block;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default .advanced .custom-checkbox {
+  width: 80%;
+  display: inline-block;
+  text-align: left;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default .advanced .custom-checkbox.enableMcscript {
+  margin-top: .1vmin;
+}
+#detailsContainer > .content > .default .advanced .commands {
+  width: 80%;
+  display: inline-block;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default .advanced .commands > span {
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+}
+#detailsContainer > .content > .default .advanced .commands > textarea {
+  margin-bottom: 1vmin;
+}
+#detailsContainer > .content > .default .advanced .btn.export {
+  margin-top: 2vmin;
+  margin-bottom: 2vmin;
+  width: 80%;
+}
+
+
+#detailsContainer > .content > .input > .itemName {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .input > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .input > .inputs > input[type="text"],
+#detailsContainer > .content > .input > .inputs > textarea {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .input > .inputs > .keepSwitch {
+  text-align: left;
+  width: 80%;
+  display: inline-block;
+  margin-top: 2vmin;
+  cursor: pointer;
+}
+#detailsContainer > .content > .input > .inputs > .keepSwitch * {
+  cursor: pointer;
+}
+#detailsContainer > .content > .input > .inputs > .delete {
+  width: 80%;
+  margin-top: 6vmin;
+}
+
+
+#detailsContainer > .content > .output > .itemName {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .output > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .output > .inputs > input[type="text"],
+#detailsContainer > .content > .output > .inputs > textarea {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .output > .inputs > .amount-display-container {
+  margin: 0;
+  margin-top: 2vmin;
+  width: 80%;
+  text-align: left;
+}
+#detailsContainer > .content > .output > .inputs > .amount {
+  text-align: left;
+  width: 80%;
+  display: inline-block;
+}
+#detailsContainer > .content > .output > .inputs > .delete {
+  width: 80%;
+  margin-top: 6vmin;
+}
+
+#detailsContainer > .content > .craftingMode > .heading {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .craftingMode > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .craftingMode > .inputs > input[type="text"],
+#detailsContainer > .content > .craftingMode > .inputs > textarea,
+#detailsContainer > .content > .craftingMode > .inputs > select {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+
+
+
+
+#showMcfunction.modal .modal-dialog {
+  max-width: 90vw;
+}
+#showMcfunction.modal .outputs {
+  display: flex;
+}
+#showMcfunction.modal .outputs textarea.output {
+  width: 20%;
+  height: 40vh;
+  background-color: var(--gray);
+  border: 1px solid var(--light);
+  padding: 2vmin;
+  color: var(--dark);
+}
+#showMccode.modal .modal-dialog {
+  max-width: 90vw;
+}
+#showMccode.modal textarea.output {
+  width: 100%;
+  height: 40vh;
+  background-color: var(--gray);
+  border: 1px solid var(--light);
+  padding: 2vmin;
+  color: var(--dark);
+}

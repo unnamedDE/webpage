@@ -1,0 +1,249 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+.hidden {
+  display: none!important;
+}
+
+#backButton {
+  margin-left: 1vmin;
+  margin-top: 1vmin;
+  position: absolute;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 5fr 3fr;
+  height: 100vh;
+  grid-template-areas: "recipe details"
+                                    "export details";
+}
+
+#recipeContainer {
+  grid-area: recipe;
+  display: flex;
+  justify-content: center;
+}
+#recipeContainer > .recipeInterface {
+  padding-top: 10vmin;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+}
+
+#recipeContainer .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75%;
+}
+#recipeContainer .output {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75%;
+}
+#recipeContainer .inputs > span,
+#recipeContainer span.output {
+  position: relative;
+  height: 15vmin;
+  width: 15vmin;
+  background-color: rgba(255, 255, 255, .5);
+  transition: background-color .2s;
+  box-shadow: -.5vmin .5vmin 4px #333;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#recipeContainer .inputs > span:hover,
+#recipeContainer span.output:hover {
+  background-color: rgba(255, 255, 255, .75);
+}
+#recipeContainer .inputs > span.active,
+#recipeContainer span.output.active {
+  background-color: rgba(255, 255, 255, .25);
+}
+#recipeContainer .inputs > span.active:hover,
+#recipeContainer span.output.active:hover {
+  background-color: rgba(255, 255, 255, .15);
+}
+#recipeContainer .inputs > span.dragging,
+#recipeContainer span.output.dragging,
+#recipeContainer .inputs > span.dragover,
+#recipeContainer span.output.dragover {
+  background-color: rgba(225, 255, 255, .25);
+}
+#recipeContainer .inputs > span > img.display,
+#recipeContainer span.output > img.display {
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+  pointer-events: none;
+}
+#recipeContainer .inputs > span > img.display.pixelated,
+#recipeContainer span.output > img.display.pixelated {
+  image-rendering: pixelated;
+}
+#recipeContainer .output > .amount{
+  position: absolute;
+  right: .5vmin;
+  bottom: .5vmin;
+  color: #fff;
+  pointer-events: none;
+  font-size: 3vmin;
+}
+
+#exportContainer {
+  grid-area: export;
+  text-align: center;
+}
+#exportContainer > .jumbotron {
+  display: inline-block;
+  width: 90%;
+  padding-top: 2.5vmin;
+}
+
+#detailsContainer {
+  grid-area: details;
+  background-color: #384043;
+}
+#detailsContainer > .closeButton {
+  font-size: 5vmin;
+  line-height: 5vmin;
+  position: absolute;
+  right: 1vmin;
+  top: 1vmin;
+  transition: color .2s;
+}
+#detailsContainer > .closeButton:hover {
+  color: #8A8A8A;
+}
+
+#detailsContainer > .content > .default > .heading {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .default > .inputs > .craftingMode {
+  display: inline-block;
+  margin-top: 2vmin;
+  text-align: left;
+  width: 80%;
+}
+#detailsContainer > .content > .default > .inputs > .craftingMode > div.custom-radio > * {
+  cursor: pointer;
+}
+#detailsContainer > .content > .default > .inputs > input {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .default .btn.reset {
+  margin-top: 2vmin;
+  width: 80%;
+}
+#detailsContainer > .content > .default .btn.export {
+  margin-top: 2vmin;
+  margin-bottom: 2vmin;
+  width: 80%;
+}
+
+
+#detailsContainer > .content > .input > .itemName {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .input > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .input > .inputs > input[type="text"] {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .input > .inputs > .delete {
+  width: 80%;
+  margin-top: 6vmin;
+}
+
+
+#detailsContainer > .content > .output > .itemName {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .output > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .output > .inputs > input[type="text"] {
+  display: inline-block;
+  width: 80%;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .output > .inputs > .amount-display-container {
+  margin: 0;
+  margin-top: 2vmin;
+  width: 80%;
+  text-align: left;
+}
+#detailsContainer > .content > .output > .inputs > .amount {
+  text-align: left;
+  width: 80%;
+  display: inline-block;
+}
+#detailsContainer > .content > .output > .inputs > .delete {
+  width: 80%;
+  margin-top: 6vmin;
+}
+
+
+#detailsContainer > .content > .fuel > .heading {
+  text-align: center;
+  margin-top: 2vmin;
+}
+#detailsContainer > .content > .fuel > .inputs {
+  text-align: center;
+}
+#detailsContainer > .content > .fuel > .inputs > #cookingTimeLbl {
+  margin-top: 2vmin;
+  text-align: left;
+  display: inline-block;
+  width: 80%;
+}
+#detailsContainer > .content > .fuel > .inputs > input[type="number"] {
+  display: inline-block;
+  width: 80%;
+}
+#detailsContainer > .content > .fuel > .inputs > .reset {
+  width: 80%;
+  margin-top: 4vmin;
+}
+
+
+
+#showJSON.modal .modal-dialog {
+  max-width: 90vw;
+}
+#showJSON.modal .outputs {
+  display: flex;
+}
+#showJSON.modal textarea.output {
+  width: 100%;
+  height: 40vh;
+  background-color: var(--gray);
+  border: 1px solid var(--light);
+  padding: 2vmin;
+  color: var(--dark);
+}

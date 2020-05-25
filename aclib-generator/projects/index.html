@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Project View</title>
+    <meta name="description" content="Generator for ACLib Recipes.">
+    <meta property="og:title" content="ACLib Recipe Generator - unnamedDE's Webpage">
+    <meta property="og:description" content="Generator for ACLib Recipes.">
+    <meta property="og:url" content="unnamedde.tk/aclib-generator/projects">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/bootstrap/cyborg.min.css">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <script src="/import/jquery.js"></script>
+    <script src="/import/popper.js"></script>
+    <script src="/import/sweetalert/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <a href=".." class="btn btn-secondary" id="backButton"><i class="fas fa-chevron-left"></i> Go back</a>
+
+    <div class="container">
+      <div class="list-group" id="projectList">
+        <span class="list-group-item active">
+          <span>Project: <span class="projectName"></span></span><button type="button" class="btn btn-success" id="downloadPack">Download Pack</button>
+        </span>
+        <span class="list-group-item createRecipe" style="text-align: center">
+          <input type="text" id="createRecipeName" class="form-control" value="" placeholder="Recipe name">
+          <select class="form-control" id="createRecipeType">
+            <option value="crafting-table">Crafting Table</option>
+            <option value="cooking">Cooking</option>
+            <option value="stonecutter">Stonecutter</option>
+            <option value="advanced-crafter">Advanced Crafter</option>
+          </select>
+          <button type="button" class="btn btn-success" id="createRecipe"><i class="fas fa-plus"></i> Create new recipe</button>
+        </span>
+      </div>
+
+    <script src="/import/bootstrap/script.js" charset="utf-8"></script>
+    <script src="/import/jszip.min.js"></script>
+    <script src="/import/sweetalert/script.js"></script>
+    <script src="../advanced-crafter/advancedCrafterGenerateMcfunction.js" charset="utf-8"></script>
+    <script src="../crafting-table/craftingTableGenerate.js" charset="utf-8"></script>
+    <script src="../cooking/cookingGenerate.js" charset="utf-8"></script>
+    <script src="../stonecutter/stonecutterGenerate.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

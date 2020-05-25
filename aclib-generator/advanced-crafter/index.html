@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Generator - Advanced Crafting</title>
+    <meta name="description" content="Generator for ACLib Recipes.">
+    <meta property="og:title" content="ACLib Recipe Generator - unnamedDE's Webpage">
+    <meta property="og:description" content="Generator for ACLib Recipes.">
+    <meta property="og:url" content="unnamedde.tk/aclib-generator">
+    <meta property="og:image" content="https://unnamedde.tk/img/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/shortcut.png" type=”image/x-icon”>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/import/bootstrap/cyborg.min.css">
+    <link rel="stylesheet" href="/import/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/import/sweetalert/dark.css">
+    <link rel="stylesheet" href="/import/simplebar/simplebar.css"/>
+
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a href=".." class="btn btn-secondary" id="backButton"><i class="fas fa-chevron-left"></i> Go back</a>
+
+    <div id="recipeContainer">
+      <div class="recipeInterface">
+        <div class="craftingModeContainer">
+          <span><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/></span>
+          <span data-item="crafting-mode" class="craftingMode"><img class="display" src="https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/0/07/Crafting_Table_JE4.png/150px-Crafting_Table_JE4.png?version=bd1b6f6b89e931a85a1b8473cd5e3d29"/><img class="nbt hidden" src="../imgs/nbt.png"></span>
+        </div>
+        <div class="baseInput">
+          <span data-item="in0" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in1" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in2" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in3" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in4" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in5" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in6" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in7" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in8" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+        </div>
+        <div class="augmentInput">
+          <span data-item="in9" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in10" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+          <span data-item="in11" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><img class="keep hidden" src="../imgs/keep.png"></span>
+        </div>
+        <div class="output">
+          <span data-item="out0" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><span class="amount"></span></span>
+          <span data-item="out1" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><span class="amount"></span></span>
+          <span data-item="out2" draggable="true"><img class="display" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/><img class="nbt hidden" src="../imgs/nbt.png"><span class="amount"></span></span>
+        </div>
+      </div>
+      </div>
+
+      <div id="exportContainer">
+        <div class="jumbotron">
+          <h1 class="display-4">Export</h1>
+
+          <button type="button" class="btn btn-info export showFunction" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Only for experts">Show McFunctions</button>
+          <button type="button" class="btn btn-primary export downloadPack">Download datapack</button>
+          <button type="button" class="btn btn-warning export showMccode hidden">Show MCcode</button>
+          <button type="button" class="btn btn-success export showMcscript hidden">Show MCscript</button>
+          <a href="https://www.youtube.com/watch?v=mO6Sz-bPDHc&list=PLPcJVbTqN07P55BCfuTVNtj2RbCxG9xmm" target="_blank" class="btn btn-danger export youtube">Youtube Tutorial</a>
+        </div>
+      </div>
+
+
+    <div id="detailsContainer">
+      <span class="closeButton" title="Go to recipe settings"><i class="fas fa-times-circle"></i></span>
+      <div class="content">
+        <div class="default hidden">
+          <h3 class="heading">Recipe Settings</h3>
+          <div class="inputs">
+            <input type="text" placeholder="Recipe ID (unique)" class="form-control id" autocomplete="off">
+            <input type="text" placeholder="Function Path (optional)" class="form-control funcPath" autocomplete="off">
+
+            <div class="btn btn-secondary showAdvanced"><i class="fas fa-caret-down"></i>Show advanced options</div>
+            <div class="advanced hidden">
+              <div class="custom-control custom-checkbox enableMccode">
+                <input type="checkbox" class="custom-control-input" id="enableMccode" autocomplete="off">
+                <label class="custom-control-label" for="enableMccode">Enable MCcode</label>
+              </div>
+              <div class="custom-control custom-checkbox enableMcscript">
+                <input type="checkbox" class="custom-control-input" id="enableMcscript" autocomplete="off">
+                <label class="custom-control-label" for="enableMcscript">Enable MCscript</label>
+              </div>
+              <input type="text" placeholder="MCcode/MCscript path" class="form-control mccodePath" autocomplete="off" disabled>
+              <div class="commands">
+                <span>Commands running when correct pattern is put in:</span>
+                <textarea rows="3" class="form-control commandsInit" autocomplete="off" data-gramm_editor="false"></textarea>
+                <span>Commands running when crafted:</span>
+                <textarea rows="3" class="form-control commandsCraft" autocomplete="off" data-gramm_editor="false"></textarea>
+                <span>Commands running when canceled:</span>
+                <textarea rows="3" class="form-control commandsCancel" autocomplete="off" data-gramm_editor="false"></textarea>
+              </div>
+              <button type="button" class="btn btn-outline-success export" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Import coming soon...">Export recipe data</button>
+            </div>
+
+            <span class="reset btn btn-outline-danger">Reset Recipe</span>
+          </div>
+        </div>
+
+        <div class="input hidden">
+          <h3 class="itemName"></h3>
+          <div class="inputs">
+            <input type="text" class="id form-control" placeholder="Item ID" autocomplete="off">
+            <textarea rows="3" placeholder="Item NBT" class="nbt form-control" autocomplete="off" data-gramm_editor="false"></textarea>
+            <div class="custom-control custom-switch keepSwitch">
+              <input type="checkbox" class="custom-control-input" id="inputKeepSwitch">
+              <label class="custom-control-label" for="inputKeepSwitch">Keep item after crafting</label>
+            </div>
+            <span class="delete btn btn-outline-danger">Delete Item</span>
+          </div>
+        </div>
+
+        <div class="output hidden">
+          <h3 class="itemName"></h3>
+          <div class="inputs">
+            <input type="text" class="id form-control" placeholder="Item ID" autocomplete="off">
+            <label for="outputAmount" class="amount-display-container">Amount: <span class="amount-display">1</span></label><br>
+            <input type="range" class="amount custom-range" id="outputAmount" min="1" max="64" value="1">
+            <textarea rows="3" placeholder="Item NBT" class="nbt form-control" autocomplete="off" data-gramm_editor="false"></textarea>
+            <span class="delete btn btn-outline-danger">Delete Item</span>
+          </div>
+        </div>
+
+        <div class="craftingMode hidden">
+          <h3 class="heading">Crafting Mode</h3>
+          <div class="inputs">
+            <select class="craftingModeSelect form-control">
+              <option value="default">Normal Crafting</option>
+              <option value="custom">Custom...</option>
+            </select>
+            <input type="text" placeholder="Custom crafting mode ID" class="id form-control" disabled>
+            <textarea rows="3" placeholder="Custom crafting mode  NBT" class="nbt form-control" autocomplete="off" data-gramm_editor="false" disabled></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="showMcfunction">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Output</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="outputs">
+              <textarea readonly class="output"></textarea>
+              <textarea readonly class="output"></textarea>
+              <textarea readonly class="output"></textarea>
+              <textarea readonly class="output"></textarea>
+              <textarea readonly class="output"></textarea>
+            </div>
+            <div class="instructions">
+                <h5 class="mt-3">Instructions</h5>
+                <p>First you have to copy the function to the path "<span class="path">...</span>" and create a folder with the name "<span class="foldername">...</span>" and put in the three functions called "1", "2" and "3".</p>
+                <p class="mb-1">Finally create the function tag at "ac_lib:advanced_crafter_recipes" and add "<span class="path">...</span>" to it.</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary downloadBtn">Download</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="showMccode">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Output</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <textarea readonly class="output"></textarea>
+            <div class="instructions">
+                <h5 class="mt-3">Instructions</h5>
+                <p>Just copy the content to a <span class="type">...</span> file so the main function will generate to "<span class="path">...</span>".</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary downloadBtn">Download</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/import/jquery.js"></script>
+    <script src="/import/popper.js"></script>
+    <script src="/import/sweetalert/script.js"></script>
+    <script src="/import/bootstrap/script.js" charset="utf-8"></script>
+    <script src="/import/simplebar/simplebar.min.js"></script>
+    <script src="/import/jszip.min.js"></script>
+    <script src="advancedCrafterGenerateMcfunction.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

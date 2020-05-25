@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#backButton {
+  margin-left: 1vmin;
+  margin-top: 1vmin;
+}
+
+#projectList *:first-child:hover {
+  background-color: #2A9FD6;
+}
+
+#createRecipe {
+  width: auto;
+}
+#createRecipeType {
+  display: inline-block;
+  width: 20%;
+}
+#createRecipeName {
+  display: inline;
+  width: 50%;
+}
+#createRecipeName:hover {
+  background-color: #fff!important;
+}
+
+.list-group-item.active {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item > .nameElement {
+  cursor: pointer;
+}
+.list-group-item > .nameElement:hover {
+  background-color: transparent!important;
+}
+
+.recipeElement {
+  display: flex;
+  justify-content: space-between;
+}
+.recipeElement span:first-child {
+  /* flex: auto; */
+  flex: 10;
+}
+.recipeElement span:nth-child(2) {
+  flex: 2;
+}
+
+.recipeElement .recipeButton .btn-warning:hover {
+  background-color: #D97400!important;
+}

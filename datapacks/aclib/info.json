@@ -38,12 +38,19 @@
       "version": "2.1.1",
       "description": "<ul><li>added compatibility to unnamed-core creative menu</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/655433305247711232/ac_lib-v2.1.1.zip"
+    },
+    {
+      "id": "ac_lib_v3.0.0",
+      "name": "AClib V3.0.0",
+      "version": "3.0.0",
+      "description": "<ul><li>reworked visuals</li><li>added crafting modes</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/714489838811742239/ac_lib-v3.0.0.zip"
     }
   ],
   "extras": [
     "Generate recipes with <a href=\"/aclib-generator\" target=\"_blank\">this</a> handy generator!",
-    "Download a template datapack for AClib <a href=\"files/aclib_template-v1.0.zip\" download>here</a>.",
-    "Get a custom GUI by installing <a target=\"_blank\" href=\"/resourcepacks/unnamed_resources\">unnamed resources</a> and <a target=\"_blank\" href=\"https://optifine.net/downloads\">optifine</a>"
+    "<a target=\"_blank\" href=\"/resourcepacks/unnamed_resources\">unnamed resources</a> is required and <a target=\"_blank\" href=\"https://optifine.net/downloads\">optifine</a> will get you a custom GUI (currently not working because optifine doesn't support custom GUIs for barrels)"
   ],
-  "requirements": []
+  "requirements": [
+  ]
 }

@@ -64,22 +64,15 @@
         </a>
         <p class="lead">Learn how to add recipes with NBT support</p>
         <hr class="my-4">
-        <iframe width="840" height="473" src="https://www.youtube.com/embed/5Ua9UFmylko" style="display: block; margin: 10px auto;"></iframe>
-        <p>The easiest way to add recipes is to use my generator. Navigate to <a href="https://unnamedDE.tk/aclib-generator/" target="_blank">unnamedDE.tk/aclib-generator</a>. There are two ways to use the generator, to use <a href="https://github.com/Stevertus/mcscript" target="_blank">MCscript (a scripting language by Stevertus)</a> or using vanilla MCfunction. MCscript will output code for one file whereas MCfunction will output code for four files</p>
+        <iframe width="840" height="473" src="https://www.youtube.com/embed/mO6Sz-bPDHc" style="display: block; margin: 10px auto;"></iframe>
+        <p>The easiest way to add recipes is to use my generator. Navigate to <a href="https://unnamedDE.tk/aclib-generator/" target="_blank">unnamedDE.tk/aclib-generator</a>. You can download the recipe as a finished datapack or download each of the mcfunctions.</p>
         <hr class="my-2">
-        <a name="adding_recipes-mcfunction"><h3>Using MCfunction</h3></a>
+        <a name="adding_recipes"></a>
         <p>First choose a recipe ID which is unique (like "datapackname_recipename") and enter it in the input labeled "Recipe ID". In the input "Function path" you have to enter the "/function" path to where you want to place the MCfunction file (ex.: datapackname:path/to/function).</p>
         <p>Now you are ready to input your recipe ingredients/outputs. Find the right slot and enter the item ID and if you want NBT. If the slot you are editing is an output you can choose the count as well.</p>
-        <p>When you are finished press "Generate" and it will generate four different codes for you. Create a file at the specified path ("Function Path") with the extension <code>.mcfunction</code> and input the contents of the left output field. Then create a folder with the name of the function file. Inside that folder you have to create three MCfunction files. <code>1.mcfunction</code>, <code>2.mcfunction</code> & <code>3.mcfunction</code> and paste the contents from the output fields from left to right.</p>
-        <p>The last step is to create a file in your datapack at the path <code>data/ac_lib/tags/functions/advanced_crafter_recipes.json</code> and add the function path from above to the JSON list.</p>
+        <p>When you are finished press "Download Datapack" and it will start downloading the datapack.</p>
+        <p>The last step is to drop the file into the datapack folder inside your minecraft world.</p>
         <hr class="my-2">
-        <a name="adding_recipes-mcfunction"><h3>Using MCscript</h3></a>
-        <p>First choose a recipe ID which is unique (like "datapackname_recipename") and enter it in the input labeled "Recipe ID". In the input "Function path" you have to enter the "/function" path to where you want to place the MCfunction file (ex.: datapackname:path/to/function). You also have to specify the path where MCscript will compile the output file.</p>
-        <p>Now you are ready to input your recipe ingredients/outputs. Find the right slot and enter the item ID and if you want NBT. If the slot you are editing is an output you can choose the count as well.</p>
-        <p>When you are finished press "Generate (MCScript)" and it will generate one text for you. Paste them to your <code>.mcscript</code> file and compile it. It will compile it into a file and a folder with three files. The path of the main function file should match with the path specified above.</p>
-        <p>The last step is to create a file in your datapack at the path <code>data/ac_lib/tags/functions/advanced_crafter_recipes.json</code> and add the function path from above to the JSON list.</p>
-        <hr class="my-2">
-        <div class="alert alert-primary mt-2 mb-2" role="alert">You can save the recipe to edit later by pressing "export" and import it later by drag-and-drop.</div>
       </div>
 
       <div class="jumbotron mb-2">

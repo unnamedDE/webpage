@@ -1,618 +1,81 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', Calibri, sans-serif;
-  color: #ddd;
-}
-
-body {
-  /* overflow-y: hidden; */
-  background: #555;
-}
-
-input {
-  background-color: #444;
-  border: #222 1px solid;
-}
-
-input:focus {
-  outline: none;
 }
 
 .hidden {
-  visibility: hidden;
   display: none;
 }
 
-.container {
-  /* margin: 100px 20px 0 20px; */
-  margin: 0 auto;
-  margin: 20px 20px 0 20px;
-  min-width: 1400px;
+#backButton {
+  margin-left: 1vmin;
+  margin-top: 1vmin;
 }
 
-.container_form {
-  display: flex;
-  flex-direction: row;
+#projectList *:first-child:hover {
+  background-color: #2A9FD6;
 }
 
-.container_row {
-  display: flex;
-  flex-direction: column;
+#createProject {
+  width: auto;
 }
-
-.container_items {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  padding: 25px;
-  border: 1px black solid;
-  border-radius: 20px;
-  height: 400px;
-  background-color: #444;
-}
-
-.container_item {
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  padding: 10px;
-  margin: 5px 10px;
-  border: black 1px solid;
-  border-radius: 5px;
-  background-color: #555;
-  /* height: 75px; */
-}
-.container_item input {
-  width: 140px;
-  float: right;
-  margin: 2px 0;
-}
-.container_item select {
-  margin-top: 2px;
-  background-color: #444;
-  border: #222 1px solid;
-}
-.header {
-  text-align: center;
-  font-size: 22px;
-}
-
-.paths_input {
-  /* position: absolute; */
-  /* left: 50%; */
-  /* transform: translate(-50%); */
-  /* bottom: 30%; */
-  margin: 0 auto;
-  width: 1325px;
-  border: 1px black solid;
-  padding: 10px;
-  border-radius: 5px;
-  /* margin-top: 475px; */
-  margin-top: 20px;
-}
-.paths_input input {
-  width: 350px;
-}
-.paths_input #receipe_id {
-  width: 200px;
-}
-
-
-.buttoncontainer {
-  justify-content: center;
-  display: flex;
-  margin-top: 20px;
-}
-
-.buttoncontainer input {
-  color: #000;
-}
-
-.buttoncontainer .big_button, #save-overlay .big_button, #info-overlay .big_button {
-  border: none;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0 10px;
-  height: 50px;
-  width: 250px;
-  border-radius: 5px;
-}
-.buttoncontainer .help_button {
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  font-size: 20px;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  border: none;
-}
-
-#button_generate_mcscript {
-  background-color: #4C36EC;
-}
-#button_generate_mcscript:hover {
-  background-color: #4735CD;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-#button_help_mcscript {
-  background-color: #4C36EC;
-
-}
-#button_help_mcscript:hover {
-  background-color: #4735CD;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#button_generate_mcfunction {
-  background-color: #4CAF50;
-}
-#button_generate_mcfunction:hover {
-  background-color: #519D55;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-#button_help_mcfunction {
-  background-color: #4CAF50;
-}
-#button_help_mcfunction:hover {
-  background-color: #519D55;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-#button_save-load {
-  background-color: #42CFCE;
-}
-#button_save-load:hover {
-  background-color: #44BBBA;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-#button_help_save-load {
-  background-color: #42CFCE;
-}
-#button_help_save-load:hover {
-  background-color: #44BBBA;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#button_reset {
-  background-color: #E12F2F;
-}
-#button_reset:hover {
-  background-color: #D12E2E;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#button_custom-commands {
-  background-color: #ffc168;
-}
-#button_custom-commands:hover {
-  background-color: #DFAA5D;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#header {
-  text-align: center;
-  margin: 0 auto;
-  font-size: 40px;
-  margin-top: 20px;
-  width: 1400px;
-  /* position: absolute; */
-  /* left: 50%; */
-  /* transform: translate(-50%); */
-  /* top: 0; */
-}
-
-#input_second {
-  margin-left: 100px;
-}
-
-#output_item {
-  margin-left: 100px;
-}
-#output_item div {
-  width: 230px;
-}
-#button_back, #button_info {
-  position: fixed;
-  border: none;
-  color: white;
-  padding-top: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  width: 75px;
-  height: 75px;
-}
-#button_back i, #button_info i {
-  display: inline-block;
-  margin: auto;
-  font-size: 40pt;
-  margin: 5px auto;
-}
-#button_back:hover, #button_info:hover {
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#button_back {
-  left: 0;
-  top: 0;
-  background-color: #3036A7;
+#createProjectName {
   display: inline;
+  width: 50%;
 }
-#button_back:hover {
-  background-color: #33377B;
+#createProjectName:hover {
+  background-color: #fff!important;
 }
-#button_info {
-  right: 0;
-  top: 0;
-  background-color: #3036A7;
+
+.list-group-item > .nameElement {
   cursor: pointer;
-  line-height: 60px;
 }
-#button_info:hover {
-  background-color: #33377B;
-}
-/* #button_back, #button_download, #social_discord {
-  position: fixed;
-  border: none;
-  color: white;
-  padding-top: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  height: 30px;
-  width: 150px;
-  border-radius: 5px;
-  box-sizing: border-box;
+.list-group-item > .nameElement:hover {
+  background-color: transparent!important;
 }
 
-#button_back {
-  left: 0;
-  top: 0;
-  background-color: #35A893;
-}
-#button_back:hover {
-  background-color: #499385;
-}
-#button_download {
-  right: 0;
-  top: 0;
-  background-color: #35A893;
-}
-#button_download:hover {
-  background-color: #499385;
-} */
-
-#output_mcscript {
-  border: black 2px solid;
-  height: 250px;
-  width: 90%;
-  font-family: monospace;
-  margin: 0 auto;
-  margin-top: 20px;
-  background-color: #333;
-  font-size: 10pt;
-  display: block;
-  resize: none;
-  padding: 10px;
-}
-
-/* #output_mcscript {
-  border: black 2px solid;
-  height: 250px;
-  width: 90%;
-  overflow-y: scroll;
-  font-family: monospace;
-  margin: 0 auto;
-  margin-top: 20px;
-  font-size: 10pt;
-  background-color: #333;
-} */
-
-#output_mcfunction {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: black 2px solid;
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 90%;
-  height: 250px;
-}
-#output_mcfunction > * {
-  background-color: #333;
-  padding: 10px;
-  font-family: monospace;
-  font-style: 10pt;
-  resize: none;
-  border: #222 1px solid;
-}
-
-/*
-#output_mcfunction {
+.projectElement {
   display: flex;
-  flex-direction: row;
-  border: black 2px solid;
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 90%;
   justify-content: space-between;
-  box-sizing: content-box;
 }
-#output_mcfunction p {
-  border-left: 1px gray solid;
-  height: 250px;
-  width: 415px;
-  font-family: monospace;
-  font-size: 10pt;
-  background-color: #333;
+.projectElement span:first-child {
+  flex: auto;
 }
 
-#output_mcfunction p:first-child {
-  overflow-y: scroll;
-  border-left: none;
-  border-right: 1px gray solid;
+.projectElement .projectButton .btn-warning:hover {
+  background-color: #D97400!important;
 }
 
-#output_mcfunction p:nth-child(2) {
-  border-left: none;
-} */
-
-#output_mcscript.hidden, #output_mcfunction.hidden {
-  display: none;
-  visibility: hidden;
-}
-
-
-#save-overlay {
-  background-color: rgba(200, 200, 200, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
+.card-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  margin-top: 3rem;
+  flex-wrap: wrap;
 }
-#save-overlay #save-container {
-    background-color: #444;
-    padding: 50px;
-    margin: 0 auto;
-    width: 80%;
-    height: 80%;
-    position: relative;
+.card-container .card {
+  transition: background-color .3s;
+  display: inline-flex;
+  width: 27vmin;
+  height: 100%;
+  /* height: 27vmin; */
 }
-
-#save-overlay input {
-  background-color: #222;
-  padding: 9px;
+.card-container .card:hover {
+  background-color: #444!important;
 }
-#save-overlay button:not(#save-close-button) {
-  background-color: #222;
-  border: none;
-  padding: 10px;
-}
-
-#save-overlay #save-container h1:nth-child(2), #save-overlay #save-container p:nth-child(3) {
-  text-align: center;
-  display: block;
-}
-#save-overlay #save-container #save-close-button {
+.card-container .card h4 {
   color: #ddd;
-  background: 0;
-  border: none;
-  font-size: 40px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-#save-overlay > #save-container > #save-close-button:hover * {
-  color: #aaa;
-}
-
-/* Save recipes */
-#save-overlay > #save-container > .buttoncontainer {
-  position: absolute;
-  bottom: 0;
-  transform: translate(-50%);
-  left: 50%;
-  margin-bottom: 15px;
-}
-#save-overlay > #save-container > .buttoncontainer > button {
-  background-color: #42CFCE;
-  color: black;
-}
-#save-overlay > #save-container > .buttoncontainer > button:hover {
-  background-color: #44BBBA;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-#saved-recipes-container > div {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-}
-#saved-recipes-container > div:last-child {
-  grid-template-columns: 3fr 1fr;
-}
-#saved-recipes-container > div > * {
-  border: #333 1px solid;
-  outline: none;
-}
-#saved-recipes-container > div > button:hover, #saved-recipes-container > div > input:hover {
-  background-color: #252525!important;
-}
-#saved-recipes-container > div > span {
-  line-height: 38px;
-  padding-left: 5px;
-  background-color: #222;
-  font-size: 13.3333px;
-}
-#saved-recipes-container > div > span:nth-child(2) {
   text-align: center;
+  font-size: 5vmin;
 }
-
-
-/* Info Container */
-
-#info-overlay {
-  background-color: rgba(200, 200, 200, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.card-container > a {
+  text-decoration: none;
 }
-#info-overlay #info-container {
-    background-color: #444;
-    padding: 50px;
-    margin: 0 auto;
-    width: 80%;
-    height: 80%;
-    position: relative;
-}
-
-#info-overlay input {
-  background-color: #222;
-  padding: 9px;
-}
-#info-overlay button:not(#info-close-button) {
-  background-color: #222;
-  border: none;
-  padding: 10px;
-}
-
-#info-overlay #info-container h1:nth-child(2) {
-  text-align: center;
-  display: block;
-}
-#info-overlay #info-container #info-close-button {
-  color: #ddd;
-  background: 0;
-  border: none;
-  font-size: 40px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-#info-overlay > #info-container > #info-close-button:hover * {
-  color: #aaa;
-}
-
-
-#info-overlay > #info-container > #button_download {
-  background-color: #42CFCE;
-  position: absolute;
-  bottom: 0;
-  transform: translate(-50%);
-  left: 50%;
-  color: black;
-  margin-bottom: 15px;
-}
-#info-overlay #button_download:hover {
-  background-color: #44BBBA;
-  box-shadow: rgba(0, 0, 0, 0.27) 8px 8px 20px -5px;
-}
-
-/* custom-commands Container */
-
-#custom-commands-overlay {
-  background-color: rgba(200, 200, 200, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-#custom-commands-overlay #custom-commands-container {
-    background-color: #444;
-    padding: 50px;
-    margin: 0 auto;
-    width: 80%;
-    height: 80%;
-    position: relative;
-}
-
-#custom-commands-overlay input {
-  background-color: #222;
-  padding: 9px;
-}
-#custom-commands-overlay button:not(#custom-commands-close-button) {
-  background-color: #222;
-  border: none;
-  padding: 10px;
-}
-
-#custom-commands-overlay #custom-commands-container h1:nth-child(2), #custom-commands-overlay #custom-commands-container p:nth-child(3) {
-  text-align: center;
-  display: block;
-}
-#custom-commands-overlay #custom-commands-container #custom-commands-close-button {
-  color: #ddd;
-  background: 0;
-  border: none;
-  font-size: 40px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-#custom-commands-overlay > #custom-commands-container > #custom-commands-close-button:hover * {
-  color: #aaa;
-}
-
-
-#custom-commands-overlay #custom-commands-container #command-container {
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-}
-#custom-commands-overlay #custom-commands-container #command-container #container2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
-  height: 100%;
-}
-#custom-commands-overlay #custom-commands-container #command-container #container2 div {
-  display: block;
-}
-#custom-commands-overlay #custom-commands-container #command-container #container2 textarea {
-  width: 100%;
-  margin-top: 5px;
-  height: 90%;
-  border: black 2px solid;
-  font-family: monospace;
-  background-color: #333;
-  font-size: 10pt;
-  display: block;
-  resize: none;
-  padding: 10px;
+.card-container .card img.preview-img,
+.card-container .card span.imgAnimated {
+  width: 25vmin;
+  height: 25vmin;
+  object-fit: contain;
+  margin: 0 auto;
 }

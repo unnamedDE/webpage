@@ -10,10 +10,17 @@
       "version": "1.0",
       "description": "Adds all textures/models/sounds needed for my datapacks",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/639174032524181514/unnamed_resources-v1.0.zip"
+    },
+    {
+      "id": "unnamed_resources-v1.1",
+      "name": "Unnamed Resources V1.1",
+      "version": "1.1",
+      "description": "<ul><li>adds model/texture for AClib</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/714492184816254997/unnamed_resources-v1.1.zip"
     }
   ],
   "extras": [
-    "Datapacks used for: <ul><li><a target=\"_blank\" href=\"/datapacks/aclib\">AClib</a> (optional)</li></ul>"
+    "Datapacks used for: <ul><li><a target=\"_blank\" href=\"/datapacks/aclib\">AClib</a></li></ul>"
   ],
   "requirements": []
 }
