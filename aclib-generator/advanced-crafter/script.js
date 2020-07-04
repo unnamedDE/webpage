@@ -173,15 +173,22 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       .file(mcfunctions[5].funcPath.replace(':', '/functions/') + '/3.mcfunction', mcfunctions[3])
       .file(mcfunctions[5].funcPath.replace(':', '/functions/') + '/4.mcfunction', mcfunctions[4]);
 
+      JSZipUtils.getBinaryContent("../imgs/pack-icons/advanced_crafter.png", function (err, data) {
+      if(err) {
+        throw err; // or handle the error
+      }
+      zip.file("pack.png", data, {binary:true});
 
-      zip.generateAsync({type:"base64", comment: "Generated with ac-lib generator (unnamedDE.tk)"})
-        .then((content) => {
-          const el = document.createElement('a');
-          el.href = "data:application/zip;base64,"+content;
-          el.download = `recipe-${mcfunctions[5].id}.zip`
-          document.body.appendChild(el);
-          el.click();
-          document.body.removeChild(el);
+
+        zip.generateAsync({type:"base64", comment: "Generated with ac-lib generator (unnamedDE.tk)"})
+          .then((content) => {
+            const el = document.createElement('a');
+            el.href = "data:application/zip;base64,"+content;
+            el.download = `recipe-${mcfunctions[5].id}.zip`
+            document.body.appendChild(el);
+            el.click();
+            document.body.removeChild(el);
+          });
         });
   });
 

@@ -45,6 +45,13 @@
       "version": "3.0.0",
       "description": "<ul><li>reworked visuals</li><li>added crafting modes</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/714489838811742239/ac_lib-v3.0.0.zip"
+    },
+    {
+      "id": "ac_lib_v3.0.1",
+      "name": "AClib V3.0.1",
+      "version": "3.0.1",
+      "description": "<ul><li>added pack.png for 1.16 data pack selection screen</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/729045485213581322/ac_lib-v3.0.1.zip"
     }
   ],
   "extras": [

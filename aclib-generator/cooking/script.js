@@ -169,6 +169,12 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
     if(json[4].craftingMode.campfire) zip.file('data/' + (/:/.test(json[4].recipePath) ? json[4].recipePath.replace(':', '/recipes/') : 'aclib-recipe/recipes/' + json[4].recipePath) + '-campfire_cooking.json', JSON.stringify(json[3], undefined, '\t'));
 
 
+    JSZipUtils.getBinaryContent("../imgs/pack-icons/smelting.png", function (err, data) {
+      if(err) {
+        throw err; // or handle the error
+      }
+      zip.file("pack.png", data, {binary:true});
+
       zip.generateAsync({type:"base64", comment: "Generated with ac-lib generator (unnamedDE.tk)"})
         .then((content) => {
           const el = document.createElement('a');
@@ -180,6 +186,7 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
           el.click();
           document.body.removeChild(el);
         });
+      });
   });
 
 

@@ -117,16 +117,23 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       .file('data/' + (/:/.test(json[1].recipePath) ? json[1].recipePath.replace(':', '/recipes/') : 'aclib-recipe/recipes/' + json[1].recipePath) + '.json', JSON.stringify(json[0], undefined, '\t'));
 
 
-      zip.generateAsync({type:"base64", comment: "Generated with ac-lib generator (unnamedDE.tk)"})
-        .then((content) => {
-          const el = document.createElement('a');
-          el.href = "data:application/zip;base64,"+content;
-          const splitPath1 = json[1].recipePath.split(':');
-          const splitPath2 = splitPath1[splitPath1.length-1].split('/');
-          el.download = `recipe-${splitPath2[splitPath2.length-1]}.zip`
-          document.body.appendChild(el);
-          el.click();
-          document.body.removeChild(el);
+      JSZipUtils.getBinaryContent("../imgs/pack-icons/stonecutter.png", function (err, data) {
+        if(err) {
+          throw err; // or handle the error
+        }
+        zip.file("pack.png", data, {binary:true});
+
+        zip.generateAsync({type:"base64", comment: "Generated with ac-lib generator (unnamedDE.tk)"})
+          .then((content) => {
+            const el = document.createElement('a');
+            el.href = "data:application/zip;base64,"+content;
+            const splitPath1 = json[1].recipePath.split(':');
+            const splitPath2 = splitPath1[splitPath1.length-1].split('/');
+            el.download = `recipe-${splitPath2[splitPath2.length-1]}.zip`
+            document.body.appendChild(el);
+            el.click();
+            document.body.removeChild(el);
+          });
         });
   });
 
