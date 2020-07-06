@@ -23,5 +23,10 @@
     "id": "hosetastic",
     "name": "Horsetastic",
     "path": "horsetastic/"
+  },
+  {
+    "id": "mining-dimension",
+    "name": "Mining Dimension",
+    "path": "mining-dimension/"
   }
 ]

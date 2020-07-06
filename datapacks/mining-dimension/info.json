@@ -1,0 +1,20 @@
+{
+  "title": "Mining Dimension - Datapack",
+  "pmc": "https://www.planetminecraft.com/data-pack/datapack-list-datapack-1-13-x/",
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "mining-dimension_v1.0.0",
+      "name": "Mining Dimension V1.0.0",
+      "version": "1.0.0",
+      "description": "Adds a extra dimension just for mining, so you don't have to worry about destroying your building world",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/729656016714858506/mining-dimension-v1.0.0.zip"
+    }
+  ],
+  "extras": [
+    "Minecraft 1.16 is required",
+    "<b>This pack makes use of an experimental feature! Please backup your world before using it!</b>"
+  ],
+  "requirements": []
+}
