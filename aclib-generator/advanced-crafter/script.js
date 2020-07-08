@@ -431,7 +431,7 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
     } else {
       craftingMode.querySelector('.nbt').classList.remove('hidden');
     }
-    recipe.craftingMode.id = craftingModeNbt.value;
+    recipe.craftingMode.nbt = craftingModeNbt.value;
     updateLocalStorage();
   });
 
