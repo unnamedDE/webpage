@@ -28,5 +28,10 @@
     "id": "mining-dimension",
     "name": "Mining Dimension",
     "path": "mining-dimension/"
+  },
+  {
+    "id": "easier-netherite",
+    "name": "Easier Netherite",
+    "path": "easier-netherite/"
   }
 ]

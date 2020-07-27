@@ -1,0 +1,19 @@
+{
+  "title": "Easier Netherite - Datapack",
+  "pmc": "https://www.planetminecraft.com/data-pack/easier-netherite/",
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "easier-netherite_v1.0.0",
+      "name": "Easier Netherite V1.0.0",
+      "version": "1.0.0",
+      "description": "Outputs netherite ingots directly when smelting ancient debris",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/737388298258874378/easier-netherite-v1.0.0.zip"
+    }
+  ],
+  "extras": [
+    "Minecraft 1.16 is required"
+  ],
+  "requirements": []
+}
