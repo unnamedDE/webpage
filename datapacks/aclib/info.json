@@ -52,6 +52,13 @@
       "version": "3.0.1",
       "description": "<ul><li>added pack.png for 1.16 data pack selection screen</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/729045485213581322/ac_lib-v3.0.1.zip"
+    },
+    {
+      "id": "ac_lib_v3.0.2",
+      "name": "AClib V3.0.2",
+      "version": "3.0.2",
+      "description": "<ul><li>pack version is now 6 (1.16.2)</li><li>fixed items sometimes getting replaced by arrows when putting them in blocked slots</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/746035855097069568/ac_lib-v3.0.2.zip"
     }
   ],
   "extras": [
