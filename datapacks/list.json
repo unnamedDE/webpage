@@ -33,5 +33,10 @@
     "id": "easier-netherite",
     "name": "Easier Netherite",
     "path": "easier-netherite/"
+  },
+  {
+    "id": "mob-catching",
+    "name": "Mob Catching",
+    "path": "mob-catching/"
   }
 ]

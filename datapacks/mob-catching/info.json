@@ -1,0 +1,22 @@
+{
+  "title": "Mob Catching - Datapack",
+  "pmc": "https://www.planetminecraft.com/data-pack/mob-catching/",
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "mob-catching_v1.0.0",
+      "name": "Mob Catching V1.0.0",
+      "version": "1.0.0",
+      "description": "You can turn any animal/monster back into its spawn egg",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/746055136945635418/mob-catching-v1.0.0.zip"
+    }
+  ],
+  "extras": [],
+  "requirements": [{
+    "name": "<a href=\"../aclib\" target=\"_blank\">AClib</a>",
+    "type": "datapack",
+    "description": "Used for the crafting mechanic",
+    "testedVersions": ["3.0.2"]
+    }]
+}

@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
       if(info.requirements && info.requirements.length > 0) {
         requirementsElement = `<div id="requirements">\n
   <div class="requirement">
-    <span>Name</span>
+    <span>Requirements:</span>
     <span>Type</span>
     <span>Description</span>
     <span>Tested Versions</span>
@@ -45,7 +45,6 @@ window.addEventListener('load', () => {
         <h1 class="animated fadeInDown">${info.title}</h1>
       </div>
       ${bannerElement}
-      ${requirementsElement}
       <div id="container">
         <div class="container-item">
           <span>Name</span>
@@ -58,7 +57,8 @@ window.addEventListener('load', () => {
           <a id="latest-version" href="#" title="Click to download">Download the latest Version</a>
           <a id="pmc" href="#" title="Visit the pack on Planetminecraft"><img src="/import/global/img/planetminecraft.png" alt="PMC" style="height: 45px;"></a>
         </div>
-      </div>`
+      </div>
+      ${requirementsElement}`
       addButtons();
       for(let i = 0; i < info.list.length; i++) {
         let pack = document.createElement('div');
