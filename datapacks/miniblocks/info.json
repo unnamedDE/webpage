@@ -1,0 +1,22 @@
+{
+  "title": "Miniblocks",
+  "pmc": "https://www.planetminecraft.com/data-pack/aclib-miniblocks/",
+  "banner": false,
+  "wiki": false,
+  "list": [
+    {
+      "id": "miniblocks_v1.0.0",
+      "name": "Miniblocks V1.0.0",
+      "version": "1.0.0",
+      "description": "You can turn ~150 blocks into miniblocks",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/746710624276316230/miniblocks-v1.0.0.zip"
+    }
+  ],
+  "extras": [],
+  "requirements": [{
+    "name": "<a href=\"../aclib\" target=\"_blank\">AClib</a>",
+    "type": "datapack",
+    "description": "Used for the crafting mechanic",
+    "testedVersions": ["3.0.2"]
+    }]
+}

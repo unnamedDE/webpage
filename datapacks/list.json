@@ -38,5 +38,10 @@
     "id": "mob-catching",
     "name": "Mob Catching",
     "path": "mob-catching/"
+  },
+  {
+    "id": "miniblocks",
+    "name": "Miniblocks",
+    "path": "miniblocks/"
   }
 ]
