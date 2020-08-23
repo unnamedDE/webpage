@@ -11,6 +11,13 @@
       "description": "You can turn ~150 blocks into miniblocks",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/746710624276316230/miniblocks-v1.0.0.zip"
     }
+    {
+      "id": "miniblocks_v1.0.1",
+      "name": "Miniblocks V1.0.1",
+      "version": "1.0.1",
+      "description": "<ul><li>fixed bug where items in some blocked slots get deleted</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/747016420394663986/miniblocks-v1.0.1.zip"
+    }
   ],
   "extras": [],
   "requirements": [{
