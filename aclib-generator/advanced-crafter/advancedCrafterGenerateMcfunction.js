@@ -58,7 +58,8 @@ function advancedCrafterGenerateMcfunction(recipe, inputs, outputs) {
       'minecraft:flint_and_steel',
       'minecraft:fishing_rod',
       'minecraft:shears',
-      'minecraft:shield'
+      'minecraft:shield',
+      'minecraft:potion'
     ].indexOf(id) != -1) return true;
     if([
       '_sword',
