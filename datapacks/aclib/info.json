@@ -59,6 +59,13 @@
       "version": "3.0.2",
       "description": "<ul><li>pack version is now 6 (1.16.2)</li><li>fixed items sometimes getting replaced by arrows when putting them in blocked slots</li></ul>",
       "download": "https://cdn.discordapp.com/attachments/588064691360628752/746035855097069568/ac_lib-v3.0.2.zip"
+    },
+    {
+      "id": "ac_lib_v3.1.0",
+      "name": "AClib V3.1.0",
+      "version": "3.1.0",
+      "description": "<ul><li>blocking slots can now be done right from the crafting mode item</li></ul>",
+      "download": "https://cdn.discordapp.com/attachments/588064691360628752/777609279867322418/ac_lib-v3.1.0.zip"
     }
   ],
   "extras": [
