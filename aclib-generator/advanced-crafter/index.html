@@ -110,6 +110,10 @@
               <input type="checkbox" class="custom-control-input" id="inputKeepSwitch">
               <label class="custom-control-label" for="inputKeepSwitch">Keep item after crafting</label>
             </div>
+            <div class="custom-control custom-switch ignoreSwitch">
+              <input type="checkbox" class="custom-control-input" id="inputIgnoreSwitch">
+              <label class="custom-control-label" for="inputIgnoreSwitch">Ingore this slot</label>
+            </div>
             <span class="delete btn btn-outline-danger">Delete Item</span>
           </div>
         </div>
@@ -121,6 +125,10 @@
             <label for="outputAmount" class="amount-display-container">Amount: <span class="amount-display">1</span></label><br>
             <input type="range" class="amount custom-range" id="outputAmount" min="1" max="64" value="1">
             <textarea rows="3" placeholder="Item NBT" class="nbt form-control" autocomplete="off" data-gramm_editor="false"></textarea>
+            <div class="custom-control custom-switch ignoreSwitch">
+              <input type="checkbox" class="custom-control-input" id="outputIgnoreSwitch">
+              <label class="custom-control-label" for="outputIgnoreSwitch">Ingore this slot</label>
+            </div>
             <span class="delete btn btn-outline-danger">Delete Item</span>
           </div>
         </div>

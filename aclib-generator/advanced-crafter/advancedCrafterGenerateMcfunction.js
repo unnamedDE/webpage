@@ -2,7 +2,7 @@ function correctAdvancedCrafterRecipe(recipe) {
   const fixedRecipe = JSON.parse(JSON.stringify(recipe));
   for(let [key, value] of Object.entries(fixedRecipe)) {
     if(/^(?:in\d{1,2})|(?:out\d)$/.test(key)) {
-      if(!value.id) {
+      if(!value.id && !value.ignore) {
         delete fixedRecipe[key];
         continue;
       }
@@ -96,6 +96,15 @@ function advancedCrafterGenerateMcfunction(recipe, inputs, outputs) {
         inverted: `unless block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt}}]}`.replace(/,tag:\{\}/g, ''),
         invertedNbt: fixedRecipe[e].nbt != '{}' || isTool(fixedRecipe[e].id) ? '' : `\nexecute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel if data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag run function ${fixedRecipe.funcPath}/3`,
       }
+      pieces[e].cond3 = `\nexecute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces[e].inverted} run function ${fixedRecipe.funcPath}/3${pieces[e].invertedNbt}`;
+      if(fixedRecipe[e].ignore) {
+        pieces[e] = {
+          normal: ``,
+          inverted: ``,
+          invertedNbt: ``,
+          cond3: ``,
+        }
+      }
       if(fixedRecipe[e].keep) {
         pieces.setKeep.push(`tag @s add ac_lib_keep_${i}`);
         pieces.clearKeep.push(`tag @s remove ac_lib_keep_${i}`);
@@ -104,13 +113,15 @@ function advancedCrafterGenerateMcfunction(recipe, inputs, outputs) {
       normal: `unless block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]} `,
       inverted: `if block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}`,
       invertedNbt: ``,
+      cond3: ``,
     }
   });
   outputs.forEach((e, i) => {
-    if(fixedRecipe[e]) {
+    if(fixedRecipe[e] && !fixedRecipe[e].ignore) {
       pieces[e] = {
         clearItem: `replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} minecraft:air`,
         nbt: fixedRecipe[e].nbt != '{}' ? `,tag:${fixedRecipe[e].nbt}` : ``,
+        notBlocked: `unless block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[i+12]}b}]} `
       }
       pieces[e].setItem = `replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} ${fixedRecipe[e].id + pieces[e].nbt.replace(",tag:", "")} ${fixedRecipe[e].amount}`;
       pieces[e].check = `unless block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i+12]}b,Count:${fixedRecipe[e].amount}b,id:"${fixedRecipe[e].id}"${pieces[e].nbt}}]}`;
@@ -120,27 +131,17 @@ function advancedCrafterGenerateMcfunction(recipe, inputs, outputs) {
       check: ``,
       clearItem: ``,
       nbt: ``,
-      killItem: ``
+      killItem: ``,
+      notBlocked: ``,
     }
   });
   mcfunctionMain =
-`execute if entity @s[tag=!ac_lib_advanced_crafter_crafted] if block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]} ${pieces.in0.normal + pieces.in1.normal + pieces.in2.normal + pieces.in3.normal + pieces.in4.normal + pieces.in5.normal + pieces.in6.normal + pieces.in7.normal + pieces.in8.normal + pieces.in9.normal + pieces.in10.normal + pieces.in11.normal}unless block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[12]}b}]} unless block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[13]}b}]} unless block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[14]}b}]} run function ${fixedRecipe.funcPath}/1
+`execute if entity @s[tag=!ac_lib_advanced_crafter_crafted] if block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]} ${pieces.in0.normal + pieces.in1.normal + pieces.in2.normal + pieces.in3.normal + pieces.in4.normal + pieces.in5.normal + pieces.in6.normal + pieces.in7.normal + pieces.in8.normal + pieces.in9.normal + pieces.in10.normal + pieces.in11.normal + pieces.out0.notBlocked + pieces.out1.notBlocked + pieces.out2.notBlocked}run function ${fixedRecipe.funcPath}/1
 
 execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] ${pieces.in0.normal + pieces.in1.normal + pieces.in2.normal + pieces.in3.normal + pieces.in4.normal + pieces.in5.normal + pieces.in6.normal + pieces.in7.normal + pieces.in8.normal + pieces.in9.normal + pieces.in10.normal + pieces.in11.normal + pieces.out0.check + pieces.out1.check + pieces.out2.check} run function ${fixedRecipe.funcPath}/2
 
 execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel unless block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]} run function ${fixedRecipe.funcPath}/3${pieces.in0.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in0.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in0.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in1.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in1.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in2.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in2.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in3.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in3.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in4.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in4.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in5.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in5.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in6.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in6.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in7.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in7.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in8.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in8.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in9.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in9.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in10.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in10.invertedNbt}
-execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] if block ~ ~ ~ minecraft:barrel ${pieces.in11.inverted} run function ${fixedRecipe.funcPath}/3${pieces.in11.invertedNbt}
+${pieces.in0.cond3 + pieces.in1.cond3 + pieces.in2.cond3 + pieces.in3.cond3 + pieces.in4.cond3 + pieces.in5.cond3 + pieces.in6.cond3 + pieces.in7.cond3 + pieces.in8.cond3 + pieces.in9.cond3 + pieces.in10.cond3 + pieces.in11.cond3}
 
 execute if entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id},tag=ac_lib_advanced_crafter_destroy] run function ${fixedRecipe.funcPath}/4`;
 

@@ -50,11 +50,13 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
   const idInput = detailsContainerContent.querySelector('.input input.id');
   const nbtInput = detailsContainerContent.querySelector('.input textarea.nbt');
   const keepSwitch = detailsContainerContent.querySelector('.input .keepSwitch > input[type="checkbox"]');
+  const inputIgnoreSwitch = detailsContainerContent.querySelector('.input .ignoreSwitch > input[type="checkbox"]');
 
 
   const idOutput = detailsContainerContent.querySelector('.output input.id');
   const amountOutput = detailsContainerContent.querySelector('.output .amount');
   const nbtOutput = detailsContainerContent.querySelector('.output textarea.nbt');
+  const outputIgnoreSwitch = detailsContainerContent.querySelector('.output .ignoreSwitch > input[type="checkbox"]');
 
   const craftingModeSelect = detailsContainerContent.querySelector('.craftingMode select.craftingModeSelect');
   const craftingModeId = detailsContainerContent.querySelector('.craftingMode .id');
@@ -357,7 +359,7 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
 
 
 
-  [idInput, nbtInput, keepSwitch, idOutput, amountOutput, nbtOutput].forEach(e => e.addEventListener('input', () => {
+  [idInput, nbtInput, keepSwitch, inputIgnoreSwitch, idOutput, amountOutput, nbtOutput, outputIgnoreSwitch].forEach(e => e.addEventListener('input', () => {
     refreshItem();
     saveInputs(activeItem);
     updateLocalStorage();
@@ -365,19 +367,19 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
 
   [idInput, nbtInput].forEach(e => {
     e.addEventListener('blur', () => {
-      if(!idInput.value && !nbtInput.value && !keepSwitch.checked) delete recipe[activeItem];
+      if(!idInput.value && !nbtInput.value && !keepSwitch.checked && !inputIgnoreSwitch.checked) delete recipe[activeItem];
     });
   });
-  keepSwitch.addEventListener('change', () => {
-    if(!idInput.value && !nbtInput.value && !keepSwitch.checked) delete recipe[activeItem];
-  });
+  [keepSwitch, inputIgnoreSwitch].forEach(e => e.addEventListener('change', () => {
+    if(!idInput.value && !nbtInput.value && !keepSwitch.checked && !inputIgnoreSwitch.checked) delete recipe[activeItem];
+  }));
   [idOutput, nbtOutput].forEach(e => {
     e.addEventListener('blur', () => {
-      if(!idOutput.value && !nbtOutput.value && amountOutput.value == 1) delete recipe[activeItem];
+      if(!idOutput.value && !nbtOutput.value && amountOutput.value == 1 && !outputIgnoreSwitch.checked) delete recipe[activeItem];
     });
   });
   amountOutput.addEventListener('change', () => {
-    if(!idOutput.value && !nbtInput.value && amountOutput.value == 1) delete recipe[activeItem];
+    if(!idOutput.value && !nbtInput.value && amountOutput.value == 1 && !outputIgnoreSwitch.checked) delete recipe[activeItem];
   });
   amountOutput.addEventListener('input', () => detailsContainerContent.querySelector('.output .amount-display').innerText = amountOutput.value);
   craftingModeSelect.addEventListener('change', () => {
@@ -445,6 +447,9 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
         [...inputs].find(e => e.dataset.item == activeItem).querySelector('img.display').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
         [...inputs].find(e => e.dataset.item == activeItem).querySelector('.nbt').classList.add('hidden');
         [...inputs].find(e => e.dataset.item == activeItem).querySelector('.keep').classList.add('hidden');
+        if(inputIgnoreSwitch.checked) {
+          [...inputs].find(e => e.dataset.item == activeItem).querySelector('img.display').src = './imgs/ignored.svg'
+        }
         return;
       }
       const item = getItemById(/:/.test(idInput.value) ? idInput.value.replace(/ /g, '_') : `minecraft:${idInput.value.replace(/ /g, '_')}`);
@@ -453,6 +458,10 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       img.src = item.link;
       img.classList.remove('pixelated');
       if(item.type == 'item') img.classList.add('pixelated');
+      if(inputIgnoreSwitch.checked) {
+        img.src = './imgs/ignored.svg'
+        img.classList.remove('pixelated');
+      }
 
       if(nbtInput.value == '') {
         [...inputs].find(e => e.dataset.item == activeItem).querySelector('.nbt').classList.add('hidden');
@@ -472,6 +481,9 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
         [...outputs].find(e => e.dataset.item == activeItem).querySelector('img.display').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
         [...outputs].find(e => e.dataset.item == activeItem).querySelector('span.amount').innerText = '';
         [...outputs].find(e => e.dataset.item == activeItem).querySelector('.nbt').classList.add('hidden');
+        if(outputIgnoreSwitch.checked) {
+          [...outputs].find(e => e.dataset.item == activeItem).querySelector('img.display').src = './imgs/ignored.svg'
+        }
         return;
       }
       const item = getItemById(/:/.test(idOutput.value) ? idOutput.value.replace(/ /g, '_') : `minecraft:${idOutput.value.replace(/ /g, '_')}`);
@@ -480,6 +492,11 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       img.src = item.link;
       img.classList.remove('pixelated');
       if(item.type == 'item') img.classList.add('pixelated');
+      if(outputIgnoreSwitch.checked) {
+        img.src = './imgs/ignored.svg'
+        img.classList.remove('pixelated');
+      }
+
       if(amountOutput.value != 1) {
         [...outputs].find(e => e.dataset.item == activeItem).querySelector('span.amount').innerText = amountOutput.value;
       } else {
@@ -496,20 +513,22 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
 
   function saveInputs(active) {
     if(/^in\d{1,2}$/.test(active)) {
-      if(detailsContainerContent.querySelector('.input input.id').value || detailsContainerContent.querySelector('.input textarea.nbt').value || detailsContainerContent.querySelector('.input .keepSwitch > input[type="checkbox"]').checked) {
+      if(detailsContainerContent.querySelector('.input input.id').value || detailsContainerContent.querySelector('.input textarea.nbt').value || detailsContainerContent.querySelector('.input .keepSwitch > input[type="checkbox"]').checked || detailsContainerContent.querySelector('.input .ignoreSwitch > input[type="checkbox"]').checked) {
         recipe[active] = {
           id: detailsContainerContent.querySelector('.input input.id').value,
           nbt: detailsContainerContent.querySelector('.input textarea.nbt').value,
           keep: detailsContainerContent.querySelector('.input .keepSwitch > input[type="checkbox"]').checked,
+          ignore: detailsContainerContent.querySelector('.input .ignoreSwitch > input[type="checkbox"]').checked,
         }
       } else delete recipe[active]
       updateLocalStorage();
     } else if(/^out\d{1,2}$/.test(active)) {
-      if(detailsContainerContent.querySelector('.output input.id').value || detailsContainerContent.querySelector('.output textarea.nbt').value || detailsContainerContent.querySelector('.output .amount').value != 1) {
+      if(detailsContainerContent.querySelector('.output input.id').value || detailsContainerContent.querySelector('.output textarea.nbt').value || detailsContainerContent.querySelector('.output .amount').value != 1 || detailsContainerContent.querySelector('.output .ignoreSwitch > input[type="checkbox"]').checked) {
         recipe[active] = {
           id: detailsContainerContent.querySelector('.output input.id').value,
           amount: detailsContainerContent.querySelector('.output input.amount').value,
           nbt: detailsContainerContent.querySelector('.output textarea.nbt').value,
+          ignore: detailsContainerContent.querySelector('.output .ignoreSwitch > input[type="checkbox"]').checked,
         }
       } else delete recipe[active]
       updateLocalStorage();
@@ -539,6 +558,7 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       idInput.value = recipe[activeItem] && recipe[activeItem].id ? recipe[activeItem].id.replace(/ /g, '_') : '';
       nbtInput.value = recipe[activeItem] && recipe[activeItem].nbt ? recipe[activeItem].nbt : '';
       keepSwitch.checked = recipe[activeItem] && recipe[activeItem].keep ? recipe[activeItem].keep : false;
+      inputIgnoreSwitch.checked = recipe[activeItem] && recipe[activeItem].ignore ? recipe[activeItem].ignore : false;
 
       refreshItem();
 
@@ -550,6 +570,7 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
       amountOutput.value = recipe[activeItem] && recipe[activeItem].amount ? recipe[activeItem].amount : 1;
       detailsContainerContent.querySelector('.output .amount-display').innerText = amountOutput.value;
       nbtOutput.value = recipe[activeItem] && recipe[activeItem].nbt ? recipe[activeItem].nbt : '';
+      outputIgnoreSwitch.checked = recipe[activeItem] && recipe[activeItem].ignore ? recipe[activeItem].ignore : false;
 
       refreshItem();
 
@@ -603,7 +624,14 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
         img.src = item.link;
         img.classList.remove('pixelated');
         if(item.type == 'item') img.classList.add('pixelated');
-        if(!recipe[e.dataset.item].id) delete recipe[e.dataset.item];
+        if(recipe[e.dataset.item].ignore) {
+          img.src = './imgs/ignored.svg';
+          img.classList.remove('pixelated');
+        }
+        if(!recipe[e.dataset.item].id && !recipe[e.dataset.item].ignore) {
+          delete recipe[e.dataset.item];
+          return;
+        }
         if(!recipe[e.dataset.item].nbt) recipe[e.dataset.item].nbt = '';
         if(/^in\d{1,2}$/.test(e.dataset.item)) {
           if(!recipe[e.dataset.item].keep) recipe[e.dataset.item].keep = false;
@@ -645,7 +673,8 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
 
   function generateMcfunctions() {
     saveInputs(activeItem);
-    const fixedRecipe = correctAdvancedCrafterRecipe(recipe);
+    // const fixedRecipe = correctAdvancedCrafterRecipe(recipe);
+    const fixedRecipe = recipe;
     const returns = advancedCrafterGenerateMcfunction(fixedRecipe, [...inputs].map(e => e.dataset.item), [...outputs].map(e => e.dataset.item));
     if(returns) sendInfo(`advancedCrafter&value2=mcfunction&value3=${encodeURIComponent(JSON.stringify(fixedRecipe))}`);
     return returns;
