@@ -708,27 +708,44 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
     [...inputs].map(e => e.dataset.item).forEach((e, i) => {
       if(fixedRecipe[e]) {
         pieces[e] = {
-          normal: `'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt.replace(/'/g, '\\\'')}}]}'${fixedRecipe[e].nbt != '{}' ? '' : ` && !'data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag'`}`.replace(/,tag:\{\}/, ''),
-          inverted: `!'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt.replace(/'/g, '\\\'')}}]}'`.replace(/,tag:\{\}/, ''),
+          normal: `&& 'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt.replace(/'/g, '\\\'')}}]}'${fixedRecipe[e].nbt != '{}' ? '' : ` && !'data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag'`} `.replace(/,tag:\{\}/, ''),
+          inverted: `&& !'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt.replace(/'/g, '\\\'')}}]}' `.replace(/,tag:\{\}/, ''),
           invertedNbt: fixedRecipe[e].nbt != '{}' ? '' : ` || 'data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag'`,
         }
+        pieces[e].cond3 = ` if(${pieces[e].inverted.replace(/^&& /, '').replace(/ $/, '').replace(/,tag:{}/g,"") + pieces[e].invertedNbt}) {
+    /function ${fixedRecipe.funcPath}/3
+  }\n`
         if(fixedRecipe[e].keep) {
+          pieces.setKeep.push(`/tag @s add ac_lib_keep_${i}`);
+          pieces.clearKeep.push(`/tag @s remove ac_lib_keep_${i}`);
+        }
+        if(fixedRecipe[e].ignore) {
+          pieces[e] = {
+            normal: ``,
+            inverted: ``,
+            invertedNbt: ``,
+            cond3: ``,
+          }
           pieces.setKeep.push(`/tag @s add ac_lib_keep_${i}`);
           pieces.clearKeep.push(`/tag @s remove ac_lib_keep_${i}`);
         }
       } else {
         pieces[e] = {
-          normal: `!'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}'`,
-          inverted: `'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}'`,
+          normal: `&& !'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}' `,
+          inverted: `&& 'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}' `,
           invertedNbt: ``,
         }
+        pieces[e].cond3 = `if(${pieces[e].inverted.replace(/^&& /, '').replace(/ $/, '').replace(/,tag:{}/g,"") + pieces[e].invertedNbt}) {
+    /function ${fixedRecipe.funcPath}/3
+  }\n`;
       }
     });
     [...outputs].map(e => e.dataset.item).forEach((e, i) => {
-      if(fixedRecipe[e]) {
+      if(fixedRecipe[e] && !fixedRecipe[e].ignore) {
         pieces[e] = {
           clearItem: `/replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} minecraft:air`,
           nbt: `,tag:${fixedRecipe[e].nbt}}`.replace(/,tag:\{\}/, '').replace(/'/g, '\\\''),
+          notBlocked: ` && !'block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[i+12]}b}]}'`
         }
         pieces[e].main = ` && !'block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i+12]}b,Count:${fixedRecipe[e].amount}b,id:"${fixedRecipe[e].id}"${pieces[e].nbt}]}'`;
         pieces[e].setItem = `/replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} ${fixedRecipe[e].id + fixedRecipe[e].nbt.replace(/^\{\}$/, '')} ${fixedRecipe[e].amount}`;
@@ -740,59 +757,24 @@ fetch('../idlist.json').then(res => res.json()).then(idlist => {
           clearItem: ``,
           nbt: ``,
           killItem: ``,
+          notBlocked: ``
         }
       }
     });
 
     return (
 `#file: ${fixedRecipe.mccodePath}
-if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]}' && ${pieces.in0.normal.replace(/,tag:{}/g,"")} && ${pieces.in1.normal.replace(/,tag:{}/g,"")} && ${pieces.in2.normal.replace(/,tag:{}/g,"")} && ${pieces.in3.normal.replace(/,tag:{}/g,"")} && ${pieces.in4.normal.replace(/,tag:{}/g,"")} && ${pieces.in5.normal.replace(/,tag:{}/g,"")} && ${pieces.in6.normal.replace(/,tag:{}/g,"")} && ${pieces.in7.normal.replace(/,tag:{}/g,"")} && ${pieces.in8.normal.replace(/,tag:{}/g,"")} && ${pieces.in9.normal.replace(/,tag:{}/g,"")} && ${pieces.in10.normal.replace(/,tag:{}/g,"")} && ${pieces.in11.normal.replace(/,tag:{}/g,"")} && !'block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[12]}b}]}' && !'block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[13]}b}]}' && !'block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[14]}b}]}') {
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]}' ${pieces.in0.normal.replace(/,tag:{}/g,"") + pieces.in1.normal.replace(/,tag:{}/g,"") + pieces.in2.normal.replace(/,tag:{}/g,"") + pieces.in3.normal.replace(/,tag:{}/g,"") + pieces.in4.normal.replace(/,tag:{}/g,"") + pieces.in5.normal.replace(/,tag:{}/g,"") + pieces.in6.normal.replace(/,tag:{}/g,"") + pieces.in7.normal.replace(/,tag:{}/g,"") + pieces.in8.normal.replace(/,tag:{}/g,"") + pieces.in9.normal.replace(/,tag:{}/g,"") + pieces.in10.normal.replace(/,tag:{}/g,"") + pieces.in11.normal.replace(/,tag:{}/g,"") + pieces.out0.notBlocked + pieces.out1.notBlocked + pieces.out2.notBlocked}) {
   /function ${fixedRecipe.funcPath}/1
 }
-if('entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}]' && ${pieces.in0.normal.replace(/,tag:{}/g,"")} && ${pieces.in1.normal.replace(/,tag:{}/g,"")} && ${pieces.in2.normal.replace(/,tag:{}/g,"")} && ${pieces.in3.normal.replace(/,tag:{}/g,"")} && ${pieces.in4.normal.replace(/,tag:{}/g,"")} && ${pieces.in5.normal.replace(/,tag:{}/g,"")} && ${pieces.in6.normal.replace(/,tag:{}/g,"")} && ${pieces.in7.normal.replace(/,tag:{}/g,"")} && ${pieces.in8.normal.replace(/,tag:{}/g,"")} && ${pieces.in9.normal.replace(/,tag:{}/g,"")} && ${pieces.in10.normal.replace(/,tag:{}/g,"")} && ${pieces.in11.normal.replace(/,tag:{}/g,"") + pieces.out0.main + pieces.out1.main + pieces.out2.main}) {
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}]' ${pieces.in0.normal.replace(/,tag:{}/g,"") + pieces.in1.normal.replace(/,tag:{}/g,"") + pieces.in2.normal.replace(/,tag:{}/g,"") + pieces.in3.normal.replace(/,tag:{}/g,"") + pieces.in4.normal.replace(/,tag:{}/g,"") + pieces.in5.normal.replace(/,tag:{}/g,"") + pieces.in6.normal.replace(/,tag:{}/g,"") + pieces.in7.normal.replace(/,tag:{}/g,"") + pieces.in8.normal.replace(/,tag:{}/g,"") + pieces.in9.normal.replace(/,tag:{}/g,"") + pieces.in10.normal.replace(/,tag:{}/g,"") + pieces.in11.normal.replace(/,tag:{}/g,"") + pieces.out0.main + pieces.out1.main + pieces.out2.main}) {
   /function ${fixedRecipe.funcPath}/2
 }
 if('entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}]' && 'block ~ ~ ~ minecraft:barrel') {
   if(!'block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]}') {
     /function ${fixedRecipe.funcPath}/3
   }
-  if(${pieces.in0.inverted.replace(/,tag:{}/g,"") + pieces.in0.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in1.inverted.replace(/,tag:{}/g,"") + pieces.in1.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in2.inverted.replace(/,tag:{}/g,"") + pieces.in2.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in3.inverted.replace(/,tag:{}/g,"") + pieces.in3.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in4.inverted.replace(/,tag:{}/g,"") + pieces.in4.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in5.inverted.replace(/,tag:{}/g,"") + pieces.in5.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in6.inverted.replace(/,tag:{}/g,"") + pieces.in6.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in7.inverted.replace(/,tag:{}/g,"") + pieces.in7.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in8.inverted.replace(/,tag:{}/g,"") + pieces.in8.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in9.inverted.replace(/,tag:{}/g,"") + pieces.in9.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in10.inverted.replace(/,tag:{}/g,"") + pieces.in10.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in11.inverted.replace(/,tag:{}/g,"") + pieces.in11.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-}
+  ${pieces.in0.cond3 + pieces.in1.cond3 + pieces.in2.cond3 + pieces.in3.cond3 + pieces.in4.cond3 + pieces.in5.cond3 + pieces.in6.cond3 + pieces.in7.cond3 + pieces.in8.cond3 + pieces.in9.cond3 + pieces.in10.cond3 + pieces.in11.cond3}}
 
 if('entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id},tag=ac_lib_advanced_crafter_destroy]') {
   /function ${fixedRecipe.funcPath}/4
@@ -850,27 +832,44 @@ ${[pieces.out0.killItem, pieces.out1.killItem, pieces.out2.killItem].filter(e =>
     [...inputs].map(e => e.dataset.item).forEach((e, i) => {
       if(fixedRecipe[e]) {
         pieces[e] = {
-          normal: `block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt}}]}${fixedRecipe[e].nbt != '{}' ? '' : ` && !data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag`}`.replace(/,tag:\{\}/g, ''),
-          inverted: `!block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt}}]}`.replace(/,tag:\{\}/g, ''),
+          normal: `&& block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt}}]}${fixedRecipe[e].nbt != '{}' ? '' : ` && !data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag`} `.replace(/,tag:\{\}/g, ''),
+          inverted: `&& !block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b,id:"${fixedRecipe[e].id}",tag:${fixedRecipe[e].nbt}}]} `.replace(/,tag:\{\}/g, ''),
           invertedNbt: fixedRecipe[e].nbt != '{}' ? '' : ` || data block ~ ~ ~ Items[{Slot:${slotNumbers[i]}b}].tag`,
         }
+        pieces[e].cond3 = `if(${pieces[e].inverted.replace(/^&& /, '').replace(/ $/, '').replace(/,tag:{}/g,"") + pieces[e].invertedNbt}) {
+    /function ${fixedRecipe.funcPath}/3
+  }\n`;
         if(fixedRecipe[e].keep) {
+          pieces.setKeep.push(`/tag @s add ac_lib_keep_${i}`);
+          pieces.clearKeep.push(`/tag @s remove ac_lib_keep_${i}`);
+        }
+        if(fixedRecipe[e].ignore) {
+          pieces[e] = {
+            normal: ``,
+            inverted: ``,
+            invertedNbt: ``,
+            cond3: ``,
+          }
           pieces.setKeep.push(`/tag @s add ac_lib_keep_${i}`);
           pieces.clearKeep.push(`/tag @s remove ac_lib_keep_${i}`);
         }
       } else {
         pieces[e] = {
-          normal: `!block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}`,
-          inverted: `block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]}`,
+          normal: `&& !block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]} `,
+          inverted: `&& block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i]}b}]} `,
           invertedNbt: ``,
         }
+        pieces[e].cond3 = `if(${pieces[e].inverted.replace(/^&& /, '').replace(/ $/, '').replace(/,tag:{}/g,"") + pieces[e].invertedNbt}) {
+    /function ${fixedRecipe.funcPath}/3
+  }\n`;
       }
     });
     [...outputs].map(e => e.dataset.item).forEach((e, i) => {
-      if(fixedRecipe[e]) {
+      if(fixedRecipe[e] && !fixedRecipe[e].ignore) {
         pieces[e] = {
           clearItem: `/replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} minecraft:air`,
           nbt: `,tag:${fixedRecipe[e].nbt}}`.replace(/,tag:\{\}/, ''),
+          notBlocked: ` && !block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[i+12]}b}]}`,
         }
         pieces[e].main = ` && !block ~ ~ ~ minecraft:barrel{Items:[{Slot:${slotNumbers[i+12]}b,Count:${fixedRecipe[e].amount}b,id:"${fixedRecipe[e].id}"${pieces[e].nbt}]}`;
         pieces[e].setItem = `/replaceitem block ~ ~ ~ container.${slotNumbers[i+12]} ${fixedRecipe[e].id + fixedRecipe[e].nbt.replace(/^\{\}$/, '')} ${fixedRecipe[e].amount}`;
@@ -882,61 +881,26 @@ ${[pieces.out0.killItem, pieces.out1.killItem, pieces.out2.killItem].filter(e =>
           clearItem: ``,
           nbt: ``,
           killItem: ``,
+          notBlocked: ``,
         }
       }
     });
 
     return (
 `!file: ${fixedRecipe.mccodePath}
-if(entity @s[tag=!ac_lib_advanced_crafter_crafted] && block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]} && ${pieces.in0.normal.replace(/,tag:{}/g,"")} && ${pieces.in1.normal.replace(/,tag:{}/g,"")} && ${pieces.in2.normal.replace(/,tag:{}/g,"")} && ${pieces.in3.normal.replace(/,tag:{}/g,"")} && ${pieces.in4.normal.replace(/,tag:{}/g,"")} && ${pieces.in5.normal.replace(/,tag:{}/g,"")} && ${pieces.in6.normal.replace(/,tag:{}/g,"")} && ${pieces.in7.normal.replace(/,tag:{}/g,"")} && ${pieces.in8.normal.replace(/,tag:{}/g,"")} && ${pieces.in9.normal.replace(/,tag:{}/g,"")} && ${pieces.in10.normal.replace(/,tag:{}/g,"")} && ${pieces.in11.normal.replace(/,tag:{}/g,"")} && !block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[12]}b}]} && !block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[13]}b}]} && !block ~ ~ ~ minecraft:barrel{Items:[{Slot: ${slotNumbers[14]}b}]}) {
+if(entity @s[tag=!ac_lib_advanced_crafter_crafted] && block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]} ${pieces.in0.normal.replace(/,tag:{}/g,"") + pieces.in1.normal.replace(/,tag:{}/g,"") + pieces.in2.normal.replace(/,tag:{}/g,"") + pieces.in3.normal.replace(/,tag:{}/g,"") + pieces.in4.normal.replace(/,tag:{}/g,"") + pieces.in5.normal.replace(/,tag:{}/g,"") + pieces.in6.normal.replace(/,tag:{}/g,"") + pieces.in7.normal.replace(/,tag:{}/g,"") + pieces.in8.normal.replace(/,tag:{}/g,"") + pieces.in9.normal.replace(/,tag:{}/g,"") + pieces.in10.normal.replace(/,tag:{}/g,"") + pieces.in11.normal.replace(/,tag:{}/g,"").replace(/ $/, '') + pieces.out0.notBlocked + pieces.out1.notBlocked + pieces.out2.notBlocked}) {
   /function ${fixedRecipe.funcPath}/1
 }
-if(entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] && ${pieces.in0.normal.replace(/,tag:{}/g,"")} && ${pieces.in1.normal.replace(/,tag:{}/g,"")} && ${pieces.in2.normal.replace(/,tag:{}/g,"")} && ${pieces.in3.normal.replace(/,tag:{}/g,"")} && ${pieces.in4.normal.replace(/,tag:{}/g,"")} && ${pieces.in5.normal.replace(/,tag:{}/g,"")} && ${pieces.in6.normal.replace(/,tag:{}/g,"")} && ${pieces.in7.normal.replace(/,tag:{}/g,"")} && ${pieces.in8.normal.replace(/,tag:{}/g,"")} && ${pieces.in9.normal.replace(/,tag:{}/g,"")} && ${pieces.in10.normal.replace(/,tag:{}/g,"")} && ${pieces.in11.normal.replace(/,tag:{}/g,"") + pieces.out0.main + pieces.out1.main + pieces.out2.main}) {
+if(entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] ${pieces.in0.normal.replace(/,tag:{}/g,"") + pieces.in1.normal.replace(/,tag:{}/g,"") + pieces.in2.normal.replace(/,tag:{}/g,"") + pieces.in3.normal.replace(/,tag:{}/g,"") + pieces.in4.normal.replace(/,tag:{}/g,"") + pieces.in5.normal.replace(/,tag:{}/g,"") + pieces.in6.normal.replace(/,tag:{}/g,"") + pieces.in7.normal.replace(/,tag:{}/g,"") + pieces.in8.normal.replace(/,tag:{}/g,"") + pieces.in9.normal.replace(/,tag:{}/g,"") + pieces.in10.normal.replace(/,tag:{}/g,"") + pieces.in11.normal.replace(/,tag:{}/g,"") + pieces.out0.main + pieces.out1.main + pieces.out2.main}) {
   /function ${fixedRecipe.funcPath}/2
 }
 if(entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id}] && block ~ ~ ~ minecraft:barrel) {
   if(!block ~ ~ ~ minecraft:barrel{Items:[{Slot:9b,id:"${fixedRecipe.craftingMode.id}"${`,tag:${fixedRecipe.craftingMode.nbt}`.replace(',tag:{}', '')}}]}) {
     /function ${fixedRecipe.funcPath}/3
   }
-  if(${pieces.in0.inverted.replace(/,tag:{}/g,"") + pieces.in0.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in1.inverted.replace(/,tag:{}/g,"") + pieces.in1.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in2.inverted.replace(/,tag:{}/g,"") + pieces.in2.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in3.inverted.replace(/,tag:{}/g,"") + pieces.in3.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in4.inverted.replace(/,tag:{}/g,"") + pieces.in4.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in5.inverted.replace(/,tag:{}/g,"") + pieces.in5.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in6.inverted.replace(/,tag:{}/g,"") + pieces.in6.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in7.inverted.replace(/,tag:{}/g,"") + pieces.in7.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in8.inverted.replace(/,tag:{}/g,"") + pieces.in8.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in9.inverted.replace(/,tag:{}/g,"") + pieces.in9.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in10.inverted.replace(/,tag:{}/g,"") + pieces.in10.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-  if(${pieces.in11.inverted.replace(/,tag:{}/g,"") + pieces.in11.invertedNbt}) {
-    /function ${fixedRecipe.funcPath}/3
-  }
-}
+  ${pieces.in0.cond3 + pieces.in1.cond3 + pieces.in2.cond3 + pieces.in3.cond3 + pieces.in4.cond3 + pieces.in5.cond3 + pieces.in6.cond3 + pieces.in7.cond3 + pieces.in8.cond3 + pieces.in9.cond3 + pieces.in10.cond3 + pieces.in11.cond3}}}
 
-if('entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id},tag=ac_lib_advanced_crafter_destroy]') {
+if(entity @s[tag=ac_lib_advanced_crafter_crafted_${fixedRecipe.id},tag=ac_lib_advanced_crafter_destroy]) {
   /function ${fixedRecipe.funcPath}/4
 }
 
@@ -958,7 +922,7 @@ ${[pieces.out0.clearItem, pieces.out1.clearItem, pieces.out2.clearItem].filter(e
 /tag @s remove ac_lib_advanced_crafter_crafted
 /tag @s remove ac_lib_advanced_crafter_crafted_${fixedRecipe.id}
 
-#file: ${fixedRecipe.mccodePath}/4
+!file: ${fixedRecipe.mccodePath}/4
 
 ${[pieces.out0.killItem, pieces.out1.killItem, pieces.out2.killItem].filter(e => e != '').join('\n')}`
     )
